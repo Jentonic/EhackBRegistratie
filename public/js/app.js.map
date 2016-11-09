@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "sources": [
+	"app.js"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA",
+  "file": "app.js",
+  "sourcesContent": [
+	"var app = new Vue({\n\tel: 'body',\n\tdata: {\n\t\tshowCompetitions: false,\n\t\tshowTeams: false\n\t},\n\tmethods: {\n\t\ttoggleCompetitions: function ()\n\t\t{\n\t\t\tthis.showCompetitions = !this.showCompetitions;\n\t\t\tif (!this.showCompetitions)\n\t\t\t\tthis.setShowTeams(false);\n\t\t},\n\t\tsetShowTeams: function (show)\n\t\t{\n\t\t\tthis.showTeams = show;\n\t\t}\n\t}\n});"
+  ],
+  "sourceRoot": "/source/"
+}
