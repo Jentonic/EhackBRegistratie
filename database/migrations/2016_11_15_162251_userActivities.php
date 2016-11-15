@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlayersTable extends Migration
+class UserActivities extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,7 @@ class CreatePlayersTable extends Migration
      */
     public function up()
     {
-      Schema::create('players', function (Blueprint $table) {
-          $table->increments('id');
-          $table->integer('teamid')->unsigned();
-          $table->integer('userid')->unsigned();
-          $table->timestamps();
-      });
+        //
     }
 
     /**
@@ -28,6 +23,6 @@ class CreatePlayersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('players');
+        //
     }
 }
