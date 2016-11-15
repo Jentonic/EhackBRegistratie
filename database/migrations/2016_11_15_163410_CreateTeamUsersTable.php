@@ -13,7 +13,11 @@ class CreateTeamUsersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('teamUsers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('teamID')->unsigned();
+            $table->integer('userID')->unsigned();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class CreateTeamUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('teamUser');
     }
 }
