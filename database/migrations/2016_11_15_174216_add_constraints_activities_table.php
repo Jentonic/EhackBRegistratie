@@ -13,7 +13,9 @@ class AddConstraintsActivitiesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('activities', function (Blueprint $table) {
+            $table->foreign('activityGroupID')->references('id')->on('activityGroups');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class AddConstraintsActivitiesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('userRoles', function (Blueprint $table) {
+            $table->dropForeign('activities_activityGroupID_foreign');
+        });
     }
 }

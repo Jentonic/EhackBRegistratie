@@ -13,7 +13,10 @@ class AddConstraintsUserOptionsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('userOptions', function (Blueprint $table) {
+            $table->foreign('userID')->references('id')->on('users');
+            $table->foreign('optionID')->references('id')->on('options');
+        });
     }
 
     /**
@@ -23,6 +26,9 @@ class AddConstraintsUserOptionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('userOptions', function (Blueprint $table) {
+            $table->dropForeign('userOptions_userID_foreign');
+            $table->dropForeign('userOptions_roleID_foreign');
+        });
     }
 }
