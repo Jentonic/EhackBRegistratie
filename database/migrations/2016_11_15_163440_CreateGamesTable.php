@@ -6,23 +6,29 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateGamesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        //
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::create('games', function (Blueprint $table) {
+      $table->increments('id');
+      $table->string('name');
+      $table->boolean('isSingleplayer');
+      $table->integer('maxPlayers');
+      $table->integer('maxTeams';
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+     Schema::drop('games');
+  }
 }

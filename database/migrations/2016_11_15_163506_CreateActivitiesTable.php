@@ -13,7 +13,17 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('activities', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('name');
+          $table->integer('maxUsers')->nullable();
+          $table->longText('description');
+          $table->string('url')->nullable();
+          $table->string('tags')->nullable();
+          $table->dateTime('startDate')->nullable();
+          $table->dateTime('endDate')->nullable();
+          $table->integer('activityGroupID')->unsigned();
+      });
     }
 
     /**
@@ -23,6 +33,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('activities');
     }
 }

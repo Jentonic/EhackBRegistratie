@@ -13,7 +13,10 @@ class CreateActivityGroupsTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('activityGroups', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('name');
+      });
     }
 
     /**
@@ -23,6 +26,6 @@ class CreateActivityGroupsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('activityGroups');
     }
 }

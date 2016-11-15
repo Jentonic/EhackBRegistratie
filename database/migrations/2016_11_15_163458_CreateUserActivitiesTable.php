@@ -13,7 +13,11 @@ class CreateUserActivitiesTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('userActivities', function (Blueprint $table) {
+          $table->increments('id');
+          $table->integer('userID')->unsigned();
+          $table->integer('activityID')->unsigned();
+      });
     }
 
     /**
@@ -23,6 +27,6 @@ class CreateUserActivitiesTable extends Migration
      */
     public function down()
     {
-        //
+       Schema::drop('userActivities');
     }
 }

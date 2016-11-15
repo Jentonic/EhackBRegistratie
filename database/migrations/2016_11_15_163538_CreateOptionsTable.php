@@ -13,7 +13,12 @@ class CreateOptionsTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('options', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('name');
+          $table->boolean('hasPrice');
+          $table->double('price');
+      });
     }
 
     /**
@@ -23,6 +28,6 @@ class CreateOptionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('options');
     }
 }

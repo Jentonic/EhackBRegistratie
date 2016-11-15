@@ -13,7 +13,11 @@ class CreateUserOptionsTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('userOptions', function (Blueprint $table) {
+          $table->increments('id');
+          $table->integer('userID')->unsigned();
+          $table->integer('optionID')->unsigned();
+      });
     }
 
     /**
@@ -23,6 +27,6 @@ class CreateUserOptionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('userOptions');
     }
 }
