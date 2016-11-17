@@ -14,9 +14,8 @@
 
 
 Route::group(['middleware' => 'web'], function () {
-   Route::get('/', function () {
-        return view('welcome');
-   });
-   Route::resource('registration', 'RegistrationController');
+   Route::get('/', 'RegistrationController@index');
+
+   Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
 
 });
