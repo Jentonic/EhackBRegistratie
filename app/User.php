@@ -28,14 +28,14 @@ class User extends Authenticatable
     ];
 
     public function activities(){
-      return $this->belongsToMany('App\Activity','userActivities','userID','activityID');
+      return $this->belongsToMany('App\Activity','userActivities','activityID','userID');
     }
 
     public function options(){
-      return $this->belongsToMany('App\Option','userOptions','userID','optionID');
+      return $this->belongsToMany('App\Option','userOptions','optionID','userID');
     }
 
-    public function teams(){
-      return $this->belongsToMany('App\Team','teamUsers','userID','teamID');
+    public function team(){
+      return $this->belongsTo('App\Team');
     }
 }
