@@ -14,8 +14,8 @@ class AddConstraintsTeamUsersTable extends Migration
     public function up()
     {
       Schema::table('teamUsers', function (Blueprint $table) {
-          $table->foreign('teamID')->references('id')->on('teams');
-          $table->foreign('userID')->references('id')->on('users');
+          $table->foreign('teamID')->references('id')->on('teams')->onDelete('cascade');
+          $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
       });
     }
 

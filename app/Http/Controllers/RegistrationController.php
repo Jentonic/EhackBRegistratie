@@ -36,12 +36,12 @@ class RegistrationController extends Controller
     $savedUser = $user->save(); // create user
 
     //check if user wants new team and if user succesfully saved
-    if(!$request->has('casual') && !$request->has('team') && $savedUser){
+    if(!$request->has('casual') && !$request->has('teamID') && $savedUser){
 
       //create new team
       $team = new Team();
       $team->teamleaderID = $user->id;
-      $team->gameID = $request->input('game');
+      $team->gameID = $request->input('gameID');
       $game = Game::find($team->gameID);
       $team->isPublic = $request->input('isPublic');
       $savedTeam = $team->save(); //create team
@@ -49,7 +49,8 @@ class RegistrationController extends Controller
       //check if team succesfully saved
       if($savedTeam){
         $teamUsers = $request->input('teamUsers');//array of emails
-        if($team->isPublic || (!$team->isPublic && $teamUsers.count() == $game->maxPlayers){
+        if($team->isPublic || (!$team->isPublic && count($teamUsers) == $game->maxPlayers)){
+          $checkAttach = true;
           foreach($teamUsers as $teamUser){
             $userTeam = new User();
             $userTeam->email = $teamUser;
@@ -57,12 +58,23 @@ class RegistrationController extends Controller
             $userTeam->confirmed = false;
             $userTeam->confirmationToken = Str::random(60);
             $userTeam->save();
-            $team->users()->attach($userTeam);//insert into teamUserstable
-            //stuur hier een team invite
+            $savedTeamUser = $team->users()->attach($userTeam);//insert into teamUserstable
+            if(!$savedTeamUser){
+              $checkAttach = false;
+            }
+          }
+          if($checkAttach){
+            $team->delete();
+            $user->delete();
+            //stuur hier de teaminvites
+          }
+          else{
+            //return with error niet alle teamgenoten konden geinvite worden
           }
         }
         else{
           $team->delete();
+          $user->delete();
           //return with error not enough players for private team
         }
       }
@@ -71,8 +83,8 @@ class RegistrationController extends Controller
         //return with error could not make team;
       }
     }
-    else if($request->has('team') && $savedUser){//want to join existing team
-      $team = Team::find($request->input('team'));
+    else if($request->has('teamID') && $savedUser){//want to join existing team
+      $team = Team::find($request->input('teamID'));
       if($team){
         $team->users()->attach($user);//insert into teamUserstable
       }
