@@ -26,7 +26,7 @@ class AddConstraintsTeamUsersTable extends Migration
      */
     public function down()
     {
-      Schema::table('message_votes', function (Blueprint $table) {
+      Schema::table('teamUsers', function (Blueprint $table) {
           $table->dropForeign('teamUsers_userID_foreign');
           $table->dropForeign('teamUsers_userID_foreign');
       });

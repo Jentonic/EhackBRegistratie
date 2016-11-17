@@ -25,7 +25,7 @@ class AddConstraintsActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('userRoles', function (Blueprint $table) {
+        Schema::table('activities', function (Blueprint $table) {
             $table->dropForeign('activities_activityGroupID_foreign');
         });
     }
