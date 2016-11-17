@@ -18,7 +18,7 @@ class CreateGamesTable extends Migration
       $table->string('name');
       $table->boolean('isSingleplayer');
       $table->integer('maxPlayers');
-      $table->integer('maxTeams';
+      $table->integer('maxTeams');
     });
   }
 
