@@ -14,8 +14,8 @@ class AddConstraintsTeamUsersTable extends Migration
     public function up()
     {
       Schema::table('teamUsers', function (Blueprint $table) {
-          $table->foreign('teamID')->references('id')->on('teams');
           $table->foreign('userID')->references('id')->on('users');
+          $table->foreign('teamID')->references('id')->on('teams');
       });
     }
 
@@ -27,8 +27,8 @@ class AddConstraintsTeamUsersTable extends Migration
     public function down()
     {
       Schema::table('teamUsers', function (Blueprint $table) {
-          $table->dropForeign('teamUsers_userID_foreign');
-          $table->dropForeign('teamUsers_userID_foreign');
+          $table->dropForeign(['userID']);
+          $table->dropForeign(['teamID']);
       });
     }
 }

@@ -27,8 +27,8 @@ class AddConstraintsTeamsTable extends Migration
     public function down()
     {
       Schema::table('teams', function (Blueprint $table) {
-          $table->dropForeign('teams_teamleaderID_foreign');
-          $table->dropForeign('teams_gameID_foreign');
+          $table->dropForeign(['teamleaderID']);
+          $table->dropForeign(['gameID']);
       });
     }
 }

@@ -27,8 +27,8 @@ class AddConstraintsUserOptionsTable extends Migration
     public function down()
     {
         Schema::table('userOptions', function (Blueprint $table) {
-            $table->dropForeign('userOptions_userID_foreign');
-            $table->dropForeign('userOptions_roleID_foreign');
+            $table->dropForeign(['optionID']);
+            $table->dropForeign(['userID']);
         });
     }
 }

@@ -27,8 +27,8 @@ class AddConstraintsUserRolesTable extends Migration
     public function down()
     {
         Schema::table('userRoles', function (Blueprint $table) {
-            $table->dropForeign('userRoles_userID_foreign');
-            $table->dropForeign('userRoles_roleID_foreign');
+            $table->dropForeign(['userID']);
+            $table->dropForeign(['roleID']);
         });
     }
 }

@@ -26,7 +26,7 @@ class AddConstraintsActivitiesTable extends Migration
     public function down()
     {
         Schema::table('activities', function (Blueprint $table) {
-            $table->dropForeign('activities_activityGroupID_foreign');
+            $table->dropForeign(['activityGroupID']);
         });
     }
 }

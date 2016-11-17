@@ -27,6 +27,6 @@ class CreateTeamUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teamUser');
+        Schema::drop('teamUsers');
     }
 }

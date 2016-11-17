@@ -27,8 +27,8 @@ class AddConstraintsUserActivitiesTable extends Migration
     public function down()
     {
       Schema::table('userActivities', function (Blueprint $table) {
-          $table->dropForeign('userActivities_userID_foreign');
-          $table->dropForeign('userActivities_activityID_foreign');
+          $table->dropForeign(['userID']);
+          $table->dropForeign(['activityID']);
       });
     }
 }
