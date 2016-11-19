@@ -148,8 +148,11 @@ class RegistrationController extends Controller
           $mailarr = $request->input('teammembers');
           $gameTeamSize = Game::where('id', $team->gameID)->maxPlayers;
 
-          if((!$team->public && $gameTeamSize==count(mailarr))||($team->public&&)){
-
+          if($gameTeamSize==count(mailarr)){
+              // non public team
+              
+          } else {
+              // public team
           }
       }
   }
