@@ -127,7 +127,7 @@ class RegistrationController extends Controller
     $savedUser = $user->save(); // create user
 
     if(!$savedUser){
-      //return error whilst creating
+      return redirect()->back()->with('error','Could not save the user.');
     }
 
     if($request->has('activities')){
@@ -150,10 +150,10 @@ class RegistrationController extends Controller
       }
     }
 
-    //return happy path
+    return redirect('/login');
   }
 
-  
+
 
     /**
      * Values that need to be stored eventually
