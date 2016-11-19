@@ -7,6 +7,8 @@ use App\Http\Requests\RegisterTeamRequest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Team;
+use App\Activity;
+use App\Option;
 
 class RegistrationController extends Controller
 {
@@ -113,6 +115,45 @@ class RegistrationController extends Controller
 
   }
 
+  public function storeCasual(Request $request){
+
+    //creating user
+    $user = new User();
+    $user->email = $request->input('email');
+    $user->firstname = $request->input('firstname');
+    $user->lastname = $request->input('lastname');
+    $user->password = Hash::make($request->input('password'));
+    $user->confirmationToken = Str::random(60);
+    $savedUser = $user->save(); // create user
+
+    if(!$savedUser){
+      //return error whilst creating
+    }
+
+    if($request->has('activities')){
+      $activites = $request->input('activities');
+      foreach($activities as $activity){
+        $ac = Activity::find($activity);
+        if(!is_null($ac)){
+          $ac->users()->attach($user);
+        }
+      }
+    }
+
+    if($request->has('options')){
+      $options = $request->input('options');
+      foreach($options as $option){
+        $op = Option::find($option);
+        if(!is_null($op)){
+          $op->users()->attach($user);
+        }
+      }
+    }
+
+    //return happy path
+  }
+
+  
 
     /**
      * Values that need to be stored eventually
@@ -150,7 +191,7 @@ class RegistrationController extends Controller
 
           if($gameTeamSize==count(mailarr)){
               // non public team
-              
+
           } else {
               // public team
           }
