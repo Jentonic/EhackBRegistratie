@@ -9,4 +9,8 @@ class Team extends Model
   public function users(){
     return $this->belongsToMany('App\User','teamUsers','userID','teamID');
   }
+
+  public function game(){
+    return $this->belongsTo('App\Game');
+  }
 }

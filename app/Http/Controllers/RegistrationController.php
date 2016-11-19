@@ -134,6 +134,77 @@ class RegistrationController extends Controller
       $activites = $request->input('activities');
       foreach($activities as $activity){
         $ac = Activity::find($activity);
+        if(!$ac->users()->count() < $ac->maxUsers){
+          $error = 'Maximum amount of people reached for '.$ac->name;
+          $user->delete();
+          return redirect()->back()->with('error',$error);
+        }
+      }
+      foreach($activities as $activity){
+        $ac = Activity::find($activity);
+        if(!is_null($ac)){
+          $ac->users()->attach($user);
+        }
+      }
+    }
+
+    if($request->has('options')){
+      $options = $request->input('options');
+      foreach($options as $option){
+        $op = Option::find($option);
+        if(!is_null($op)){
+          $op->users()->attach($user);
+        }
+      }
+    }
+
+    return redirect('/login');
+  }
+
+  public function storePublicTeam(Request $request){
+
+    //creating user
+    $user = new User();
+    $user->email = $request->input('email');
+    $user->firstname = $request->input('firstname');
+    $user->lastname = $request->input('lastname');
+    $user->password = Hash::make($request->input('password'));
+    $user->confirmationToken = Str::random(60);
+    $savedUser = $user->save(); // create user
+
+    if(!$savedUser){
+      return redirect()->back()->with('error','Could not save the user.');
+    }
+
+    if($request->has('team')){
+      $team = Team::find($request->input('team'));
+      if(!is_null($team)){
+        if($team->users()->count() < $team->game()->maxPlayers){
+          $team->users()->attach($user);
+        }
+        else{
+          $user->delete();
+          return redirect()->back()->with('error','This team is full');
+        }
+      }
+      else{
+        $user->delete();
+        return redirect()->back()->with('error','Could not find this team');
+      }
+    }
+
+    if($request->has('activities')){
+      $activites = $request->input('activities');
+      foreach($activities as $activity){
+        $ac = Activity::find($activity);
+        if(!$ac->users()->count() < $ac->maxUsers){
+          $error = 'Maximum amount of people reached for '.$ac->name;
+          $user->delete();
+          return redirect()->back()->with('error',$error);
+        }
+      }
+      foreach($activities as $activity){
+        $ac = Activity::find($activity);
         if(!is_null($ac)){
           $ac->users()->attach($user);
         }
