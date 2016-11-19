@@ -49,12 +49,10 @@ class RegistrationController extends Controller
       //check if team succesfully saved
       if($savedTeam){
         $teamUsers = $request->input('teamUsers');//array of emails
-<<<<<<< HEAD
-        if($team->isPublic || (!$team->isPublic && $teamUsers.count() == $game->maxPlayers)){
-=======
+
         if($team->isPublic || (!$team->isPublic && count($teamUsers) == $game->maxPlayers)){
           $checkAttach = true;
->>>>>>> master
+
           foreach($teamUsers as $teamUser){
             $userTeam = new User();
             $userTeam->email = $teamUser;
