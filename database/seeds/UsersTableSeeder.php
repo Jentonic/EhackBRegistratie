@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(
+        DB::table('users')->insert([
             [
                 'email'=>'kamiel.klumpers@student.ehb.be',
                 'firstname'=>'Kamiel',
@@ -28,6 +28,6 @@ class UsersTableSeeder extends Seeder
                 'hasRole'=>false,
                 'confirmed'=>true,
             ]
-        );
+        ]);
     }
 }

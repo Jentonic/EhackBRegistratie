@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
+use App\Http\Requests\RegisterTeamRequest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Team;
@@ -25,6 +27,11 @@ class RegistrationController extends Controller
     return view('registration.edit');
   }
 
+    /**
+     * Functie Eli
+     *
+     * @param RegisterTeamRequest $request
+     */
   public function store(Request $request){
     //creating user
     $user = new User();
@@ -106,5 +113,45 @@ class RegistrationController extends Controller
 
   }
 
+
+    /**
+     * Values that need to be stored eventually
+    'email'
+    'firstname'
+    'lastname'
+    'password'
+    'confirmationtoken'
+    'casual'
+    'teamID'
+    'isPublic'
+    'teamUsers'
+     */
+
+  public function storeTeam(RegisterTeamRequest $request){
+      $user = new User();
+
+      $user->email = $request->input('email');
+      $user->firstname = $request->input('firstname');
+      $user->lastname = $request->input('lastname');
+      $user->password = Hash::make($request->input('password'));
+
+      $user->confirmationToken = Str::random(60);
+      $savedUser = $user->save(); // create user in db
+
+      if($savedUser){
+          $team = new Team();
+          $team->teamLeaderID = $user->id;
+          $team->name = $request->input('teamname');
+          $team->gameID = $request->input('gameid');
+          $team->public = $request->input('ispublic');
+
+          $mailarr = $request->input('teammembers');
+          $gameTeamSize = Game::where('id', $team->gameID)->maxPlayers;
+
+          if((!$team->public && $gameTeamSize==count(mailarr))||($team->public&&)){
+
+          }
+      }
+  }
 
 }

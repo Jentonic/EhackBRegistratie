@@ -11,11 +11,15 @@
 |
 */
 
-
-
 Route::group(['middleware' => 'web'], function () {
    Route::get('/', 'RegistrationController@index');
 
    Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
+
+    // Display form to register
+    Route::get('register', 'RegistrationController@create');
+
+    // Store a new Team
+    Route::post('registerteam', 'RegistrationController@storeTeam');
 
 });

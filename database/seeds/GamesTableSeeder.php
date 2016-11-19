@@ -11,7 +11,7 @@ class GamesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('games')->insert(
+        DB::table('games')->insert([
             [
             'name'=>'League of Legends',
             'isSinglePlayer'=>false,
@@ -30,6 +30,6 @@ class GamesTableSeeder extends Seeder
             'maxPlayers'=>1,
             'MaxTeams'=>30
             ]
-        );
+        ]);
     }
 }
