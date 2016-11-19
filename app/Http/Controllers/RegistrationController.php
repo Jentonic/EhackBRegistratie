@@ -158,6 +158,7 @@ class RegistrationController extends Controller
       }
     }
 
+    //sendmail
     return redirect('/login');
   }
 
@@ -221,6 +222,7 @@ class RegistrationController extends Controller
       }
     }
 
+    //sendmail
     return redirect('/login');
   }
 
