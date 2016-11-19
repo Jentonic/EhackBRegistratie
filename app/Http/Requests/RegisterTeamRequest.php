@@ -30,9 +30,8 @@ class RegisterTeamRequest extends FormRequest
             'password' => 'required',
             'teamname' => 'required|required',
             'teammembers' => 'required|array',
-            'teammembers.*' => 'email',
+            'teammembers.*' => 'distinct|email',
             'gameid' => 'required|integer',
-            'ispublic' => 'required|boolean'
         ];
     }
 }
