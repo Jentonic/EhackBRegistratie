@@ -1,6 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form method="POST" action="registerteam" id="registerteamform">
         {{ csrf_field() }}
 
@@ -50,6 +61,13 @@
         @endforeach
 
         <div class="form-group row">
+            <label for="inputTeamName" class="col-sm-2 col-form-label">Team Name</label>
+            <div class="col-sm-10">
+                <input type="text" name="teamname" class="form-control" id="inputTeamName" placeholder="Team Name">
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="teammembers" class="col-sm-2 col-form-label">Teammembers</label>
             <div class="col-sm-10" id="teammembers">
                 <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
@@ -60,7 +78,7 @@
             </div>
         </div>
 
-        <button id="submit" type="button" onclick="submit(this.form)" class="btn btn-primary">Submit</button>
+        <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
 
     </form>
 @stop

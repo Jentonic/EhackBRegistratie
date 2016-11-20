@@ -242,9 +242,7 @@ class RegistrationController extends Controller
     'teamUsers'
      */
 
-  public function storeTeam(Request $request){
-      //dd($request);
-
+  public function storeTeam(RegisterTeamRequest $request){
       $user = new User();
 
       $user->email = $request->input('email');

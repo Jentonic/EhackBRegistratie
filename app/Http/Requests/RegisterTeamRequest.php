@@ -29,9 +29,9 @@ class RegisterTeamRequest extends FormRequest
             'lastname' => 'required',
             'password' => 'required',
             'teamname' => 'required|required',
+            'gameid' => 'required|integer|exists:games,id',
             'teammembers' => 'required|array',
             'teammembers.*' => 'distinct|email',
-            'gameid' => 'required|integer|exists:games,id',
         ];
     }
 }

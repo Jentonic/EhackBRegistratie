@@ -22,7 +22,9 @@ $(function(){
         }
     });
 
-    function submit(form){
+    $("#submitbutton").click(function(){
+        $("form#registerteamform").submit();
+    });
 
-    }
 });
+
