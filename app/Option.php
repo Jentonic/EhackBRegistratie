@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Option extends Model
 {
-  public function options_registrations()
-  {
-      return $this->hasMany('App\Option_registration');
+  public function users(){
+    return $this->belongsToMany('App\User','userOptions','userID','optionID');
   }
 }
