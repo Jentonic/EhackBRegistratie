@@ -8,13 +8,16 @@
 
 		{{-- include bootstrap, jquery --}}
 		<link href="{{ asset('bower/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-		<script type="javascript" href="{{asset('bower/jquery/dist/jquery.min.js')}}"></script>
 	</head>
-	<body>
-
-		@yield('content')
-
-		<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
+	<body class="">
+		<div class="col-xs-12 col-md-9 pull-md-3 bd-content">
+			<div class="container">
+				<div class="row">
+					@yield('content')
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
 		@yield('scripts')
 	</body>
 </html>

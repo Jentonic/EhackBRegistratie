@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Http\Requests\RegisterTeamRequest;
+use App\PendingInvite;
 use Illuminate\Http\Request;
 use App\User;
 use App\Team;
 use App\Activity;
 use App\Option;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class RegistrationController extends Controller
 {
@@ -42,6 +45,7 @@ class RegistrationController extends Controller
     $user->lastname = $request->input('lastname');
     $user->password = Hash::make($request->input('password'));
     $user->confirmationToken = Str::random(60);
+
     $savedUser = $user->save(); // create user
 
     //check if user wants new team and if user succesfully saved
@@ -257,18 +261,49 @@ class RegistrationController extends Controller
           $team->teamLeaderID = $user->id;
           $team->name = $request->input('teamname');
           $team->gameID = $request->input('gameid');
-          $team->public = $request->input('ispublic');
 
           $mailarr = $request->input('teammembers');
-          $gameTeamSize = Game::where('id', $team->gameID)->maxPlayers;
 
-          if($gameTeamSize==count(mailarr)){
+          $gameTeamSize = Game::where('id', $team->gameID)->first()->maxPlayers;
+
+          if($gameTeamSize==count($mailarr)){
               // non public team
+              $team->isPublic = false;
 
           } else {
               // public team
+              $team->public = true;
           }
+
+          $pendingInvites = array();
+
+          foreach($mailarr as $membermail){
+              $inv = new PendingInvite();
+              $inv->email = $membermail;
+              $inv->teamID = $team->id;
+              array_push($pendingInvites, $inv);
+          }
+
+          dd($pendingInvites);
+
+          foreach($pendingInvites as $pendingInvite){
+              $this->mailInvite($pendingInvite);
+          }
+
+
+      } else {
+          // cri
       }
   }
 
+  private function mailInvite(PendingInvite $invite){
+    Mail::send('mail.invite', function($message){
+        $recipient = "me@kamiel.me";
+
+        $message->from('godverdommewafels@gmail.com', 'wafels');
+        $message->to($recipient);
+    });
+
+      return response()->json(['message' => 'com']);
+  }
 }

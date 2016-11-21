@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->boolean('hasRole')->default(false);
             $table->boolean('hasTeam')->default(false);
-            $table->boolean('confirmed');
+            $table->boolean('confirmed')->default(false);
             $table->string('confirmationToken')->nullable();
             $table->rememberToken();
             $table->timestamps();
