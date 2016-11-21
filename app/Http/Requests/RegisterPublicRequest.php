@@ -29,8 +29,8 @@ class RegisterPublicRequest extends FormRequest
           'lastname' => 'required',
           'password' => 'required',
           'verifypassword' => 'required|same:password',
-          'game' => 'required|exists:games',
-          'team' => 'required|exists:teams',
+          'game' => 'required|exists:games,id',
+          'team' => 'required|exists:teams,id',
       ];
     }
 }

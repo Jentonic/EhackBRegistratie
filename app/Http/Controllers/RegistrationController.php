@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Game;
 use App\Http\Requests\RegisterTeamRequest;
 use App\Http\Requests\RegisterCasualRequest;
+use App\Http\Requests\RegisterPublicRequest;
 use App\PendingInvite;
 use Illuminate\Http\Request;
 use App\User;
@@ -51,11 +52,25 @@ class RegistrationController extends Controller
         $activities[] = $ac;
       }
     }
-    $games = Game::orderBy('name', 'desc')->get();
-    return view('registration.create-public')->with('games',$games)
-    ->with('teams',Team::where('gameID',$games[0]->id))
-    ->with('activities',collect($activities))
-    ->with('options',Option::all());
+
+    $games = Game::orderBy('name')->where('maxPlayers','>',1)->get();
+
+    $teams;
+    $collection2 = Team::where('gameID',$games[0]->id)->where('isPublic','1')->get();
+    foreach($collection2 as $t){
+      if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
+        $teams[] = $t;
+      }
+    }
+
+    $view = view('registration.create-public')->with('games',$games);
+    if(!empty($teams)){
+      $view->with('teams',collect($teams));
+    }
+    if(!empty($activities)){
+      $view->with('activities',collect($activities));
+    }
+    return $view->with('options',Option::all());
   }
 
   public function edit(){
@@ -144,16 +159,25 @@ class RegistrationController extends Controller
         //return with ayyy it worked
     }
 
-
-    public function update(Request $request){
-
+    public function update(Request $request){}
 
   public function ajaxTeams($gameid){
-    return view('ajax.team')->with('teams',Team::where('gameID',$gameid));
+    $teams;
+    $collection2 = Team::where('gameID',$gameid)->where('isPublic','1')->get();
+    foreach($collection2 as $t){
+      if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
+        $teams[] = $t;
+      }
+    }
+    $view = view('ajax.team');
+    if(!empty($teams)){
+      $view->with('teams',$teams);
+    }
+    return $view;
   }
 
 
-    public function storeCasual(Request $request){
+    public function storeCasual(RegisterCasualRequest $request){
 
         //creating user
         $user = new User();
@@ -165,17 +189,17 @@ class RegistrationController extends Controller
         $savedUser = $user->save(); // create user
 
         if(!$savedUser){
-            return redirect()->back()->with('error','Could not save the user.');
+            return redirect()->back()->with('err','Could not save the user.');
         }
 
         if($request->has('activities')){
-            $activites = $request->input('activities');
+            $activities = $request->input('activities');
             foreach($activities as $activity){
                 $ac = Activity::find($activity);
                 if(!$ac->users()->count() < $ac->maxUsers){
                     $error = 'Maximum amount of people reached for '.$ac->name;
                     $user->delete();
-                    return redirect()->back()->with('error',$error);
+                    return redirect()->back()->with('err',$error);
                 }
             }
             foreach($activities as $activity){
@@ -200,7 +224,7 @@ class RegistrationController extends Controller
         return redirect('/login');
     }
 
-    public function storePublicTeam(Request $request){
+    public function storePublicTeam(RegisterPublicRequest $request){
 
         //creating user
         $user = new User();
@@ -212,38 +236,38 @@ class RegistrationController extends Controller
         $savedUser = $user->save(); // create user
 
 
-    
+
 
         if(!$savedUser){
-            return redirect()->back()->with('error','Could not save the user.');
+            return redirect()->back()->with('err','Could not save the user.');
         }
 
         if($request->has('team')){
             $team = Team::find($request->input('team'));
             if(!is_null($team)){
-                if($team->users()->count() < $team->game()->maxPlayers){
+                if($team->users()->count() < (($team->game->maxPlayers) - $team->invites()->count())){
                     $team->users()->attach($user);
                 }
                 else{
                     $user->delete();
-                    return redirect()->back()->with('error','This team is full');
+                    return redirect()->back()->with('err','This team is full');
                 }
             }
             else{
                 $user->delete();
-                return redirect()->back()->with('error','Could not find this team');
+                return redirect()->back()->with('err','Could not find this team');
             }
 
         }
 
         if($request->has('activities')){
-            $activites = $request->input('activities');
+            $activities = $request->input('activities');
             foreach($activities as $activity){
                 $ac = Activity::find($activity);
-                if(!$ac->users()->count() < $ac->maxUsers){
+                if($ac->users()->count() >= $ac->maxUsers){
                     $error = 'Maximum amount of people reached for '.$ac->name;
                     $user->delete();
-                    return redirect()->back()->with('error',$error);
+                    return redirect()->back()->with('err',$error);
                 }
             }
             foreach($activities as $activity){

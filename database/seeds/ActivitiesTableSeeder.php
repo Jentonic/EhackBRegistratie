@@ -11,13 +11,11 @@ class ActivitiesTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('activityGroups')->insert([
+      DB::table('activities')->insert([
           [
               'name' => 'Test',
               'maxUsers' => '5',
               'description' => 'Testing hier zo',
-              'startDate' => date(),
-              'endDate' => date(),
               'activityGroupID' => '1',
           ]
       ]);

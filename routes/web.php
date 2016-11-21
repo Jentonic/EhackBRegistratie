@@ -12,7 +12,7 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
-  
+
   Route::get('/', 'RegistrationController@index');
 
   Route::get('/get/teams/{gameid}','RegistrationController@ajaxTeams');
@@ -30,6 +30,9 @@ Route::group(['middleware' => 'web'], function () {
 
   // Store a new Casual
   Route::post('registercasual', 'RegistrationController@storeCasual');
+
+  // Store a new Public
+  Route::post('registerpublic', 'RegistrationController@storePublicTeam');
 
   // Store a new Team
   Route::post('registerteam', 'RegistrationController@storeTeam');

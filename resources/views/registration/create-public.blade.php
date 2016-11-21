@@ -57,7 +57,7 @@
         <div class="form-group row">
             <label for="inputGameID" class="col-sm-2 col-form-label">Game</label>
             <div class="col-sm-10">
-                <select name="gameid" id="game" class="form-control">
+                <select name="game" id="game" class="form-control">
                     @foreach($games as $game)
                         <option value='{{$game->id}}'>{{$game->name}}</option>
                     @endforeach
@@ -69,13 +69,22 @@
           <h3>Public teams</h3>
         </div>
         <div id="teamholder">
-          @foreach($teams as $team)
-            <div class="form-group row">
-              <div class="checkbox col-sm-10 col-sm-offset-1">
-                <label><input type="radio" name="team" value="{{$team->id}}">{{$team->name}} - Places left: {{$team->game->maxPlayers - $team->users->count()}}</label>
+          @if(!empty($teams))
+            @foreach($teams as $team)
+              <div class="form-group row">
+                <div class="checkbox col-sm-10 col-sm-offset-1">
+                  <label>
+                    <input type="radio" name="team" value="{{$team->id}}">
+                     {{$team->name}} - Places left: {{ ($team->game->maxPlayers) - $team->invites()->count() - $team->users()->count() }}
+                  </label>
+                </div>
               </div>
-            </div>
-          @endforeach
+            @endforeach
+          @else
+          <div class="form-group row">
+            <p>No public teams for this game available</p>
+          </div>
+          @endif
         </div>
 
         <!-- Activities -->
