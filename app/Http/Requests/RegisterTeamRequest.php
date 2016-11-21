@@ -24,7 +24,7 @@ class RegisterTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email|unique:pendingInvites,email',
             'firstname' => 'required',
             'lastname' => 'required',
             'password' => 'required',

@@ -121,7 +121,7 @@ class RegistrationController extends Controller
 
     }
 
-    public function createMailInvite(Request $request){
+    public function createMailInvite($token){
 
     }
 
@@ -292,6 +292,7 @@ class RegistrationController extends Controller
                     $inv = new PendingInvite();
                     $inv->email = $membermail;
                     $inv->teamID = $team->id;
+                    $inv->token = Str::random(60);
                     array_push($pendingInvites, $inv);
                 }
 
@@ -315,18 +316,18 @@ class RegistrationController extends Controller
         $leader = User::where('id', $team->leaderID)->first();
 
         $title = "Welcome to EhackB!";
-        $content1 = "You were invited to a {{$game->name}} team by {{$leader->firstName}} {{$leader->lastName}}<br>
+        $content1 = "You were invited to a {$game->name} team by {$leader->firstName} {$leader->lastName}<br>
                     Want to join in on the fun? Click the link below.";
 
-        $content2 = "Hi, <br><br>".
-            "Join me 16-17 december in the fight for the best {{$game->name}} team at EhackB 2016.".
-            "Click the link below to join our team {{$team->name}}<br><br>".
-            "Regards,<br><br>{{$leader->firstName}} {{$leader->lastName}}<br>";
+        $content2 = "Hi, <br><br>
+            Join me 16-17 december in the fight for the best {$game->name} team at EhackB 2016.
+            Click the link below to join our team {$team->name}<br><br>
+            Regards,<br><br>{$leader->firstName} {$leader->lastName}<br>";
 
         $content = $content1."<br><br><br>".$content2;
 
-
-        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content], function($message) use ($invite){
+        $token = $invite->token;
+        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name, 'token'=>$token], function($message) use ($invite){
             $message->sender('godverdommewafels@gmail.com', $name = 'Dhr. Wafels');
             $message->subject('You have been invited to a team at EhackB!');
             $message->to($invite->email, $name = null);
