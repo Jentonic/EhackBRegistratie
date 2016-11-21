@@ -210,7 +210,7 @@ class RegistrationController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
-        $user->confirmationToken = Str::random(60);
+        $user->confirmationToken = str_replace('/','_',Str::random(60));
         $savedUser = $user->save(); // create user
 
         if(!$savedUser){
@@ -258,7 +258,7 @@ class RegistrationController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
-        $user->confirmationToken = Str::random(60);
+        $user->confirmationToken = str_replace('/','_',Str::random(60));
         $savedUser = $user->save(); // create user
 
         if(!$savedUser){
@@ -329,7 +329,7 @@ class RegistrationController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
-        $user->confirmationToken = Str::random(60);
+        $user->confirmationToken = str_replace('/','_',Str::random(60));
         $savedUser = $user->save(); // create user
 
 
@@ -383,7 +383,7 @@ class RegistrationController extends Controller
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
 
-        $user->confirmationToken = Str::random(60);
+        $user->confirmationToken = str_replace('/','_',Str::random(60));
         $savedUser = $user->save(); // create user in db
 
         if($savedUser){
@@ -416,7 +416,7 @@ class RegistrationController extends Controller
                     $inv = new PendingInvite();
                     $inv->email = $membermail;
                     $inv->teamID = $team->id;
-                    $inv->token = Str::random(60);
+                    $inv->token = str_replace('/','_',Str::random(60));
                     array_push($pendingInvites, $inv);
                 }
                 foreach ($pendingInvites as $pendingInvite) {
