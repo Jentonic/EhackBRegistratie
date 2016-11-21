@@ -21,8 +21,11 @@ class RegistrationController extends Controller
   public function show(){
       // if (Auth::check()) {
       $user = User::where('email', 'lostitz0r@gmail.com')->first();
+
       if ($user->hasTeam) {
-          $team = $user->team();
+          $team = $user->team()->get();
+
+          dd($team);
 
           return view('registration.show')->with('user', $user)->with('team', $team);
       } else {
