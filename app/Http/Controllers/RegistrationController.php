@@ -121,6 +121,10 @@ class RegistrationController extends Controller
 
     }
 
+    public function createMailInvite(Request $request){
+
+    }
+
     public function storeCasual(Request $request){
 
         //creating user
