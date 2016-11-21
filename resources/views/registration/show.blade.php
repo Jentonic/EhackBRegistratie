@@ -9,6 +9,12 @@
   @if(isset($team))
     <li>{{ $team->name }}</li>
   @endif
+
+  @if(!isEmpty($activities))
+    @foreach($activities as $activity)
+      <li>{{ $activity->name . ": " . $activity->description . " | " . $activity->group()->get()->first()->name }}</li>
+    @endforeach
+  @endif
 @stop
 
 @section('scripts')

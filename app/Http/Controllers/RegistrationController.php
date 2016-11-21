@@ -22,12 +22,18 @@ class RegistrationController extends Controller
       if (Auth::check()) {
         $user = Auth::user();
 
+        $activities = null;
+
+        if (!isEmpty($user->activities())) {
+          $activities = $user->activities()->get();
+        }
+
         if ($user->hasTeam) {
           $team = $user->team()->get()->first();
 
-          return view('registration.show')->with('user', $user)->with('team', $team);
+          return view('registration.show')->with('user', $user)->with('activities', $activities)->with('team', $team);
         } else {
-          return view('registration.show')->with('user', $user);
+          return view('registration.show')->with('user', $user)->with('activities', $activities);
         }
       } else {
         // Make unauthorized page
