@@ -6,6 +6,7 @@ use App\Game;
 use App\Http\Requests\RegisterTeamRequest;
 use App\Http\Requests\RegisterCasualRequest;
 use App\Http\Requests\RegisterPublicRequest;
+use App\Http\Requests\RegisterMailRequest;
 use App\PendingInvite;
 use Illuminate\Http\Request;
 use App\User;
@@ -296,6 +297,61 @@ class RegistrationController extends Controller
         return redirect('/login');
     }
 
+    public function storeMailInvite(RegisterMailRequest $request){
+
+        $token = $request->input('token');
+        $invite = PendingInvite::where('token',$token);
+
+        //creating user
+        $user = new User();
+        $user->email = $invite->email;
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->password = Hash::make($request->input('password'));
+        $user->confirmationToken = Str::random(60);
+        $savedUser = $user->save(); // create user
+
+
+        if(!$savedUser){
+            return redirect()->back()->with('err','Could not save the user.');
+        }
+
+        if($request->has('activities')){
+            $activities = $request->input('activities');
+            foreach($activities as $activity){
+                $ac = Activity::find($activity);
+                if($ac->users()->count() >= $ac->maxUsers){
+                    $error = 'Maximum amount of people reached for '.$ac->name;
+                    $user->delete();
+                    return redirect()->back()->with('err',$error);
+                }
+            }
+            foreach($activities as $activity){
+                $ac = Activity::find($activity);
+                if(!is_null($ac)){
+                    $ac->users()->attach($user);
+                }
+            }
+        }
+
+        if($request->has('options')){
+            $options = $request->input('options');
+            foreach($options as $option){
+                $op = Option::find($option);
+                if(!is_null($op)){
+                    $op->users()->attach($user);
+                }
+            }
+        }
+
+        $team = Team::where('id',$invite->teamID);
+        $team->users()->attach($user);
+        
+        $invite->delete();
+
+        //sendmail
+        return redirect('/login');
+    }
 
 
     /**
