@@ -175,7 +175,7 @@ class RegistrationController extends Controller
       }
       return $view;
     }
-    
+
     public function createMailInvite(Request $request,$token){
       $invite = PendingInvite::where('token',$token)->first();
 
@@ -267,6 +267,9 @@ class RegistrationController extends Controller
             if(!is_null($team)){
                 if($team->users()->count() < (($team->game->maxPlayers) - $team->invites()->count())){
                     $team->users()->attach($user);
+                    if($team->users()->count() == $team->game->maxPlayers){
+                      $team->isPublic = false;
+                    }
                 }
                 else{
                     $user->delete();
