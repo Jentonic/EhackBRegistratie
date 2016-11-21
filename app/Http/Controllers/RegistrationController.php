@@ -19,21 +19,20 @@ class RegistrationController extends Controller
   }
 
   public function show(){
-      // if (Auth::check()) {
-      $user = User::where('email', 'lostitz0r@gmail.com')->first();
+      if (Auth::check()) {
+        $user = Auth::user();
 
-      if ($user->hasTeam) {
-          $team = $user->team()->get();
-
-          dd($team);
+        if ($user->hasTeam) {
+          $team = $user->team()->get()->first();
 
           return view('registration.show')->with('user', $user)->with('team', $team);
-      } else {
+        } else {
           return view('registration.show')->with('user', $user);
+        }
+      } else {
+        // Make unauthorized page
+        return view('errors.503');
       }
-      /* } else {
-           return view('registration.create');
-      }*/
   }
 
   public function create(){
