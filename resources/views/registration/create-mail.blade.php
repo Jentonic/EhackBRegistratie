@@ -21,13 +21,13 @@
 
   <br/>
   <div class="col-md-10 col-md-offset-1">
-    <form method="POST" action="registermail" id="registermailform">
+    <form method="POST" action="/registermail" id="registermailform">
         {{ csrf_field() }}
         <input type="hidden" name="token" value="{{$invite->token}}"/>
         <div class="form-group row">
             <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
             <div class="col-sm-10">
-                <input type="text" name="email" class="form-control" id="inputEmail" placeholder="E-mail" value="{{ $invite->email }}" disabled>
+                <input type="text" name="email" class="form-control" id="inputEmail" placeholder="E-mail" value="{{ $invite->email }}" readonly="readonly">
             </div>
         </div>
         <div class="form-group row">
@@ -58,7 +58,8 @@
             <label for="inputGameID" class="col-sm-2 col-form-label">Game</label>
             <div class="col-sm-10">
                 <select name="game" id="game" class="form-control">
-                        <option value='{{$team->game->id}}'>{{$team->game->name}}</option>
+
+                        <option value='{{ $team->game->id }}'>{{$team->game->name}}</option>
                 </select>
             </div>
         </div>

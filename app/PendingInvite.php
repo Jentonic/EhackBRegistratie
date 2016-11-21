@@ -9,6 +9,6 @@ class PendingInvite extends Model
     protected $table="pendingInvites";
 
     public function team(){
-        return $this->belongsTo('App\Team');
+        return $this->belongsTo('App\Team','teamID');
     }
 }

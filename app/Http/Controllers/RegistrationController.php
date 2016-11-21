@@ -178,11 +178,21 @@ class RegistrationController extends Controller
 
     public function createMailInvite(Request $request,$token){
       $invite = PendingInvite::where('token',$token)->first();
+
+      $activities;
+      $collection = Activity::all();
+      foreach($collection as $ac){
+        if($ac->users()->count() < $ac->maxUsers){
+          $activities[] = $ac;
+        }
+      }
+
+
       if(!empty($invite)){
-        return view('registration.create-mail')->with('invite',$invite)->with('team',$invite->team());
+        return view('registration.create-mail')->with('activities',collect($activities))->with('invite',$invite)->with('team',$invite->team)->with('options',Option::all());
       }
       else{
-        return view('registration.mail-error');
+        return view('registration.mail-error')->with('activities',collect($activities))->with('options',Option::all());
       }
     }
 
@@ -303,9 +313,9 @@ class RegistrationController extends Controller
     }
 
     public function storeMailInvite(RegisterMailRequest $request){
-
+        //dd($request);
         $token = $request->input('token');
-        $invite = PendingInvite::where('token',$token);
+        $invite = PendingInvite::where('token',$token)->first();
 
         //creating user
         $user = new User();
@@ -349,7 +359,7 @@ class RegistrationController extends Controller
             }
         }
 
-        $team = Team::where('id',$invite->teamID);
+        $team = Team::where('id',$invite->teamID)->first();
         $team->users()->attach($user);
 
         $invite->delete();

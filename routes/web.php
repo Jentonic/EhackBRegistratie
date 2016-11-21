@@ -34,6 +34,9 @@ Route::group(['middleware' => 'web'], function () {
   // Store a new Public
   Route::post('registerpublic', 'RegistrationController@storePublicTeam');
 
+  // Store a new Mail invited
+  Route::post('registermail', 'RegistrationController@storeMailInvite');
+
   // Store a new Team
   Route::post('registerteam', 'RegistrationController@storeTeam');
 
