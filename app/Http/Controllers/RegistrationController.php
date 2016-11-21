@@ -32,56 +32,50 @@ class RegistrationController extends Controller
         return view('registration.create');
     }
 
-
-  public function createCasual(){
-    $activities;
-    $collection = Activity::all();
-    foreach($collection as $ac){
-      if($ac->users()->count() < $ac->maxUsers){
-        $activities[] = $ac;
-      }
-    }
-    return view('registration.create-casual')->with('activities',collect($activities))->with('options',Option::all());
-  }
-
-  public function createPublic(){
-    $activities;
-    $collection = Activity::all();
-    foreach($collection as $ac){
-      if($ac->users()->count() < $ac->maxUsers){
-        $activities[] = $ac;
-      }
+    public function createCasual(){
+        $activities;
+        $collection = Activity::all();
+        foreach($collection as $ac){
+            if($ac->users()->count() < $ac->maxUsers){
+                $activities[] = $ac;
+            }
+        }
+        return view('registration.create-casual')->with('activities',collect($activities))->with('options',Option::all());
     }
 
-    $games = Game::orderBy('name')->where('maxPlayers','>',1)->get();
+    public function createPublic(){
+        $activities;
+        $collection = Activity::all();
+        foreach($collection as $ac){
+            if($ac->users()->count() < $ac->maxUsers){
+                $activities[] = $ac;
+            }
+        }
 
-    $teams;
-    $collection2 = Team::where('gameID',$games[0]->id)->where('isPublic','1')->get();
-    foreach($collection2 as $t){
-      if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
-        $teams[] = $t;
-      }
+        $games = Game::orderBy('name')->where('maxPlayers','>',1)->get();
+
+        $teams;
+        $collection2 = Team::where('gameID',$games[0]->id)->where('isPublic','1')->get();
+        foreach($collection2 as $t){
+            if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
+                $teams[] = $t;
+            }
+        }
+
+        $view = view('registration.create-public')->with('games',$games);
+        if(!empty($teams)){
+            $view->with('teams',collect($teams));
+        }
+        if(!empty($activities)){
+            $view->with('activities',collect($activities));
+        }
+        return $view->with('options',Option::all());
     }
 
-    $view = view('registration.create-public')->with('games',$games);
-    if(!empty($teams)){
-      $view->with('teams',collect($teams));
+    public function edit(){
+        return view('registration.edit');
     }
-    if(!empty($activities)){
-      $view->with('activities',collect($activities));
-    }
-    return $view->with('options',Option::all());
-  }
 
-  public function edit(){
-    return view('registration.edit');
-  }
-
-    /**
-     * Functie Eli
-     *
-     * @param RegisterTeamRequest $request
-     */
     public function store(Request $request){
         //creating user
         $user = new User();
@@ -162,49 +156,49 @@ class RegistrationController extends Controller
     public function update(Request $request){}
 
     public function ajaxTeams($gameid){
-      $teams;
-      $collection2 = Team::where('gameID',$gameid)->where('isPublic','1')->get();
-      foreach($collection2 as $t){
-        if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
-          $teams[] = $t;
+        $teams;
+        $collection2 = Team::where('gameID',$gameid)->where('isPublic','1')->get();
+        foreach($collection2 as $t){
+            if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
+                $teams[] = $t;
+            }
         }
-      }
-      $view = view('ajax.team');
-      if(!empty($teams)){
-        $view->with('teams',$teams);
-      }
-      return $view;
+        $view = view('ajax.team');
+        if(!empty($teams)){
+            $view->with('teams',$teams);
+        }
+        return $view;
     }
 
     public function userConfirmation($token){
-      $user = User::where('confirmationToken',$token)->first();
-      if(!empty($user)){
-        $user->confirmed = true;
-        return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
-      }
-      else{
-        return view('registration.confirmation')->with('err','We could not confirm your account with this token.');
-      }
+        $user = User::where('confirmationToken',$token)->first();
+        if(!empty($user)){
+            $user->confirmed = true;
+            return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
+        }
+        else{
+            return view('registration.confirmation')->with('err','We could not confirm your account with this token.');
+        }
     }
 
     public function createMailInvite(Request $request,$token){
-      $invite = PendingInvite::where('token',$token)->first();
+        $invite = PendingInvite::where('token',$token)->first();
 
-      $activities;
-      $collection = Activity::all();
-      foreach($collection as $ac){
-        if($ac->users()->count() < $ac->maxUsers){
-          $activities[] = $ac;
+        $activities;
+        $collection = Activity::all();
+        foreach($collection as $ac){
+            if($ac->users()->count() < $ac->maxUsers){
+                $activities[] = $ac;
+            }
         }
-      }
 
 
-      if(!empty($invite)){
-        return view('registration.create-mail')->with('activities',collect($activities))->with('invite',$invite)->with('team',$invite->team)->with('options',Option::all());
-      }
-      else{
-        return view('registration.mail-error')->with('activities',collect($activities))->with('options',Option::all());
-      }
+        if(!empty($invite)){
+            return view('registration.create-mail')->with('activities',collect($activities))->with('invite',$invite)->with('team',$invite->team)->with('options',Option::all());
+        }
+        else{
+            return view('registration.mail-error')->with('activities',collect($activities))->with('options',Option::all());
+        }
     }
 
     public function storeCasual(Request $request){
@@ -267,9 +261,6 @@ class RegistrationController extends Controller
         $user->confirmationToken = str_replace('/','_',Str::random(60));
         $savedUser = $user->save(); // create user
 
-
-
-
         if(!$savedUser){
             return redirect()->back()->with('err','Could not save the user.');
         }
@@ -280,7 +271,7 @@ class RegistrationController extends Controller
                 if($team->users()->count() < (($team->game->maxPlayers) - $team->invites()->count())){
                     $team->users()->attach($user);
                     if($team->users()->count() == $team->game->maxPlayers){
-                      $team->isPublic = false;
+                        $team->isPublic = false;
                     }
                 }
                 else{
@@ -292,7 +283,6 @@ class RegistrationController extends Controller
                 $user->delete();
                 return redirect()->back()->with('err','Could not find this team');
             }
-
         }
 
         if($request->has('activities')){
@@ -385,20 +375,6 @@ class RegistrationController extends Controller
         return redirect('/login');
     }
 
-
-    /**
-     * Values that need to be stored eventually
-    'email'
-    'firstname'
-    'lastname'
-    'password'
-    'confirmationtoken'
-    'casual'
-    'teamID'
-    'isPublic'
-    'teamUsers'
-     */
-
     public function storeTeam(RegisterTeamRequest $request){
         $user = new User();
 
@@ -443,7 +419,6 @@ class RegistrationController extends Controller
                     $inv->token = str_replace('/','_',Str::random(60));
                     array_push($pendingInvites, $inv);
                 }
-
                 foreach ($pendingInvites as $pendingInvite) {
                     if($pendingInvite->save()){
                         $this->mailInvite($pendingInvite, $team);
@@ -488,7 +463,7 @@ class RegistrationController extends Controller
 
         Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content], function($message) use ($user){
             $message->sender('godverdommewafels@gmail.com', $name = 'Dhr. Wafels');
-            $message->subject('You have been invited to EhackB!');
+            $message->subject('You have been invited to a team for EhackB!');
             $message->to($user->email, $name = null);
         });
     }
