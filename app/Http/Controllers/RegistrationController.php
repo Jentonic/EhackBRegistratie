@@ -22,18 +22,33 @@ class RegistrationController extends Controller
       if (Auth::check()) {
         $user = Auth::user();
 
-        $activities = null;
+        $activities = array();
+        $options = array();
 
         if (!isEmpty($user->activities())) {
           $activities = $user->activities()->get();
         }
 
+        if (!isEmpty($user->options())) {
+          $options = $user->options()->get();
+        }
+
         if ($user->hasTeam) {
           $team = $user->team()->get()->first();
+          $game = $team->game()->get()->first();
 
-          return view('registration.show')->with('user', $user)->with('activities', $activities)->with('team', $team);
+          if ($game->isSingleplayer) {
+            return view('registration.show')->with('user', $user)->with('activities', $activities)->with('options', $options)->with('team', $team)->with('game', $game);
+          } else {
+            $teamUsers = $team->users()->get();
+            $members = array();
+            foreach ($teamUsers as $teamUser) {
+              array_push($members, $teamUser);
+            }
+            return view('registration.show')->with('user', $user)->with('activities', $activities)->with('options', $options)->with('team', $team)->with('game', $game)->with('members', $members);
+          }
         } else {
-          return view('registration.show')->with('user', $user)->with('activities', $activities);
+          return view('registration.show')->with('user', $user)->with('activities', $activities)->with('options', $options);
         }
       } else {
         // Make unauthorized page
@@ -46,6 +61,26 @@ class RegistrationController extends Controller
   }
 
   public function edit(){
+    if (Auth::check()) {
+      $user = Auth::user();
+
+      $activities = null;
+
+      if (!isEmpty($user->activities())) {
+        $activities = $user->activities()->get();
+      }
+
+      if ($user->hasTeam) {
+        $team = $user->team()->get()->first();
+
+        return view('registration.show')->with('user', $user)->with('activities', $activities)->with('team', $team);
+      } else {
+        return view('registration.show')->with('user', $user)->with('activities', $activities);
+      }
+    } else {
+      // Make unauthorized page
+      return view('errors.503');
+    }
     return view('registration.edit');
   }
 
