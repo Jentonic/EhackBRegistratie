@@ -14,7 +14,7 @@ class AddConstraintsPendingInvitesTable extends Migration
     public function up()
     {
       Schema::table('pendingInvites', function (Blueprint $table) {
-          $table->foreign('teamID')->references('id')->on('teams');
+          $table->foreign('teamID')->references('id')->on('teams')->onDelete('cascade');
       });
     }
 

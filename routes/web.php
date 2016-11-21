@@ -12,12 +12,18 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+  
   Route::get('/', 'RegistrationController@index');
+
+  Route::get('/get/teams/{gameid}','RegistrationController@ajaxTeams');
 
   Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
 
   // Display form to register Casual
   Route::get('registerCasual', 'RegistrationController@createCasual');
+
+  // Display form to register Public
+  Route::get('registerPublic', 'RegistrationController@createPublic');
 
   // Display form to register
   Route::get('register', 'RegistrationController@create');

@@ -40,6 +40,21 @@ class RegistrationController extends Controller
     return view('registration.create-casual')->with('activities',collect($activities))->with('options',Option::all());
   }
 
+  public function createPublic(){
+    $activities;
+    $collection = Activity::all();
+    foreach($collection as $ac){
+      if($ac->users()->count() < $ac->maxUsers){
+        $activities[] = $ac;
+      }
+    }
+    $games = Game::orderBy('name', 'desc')->get();
+    return view('registration.create-public')->with('games',$games)
+    ->with('teams',Team::where('gameID',$games[0]->id))
+    ->with('activities',collect($activities))
+    ->with('options',Option::all());
+  }
+
   public function edit(){
     return view('registration.edit');
   }
@@ -129,6 +144,10 @@ class RegistrationController extends Controller
 
   public function update(Request $request){
 
+  }
+
+  public function ajaxTeams($gameid){
+    return view('ajax.team')->with('teams',Team::where('gameID',$gameid));
   }
 
   public function storeCasual(RegisterCasualRequest $request){
