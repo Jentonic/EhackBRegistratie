@@ -17,7 +17,7 @@ class CreatePendingInvites extends Migration
           $table->increments('id');
           $table->integer('teamID')->unsigned();
           $table->string('email');
-          $table->string('token')->unique();
+          $table->string('token')->unique()->default('');
           $table->timestamps();
       });
     }
