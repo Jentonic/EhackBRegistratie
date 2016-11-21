@@ -1,7 +1,9 @@
 <html>
 <head></head>
-<body style="background: black; color: white">
-<h1>Hello!</h1>
-<p>Welcome to EhackB.</p>
+<body>
+<h1>{{$title}}</h1>
+
+<p>{!! $content !!}</p>
+
 </body>
 </html>
