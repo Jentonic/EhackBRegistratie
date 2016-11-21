@@ -36,6 +36,6 @@ class User extends Authenticatable
     }
 
     public function team(){
-      return $this->belongsTo('App\Team');
+      return $this->belongsTo('App\Team','teamUsers','teamID','userID');
     }
 }

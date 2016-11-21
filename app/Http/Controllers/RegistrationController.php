@@ -9,6 +9,7 @@ use App\User;
 use App\Team;
 use App\Activity;
 use App\Option;
+use Auth;
 
 class RegistrationController extends Controller
 {
@@ -18,7 +19,18 @@ class RegistrationController extends Controller
   }
 
   public function show(){
-    return view('registration.show');
+      // if (Auth::check()) {
+      $user = User::where('email', 'lostitz0r@gmail.com')->first();
+      if ($user->hasTeam) {
+          $team = $user->team();
+
+          return view('registration.show')->with('user', $user)->with('team', $team);
+      } else {
+          return view('registration.show')->with('user', $user);
+      }
+      /* } else {
+           return view('registration.create');
+      }*/
   }
 
   public function create(){

@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>SHOW</title>
-  </head>
-  <body>
+@extends('layouts.master')
 
-  </body>
-</html>
+@section('content')
+    <li>{{ $user->id }}</li>
+    <li>{{ $user->firstName }}</li>
+    <li>{{ $user->lastName }}</li>
+    <li>{{ $user->email }}</li>
+    @if(isset($team))
+      {{ 'kben een mongool' }}
+      <li>{{ $team->name }}</li>
+    @endif
+@stop
+
+@section('scripts')
+
+@stop
