@@ -177,8 +177,13 @@ class RegistrationController extends Controller
     }
 
     public function createMailInvite(Request $request,$token){
-      $invite = PendingInvite::where('token',$token);
-      return view('registration.create-mail')->with('invite',$invite)->with('team',$invite->team());
+      $invite = PendingInvite::where('token',$token)->first();
+      if(!empty($invite)){
+        return view('registration.create-mail')->with('invite',$invite)->with('team',$invite->team());
+      }
+      else{
+        return view('registration.mail-error');
+      }
     }
 
     public function storeCasual(Request $request){
@@ -346,7 +351,7 @@ class RegistrationController extends Controller
 
         $team = Team::where('id',$invite->teamID);
         $team->users()->attach($user);
-        
+
         $invite->delete();
 
         //sendmail
