@@ -6,7 +6,6 @@
 <div class="wrapper">
     <h1 class="cover-heading">{!! $title !!}</h1>
     <p class="lead">{!! $content !!}</p>
-    <a href="">Join {{$team}}</a></div>
-    {{--{{action('ReqistrationController@createMailInvite', ['token'=>$token])}}--}}
+    <a href="{{url('invite', ['token'=>$token])}}">Join {{$team}}</a></div>
 </body>
 </html>

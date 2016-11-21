@@ -255,9 +255,6 @@ class RegistrationController extends Controller
         $user->confirmationToken = Str::random(60);
         $savedUser = $user->save(); // create user
 
-
-
-
         if(!$savedUser){
             return redirect()->back()->with('err','Could not save the user.');
         }
@@ -277,7 +274,6 @@ class RegistrationController extends Controller
                 $user->delete();
                 return redirect()->back()->with('err','Could not find this team');
             }
-
         }
 
         if($request->has('activities')){
@@ -368,20 +364,6 @@ class RegistrationController extends Controller
         return redirect('/login');
     }
 
-
-    /**
-     * Values that need to be stored eventually
-    'email'
-    'firstname'
-    'lastname'
-    'password'
-    'confirmationtoken'
-    'casual'
-    'teamID'
-    'isPublic'
-    'teamUsers'
-     */
-
     public function storeTeam(RegisterTeamRequest $request){
         $user = new User();
 
@@ -426,7 +408,6 @@ class RegistrationController extends Controller
                     $inv->token = Str::random(60);
                     array_push($pendingInvites, $inv);
                 }
-
                 foreach ($pendingInvites as $pendingInvite) {
                     if($pendingInvite->save()){
                         $this->mailInvite($pendingInvite, $team);
@@ -471,7 +452,7 @@ class RegistrationController extends Controller
 
         Mail::send('mail.invite',  ['title' => $title, 'content' => $content], function($message) use ($user){
             $message->sender('godverdommewafels@gmail.com', $name = 'Dhr. Wafels');
-            $message->subject('You have been invited to EhackB!');
+            $message->subject('You have been invited to a team for EhackB!');
             $message->to($user->email, $name = null);
         });
     }

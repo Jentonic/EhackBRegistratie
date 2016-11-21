@@ -31,7 +31,7 @@ class RegisterTeamRequest extends FormRequest
             'teamname' => 'required|required',
             'gameid' => 'required|integer|exists:games,id',
             'teammembers' => 'required|array',
-            'teammembers.*' => 'distinct|email',
+            'teammembers.*' => 'distinct|email|unique:users,email',
         ];
     }
 }
