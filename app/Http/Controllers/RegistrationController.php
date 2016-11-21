@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Http\Requests\RegisterTeamRequest;
+use App\Http\Requests\RegisterCasualRequest;
+use App\Http\Requests\RegisterPublicRequest;
+use App\Http\Requests\RegisterMailRequest;
 use App\PendingInvite;
 use Illuminate\Http\Request;
 use App\User;
@@ -17,8 +20,7 @@ use GuzzleHttp\Client;
 
 class RegistrationController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         return view('registration.index');
     }
 
@@ -30,9 +32,50 @@ class RegistrationController extends Controller
         return view('registration.create');
     }
 
-    public function edit(){
-        return view('registration.edit');
+
+  public function createCasual(){
+    $activities;
+    $collection = Activity::all();
+    foreach($collection as $ac){
+      if($ac->users()->count() < $ac->maxUsers){
+        $activities[] = $ac;
+      }
     }
+    return view('registration.create-casual')->with('activities',collect($activities))->with('options',Option::all());
+  }
+
+  public function createPublic(){
+    $activities;
+    $collection = Activity::all();
+    foreach($collection as $ac){
+      if($ac->users()->count() < $ac->maxUsers){
+        $activities[] = $ac;
+      }
+    }
+
+    $games = Game::orderBy('name')->where('maxPlayers','>',1)->get();
+
+    $teams;
+    $collection2 = Team::where('gameID',$games[0]->id)->where('isPublic','1')->get();
+    foreach($collection2 as $t){
+      if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
+        $teams[] = $t;
+      }
+    }
+
+    $view = view('registration.create-public')->with('games',$games);
+    if(!empty($teams)){
+      $view->with('teams',collect($teams));
+    }
+    if(!empty($activities)){
+      $view->with('activities',collect($activities));
+    }
+    return $view->with('options',Option::all());
+  }
+
+  public function edit(){
+    return view('registration.edit');
+  }
 
     /**
      * Functie Eli
@@ -116,16 +159,35 @@ class RegistrationController extends Controller
         //return with ayyy it worked
     }
 
+    public function update(Request $request){}
 
-    public function update(Request $request){
-
+    public function ajaxTeams($gameid){
+      $teams;
+      $collection2 = Team::where('gameID',$gameid)->where('isPublic','1')->get();
+      foreach($collection2 as $t){
+        if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
+          $teams[] = $t;
+        }
+      }
+      $view = view('ajax.team');
+      if(!empty($teams)){
+        $view->with('teams',$teams);
+      }
+      return $view;
     }
-
-    public function createMailInvite($token){
-
+    
+    public function createMailInvite(Request $request,$token){
+      $invite = PendingInvite::where('token',$token)->first();
+      if(!empty($invite)){
+        return view('registration.create-mail')->with('invite',$invite)->with('team',$invite->team());
+      }
+      else{
+        return view('registration.mail-error');
+      }
     }
 
     public function storeCasual(Request $request){
+
 
         //creating user
         $user = new User();
@@ -137,17 +199,17 @@ class RegistrationController extends Controller
         $savedUser = $user->save(); // create user
 
         if(!$savedUser){
-            return redirect()->back()->with('error','Could not save the user.');
+            return redirect()->back()->with('err','Could not save the user.');
         }
 
         if($request->has('activities')){
-            $activites = $request->input('activities');
+            $activities = $request->input('activities');
             foreach($activities as $activity){
                 $ac = Activity::find($activity);
                 if(!$ac->users()->count() < $ac->maxUsers){
                     $error = 'Maximum amount of people reached for '.$ac->name;
                     $user->delete();
-                    return redirect()->back()->with('error',$error);
+                    return redirect()->back()->with('err',$error);
                 }
             }
             foreach($activities as $activity){
@@ -172,7 +234,7 @@ class RegistrationController extends Controller
         return redirect('/login');
     }
 
-    public function storePublicTeam(Request $request){
+    public function storePublicTeam(RegisterPublicRequest $request){
 
         //creating user
         $user = new User();
@@ -183,35 +245,39 @@ class RegistrationController extends Controller
         $user->confirmationToken = Str::random(60);
         $savedUser = $user->save(); // create user
 
+
+
+
         if(!$savedUser){
-            return redirect()->back()->with('error','Could not save the user.');
+            return redirect()->back()->with('err','Could not save the user.');
         }
 
         if($request->has('team')){
             $team = Team::find($request->input('team'));
             if(!is_null($team)){
-                if($team->users()->count() < $team->game()->maxPlayers){
+                if($team->users()->count() < (($team->game->maxPlayers) - $team->invites()->count())){
                     $team->users()->attach($user);
                 }
                 else{
                     $user->delete();
-                    return redirect()->back()->with('error','This team is full');
+                    return redirect()->back()->with('err','This team is full');
                 }
             }
             else{
                 $user->delete();
-                return redirect()->back()->with('error','Could not find this team');
+                return redirect()->back()->with('err','Could not find this team');
             }
+
         }
 
         if($request->has('activities')){
-            $activites = $request->input('activities');
+            $activities = $request->input('activities');
             foreach($activities as $activity){
                 $ac = Activity::find($activity);
-                if(!$ac->users()->count() < $ac->maxUsers){
+                if($ac->users()->count() >= $ac->maxUsers){
                     $error = 'Maximum amount of people reached for '.$ac->name;
                     $user->delete();
-                    return redirect()->back()->with('error',$error);
+                    return redirect()->back()->with('err',$error);
                 }
             }
             foreach($activities as $activity){
@@ -236,6 +302,61 @@ class RegistrationController extends Controller
         return redirect('/login');
     }
 
+    public function storeMailInvite(RegisterMailRequest $request){
+
+        $token = $request->input('token');
+        $invite = PendingInvite::where('token',$token);
+
+        //creating user
+        $user = new User();
+        $user->email = $invite->email;
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->password = Hash::make($request->input('password'));
+        $user->confirmationToken = Str::random(60);
+        $savedUser = $user->save(); // create user
+
+
+        if(!$savedUser){
+            return redirect()->back()->with('err','Could not save the user.');
+        }
+
+        if($request->has('activities')){
+            $activities = $request->input('activities');
+            foreach($activities as $activity){
+                $ac = Activity::find($activity);
+                if($ac->users()->count() >= $ac->maxUsers){
+                    $error = 'Maximum amount of people reached for '.$ac->name;
+                    $user->delete();
+                    return redirect()->back()->with('err',$error);
+                }
+            }
+            foreach($activities as $activity){
+                $ac = Activity::find($activity);
+                if(!is_null($ac)){
+                    $ac->users()->attach($user);
+                }
+            }
+        }
+
+        if($request->has('options')){
+            $options = $request->input('options');
+            foreach($options as $option){
+                $op = Option::find($option);
+                if(!is_null($op)){
+                    $op->users()->attach($user);
+                }
+            }
+        }
+
+        $team = Team::where('id',$invite->teamID);
+        $team->users()->attach($user);
+
+        $invite->delete();
+
+        //sendmail
+        return redirect('/login');
+    }
 
 
     /**

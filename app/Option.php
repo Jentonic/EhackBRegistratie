@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
   public function users(){
-    return $this->belongsToMany('App\User','userOptions','userID','optionID');
+    return $this->belongsToMany('App\User','userOptions','optionID','userID');
   }
 }

@@ -12,16 +12,14 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
-   Route::get('/', 'RegistrationController@index');
 
-   Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
+  Route::get('/', 'RegistrationController@index');
 
-    // Display form to register
-    Route::get('register', 'RegistrationController@create');
+  Route::get('/get/teams/{gameid}','RegistrationController@ajaxTeams');
 
-    // Store a new Team
-    Route::post('registerteam', 'RegistrationController@storeTeam');
+  Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
 
+<<<<<<< HEAD
     Route::get('invite','RegisterController@createMailInvite');
 
 
@@ -29,5 +27,26 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::get('test','RegistrationController@test');
+=======
+  // Display form to register Casual
+  Route::get('registerCasual', 'RegistrationController@createCasual');
+
+  // Display form to register Public
+  Route::get('registerPublic', 'RegistrationController@createPublic');
+
+  // Display form to register
+  Route::get('register', 'RegistrationController@create');
+
+  // Store a new Casual
+  Route::post('registercasual', 'RegistrationController@storeCasual');
+
+  // Store a new Public
+  Route::post('registerpublic', 'RegistrationController@storePublicTeam');
+
+  // Store a new Team
+  Route::post('registerteam', 'RegistrationController@storeTeam');
+
+  Route::get('invite/{token}','RegistrationController@createMailInvite');
+>>>>>>> master
 
 });
