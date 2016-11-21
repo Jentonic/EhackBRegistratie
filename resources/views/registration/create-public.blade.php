@@ -69,21 +69,12 @@
           <h3>Public teams</h3>
         </div>
         <div id="teamholder">
-          @if(!empty($teams))
-            @foreach($teams as $team)
-              <div class="form-group row">
-                <div class="checkbox col-sm-10 col-sm-offset-1">
-                  <label>
-                    <input type="radio" name="team" value="{{$team->id}}">
-                     {{$team->name}} - Places left: {{ ($team->game->maxPlayers) - $team->invites()->count() - $team->users()->count() }}
-                  </label>
-                </div>
-              </div>
-            @endforeach
+          @if(isset($teams))
+            @include('ajax.team', array('teams' => $teams))
           @else
-          <div class="form-group row">
-            <p>No public teams for this game available</p>
-          </div>
+            <div class="form-group row col-sm-offset-1">
+              <p>No public teams for this game available</p>
+            </div>
           @endif
         </div>
 

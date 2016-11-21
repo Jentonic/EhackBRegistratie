@@ -175,7 +175,7 @@ class RegistrationController extends Controller
     }
     return $view;
   }
-  
+
     public function createMailInvite(Request $request){
 
     }

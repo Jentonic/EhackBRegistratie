@@ -1,4 +1,4 @@
-@if(isset($teams))
+@if(!empty($teams))
 @foreach($teams as $team)
   <div class="form-group row">
     <div class="checkbox col-sm-10 col-sm-offset-1">
@@ -10,7 +10,7 @@
   </div>
 @endforeach
 @else
-<div class="form-group row">
+<div class="form-group row col-sm-offset-1">
   <p>No public teams for this game available</p>
 </div>
 @endif
