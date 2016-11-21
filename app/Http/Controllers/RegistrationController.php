@@ -370,18 +370,14 @@ class RegistrationController extends Controller
         $game = Game::where('id', $team->gameID)->first();
         $leader = User::where('id', $team->leaderID)->first();
 
-        dd($leader);
-
         $title = "Welcome to EhackB!";
-        $content1 = "You were invited to a ".
-                    $game->name." team by ".
-                    $leader->firstname." ".$leader->lastName."<br>".
-                    "Want to join in on the fun? Click the link below.";
+        $content1 = "You were invited to a {{$game->name}} team by {{$leader->firstName}} {{$leader->lastName}}<br>
+                    Want to join in on the fun? Click the link below.";
 
         $content2 = "Hi, <br><br>".
-            "Join me 16-17 december in the fight for the best ".$game->name." team at EhackB 2016.".
-            "Click the link below to join our team ".$team->name."<br><br>".
-            "Regards,<br><br>".$leader->firstName." ".$leader->lastName."<br>";
+            "Join me 16-17 december in the fight for the best {{$game->name}} team at EhackB 2016.".
+            "Click the link below to join our team {{$team->name}}<br><br>".
+            "Regards,<br><br>{{$leader->firstName}} {{$leader->lastName}}<br>";
 
         $content = $content1."<br><br><br>".$content2;
 
