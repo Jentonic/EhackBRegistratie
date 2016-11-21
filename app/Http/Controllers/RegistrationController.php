@@ -19,8 +19,7 @@ use GuzzleHttp\Client;
 
 class RegistrationController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         return view('registration.index');
     }
 
@@ -161,7 +160,7 @@ class RegistrationController extends Controller
 
     public function update(Request $request){}
 
-  public function ajaxTeams($gameid){
+    public function ajaxTeams($gameid){
     $teams;
     $collection2 = Team::where('gameID',$gameid)->where('isPublic','1')->get();
     foreach($collection2 as $t){
@@ -176,8 +175,8 @@ class RegistrationController extends Controller
     return $view;
   }
 
-    public function createMailInvite(Request $request){
-
+    public function createMailInvite(Request $request,$token){
+      return view('registration.create-mail');
     }
 
     public function storeCasual(Request $request){

@@ -37,6 +37,6 @@ Route::group(['middleware' => 'web'], function () {
   // Store a new Team
   Route::post('registerteam', 'RegistrationController@storeTeam');
 
-  Route::get('invite','RegisterController@createMailInvite');
+  Route::get('invite/{token}','RegisterController@createMailInvite');
 
 });
