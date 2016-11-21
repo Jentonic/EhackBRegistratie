@@ -10,6 +10,8 @@ use App\User;
 use App\Team;
 use App\Activity;
 use App\Option;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class RegistrationController extends Controller
 {
@@ -43,6 +45,7 @@ class RegistrationController extends Controller
     $user->lastname = $request->input('lastname');
     $user->password = Hash::make($request->input('password'));
     $user->confirmationToken = Str::random(60);
+
     $savedUser = $user->save(); // create user
 
     //check if user wants new team and if user succesfully saved
@@ -260,7 +263,8 @@ class RegistrationController extends Controller
           $team->gameID = $request->input('gameid');
 
           $mailarr = $request->input('teammembers');
-          $gameTeamSize = Game::where('id', $team->gameID)->maxPlayers;
+
+          $gameTeamSize = Game::where('id', $team->gameID)->first()->maxPlayers;
 
           if($gameTeamSize==count($mailarr)){
               // non public team
@@ -272,12 +276,15 @@ class RegistrationController extends Controller
           }
 
           $pendingInvites = array();
+
           foreach($mailarr as $membermail){
               $inv = new PendingInvite();
               $inv->email = $membermail;
               $inv->teamID = $team->id;
               array_push($pendingInvites, $inv);
           }
+
+          dd($pendingInvites);
 
           foreach($pendingInvites as $pendingInvite){
               $this->mailInvite($pendingInvite);
