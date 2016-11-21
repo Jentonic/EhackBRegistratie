@@ -484,9 +484,9 @@ class RegistrationController extends Controller
 
     private function mailConfirm(User $user){
         $title = "Welcome to EhackB!";
-        $content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, aspernatur cupiditate dignissimos expedita facilis fugit hic nam sed tempora voluptas?";
+        $content = "Please confirm your email adress!";
 
-        Mail::send('mail.invite',  ['title' => $title, 'content' => $content], function($message) use ($user){
+        Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content], function($message) use ($user){
             $message->sender('godverdommewafels@gmail.com', $name = 'Dhr. Wafels');
             $message->subject('You have been invited to EhackB!');
             $message->to($user->email, $name = null);
