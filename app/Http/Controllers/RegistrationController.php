@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Http\Requests\RegisterTeamRequest;
+use App\Http\Requests\RegisterCasualRequest;
 use App\PendingInvite;
 use Illuminate\Http\Request;
 use App\User;
@@ -26,6 +27,17 @@ class RegistrationController extends Controller
 
   public function create(){
     return view('registration.create');
+  }
+
+  public function createCasual(){
+    $activities;
+    $collection = Activity::all();
+    foreach($collection as $ac){
+      if($ac->users()->count() < $ac->maxUsers){
+        $activities[] = $ac;
+      }
+    }
+    return view('registration.create-casual')->with('activities',collect($activities))->with('options',Option::all());
   }
 
   public function edit(){
@@ -119,7 +131,7 @@ class RegistrationController extends Controller
 
   }
 
-  public function storeCasual(Request $request){
+  public function storeCasual(RegisterCasualRequest $request){
 
     //creating user
     $user = new User();
@@ -131,17 +143,17 @@ class RegistrationController extends Controller
     $savedUser = $user->save(); // create user
 
     if(!$savedUser){
-      return redirect()->back()->with('error','Could not save the user.');
+      return redirect()->back()->withInput()->with('err','Could not save the user. Please correctly fill in the form.');
     }
 
     if($request->has('activities')){
-      $activites = $request->input('activities');
+      $activities = $request->input('activities');
       foreach($activities as $activity){
         $ac = Activity::find($activity);
-        if(!$ac->users()->count() < $ac->maxUsers){
+        if($ac->users()->count() >= $ac->maxUsers){
           $error = 'Maximum amount of people reached for '.$ac->name;
           $user->delete();
-          return redirect()->back()->with('error',$error);
+          return redirect()->back()->withInput()->with('err',$error);
         }
       }
       foreach($activities as $activity){
@@ -178,7 +190,7 @@ class RegistrationController extends Controller
     $savedUser = $user->save(); // create user
 
     if(!$savedUser){
-      return redirect()->back()->with('error','Could not save the user.');
+      return redirect()->back()->withInput()->with('err','Could not save the user.');
     }
 
     if($request->has('team')){
@@ -189,12 +201,12 @@ class RegistrationController extends Controller
         }
         else{
           $user->delete();
-          return redirect()->back()->with('error','This team is full');
+          return redirect()->back()->withInput()->with('err','This team is full');
         }
       }
       else{
         $user->delete();
-        return redirect()->back()->with('error','Could not find this team');
+        return redirect()->back()->withInput()->with('err','Could not find this team');
       }
     }
 
@@ -205,7 +217,7 @@ class RegistrationController extends Controller
         if(!$ac->users()->count() < $ac->maxUsers){
           $error = 'Maximum amount of people reached for '.$ac->name;
           $user->delete();
-          return redirect()->back()->with('error',$error);
+          return redirect()->back()->with('err',$error);
         }
       }
       foreach($activities as $activity){

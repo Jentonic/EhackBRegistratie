@@ -12,14 +12,20 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
-   Route::get('/', 'RegistrationController@index');
+  Route::get('/', 'RegistrationController@index');
 
-   Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
+  Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
 
-    // Display form to register
-    Route::get('register', 'RegistrationController@create');
+  // Display form to register Casual
+  Route::get('registerCasual', 'RegistrationController@createCasual');
 
-    // Store a new Team
-    Route::post('registerteam', 'RegistrationController@storeTeam');
+  // Display form to register
+  Route::get('register', 'RegistrationController@create');
+
+  // Store a new Casual
+  Route::post('registercasual', 'RegistrationController@storeCasual');
+
+  // Store a new Team
+  Route::post('registerteam', 'RegistrationController@storeTeam');
 
 });
