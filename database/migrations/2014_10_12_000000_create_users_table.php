@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->boolean('hasTeam')->default(false);
             $table->boolean('confirmed')->default(false);
             $table->string('confirmationToken')->nullable();
+            $table->string('reminderMail')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

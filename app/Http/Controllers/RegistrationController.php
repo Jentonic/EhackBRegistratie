@@ -176,6 +176,17 @@ class RegistrationController extends Controller
       return $view;
     }
 
+    public function userConfirmation($token){
+      $user = User::where('confirmationToken',$token)->first();
+      if(!empty($user)){
+        $user->confirmed = true;
+        return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
+      }
+      else{
+        return view('registration.confirmation')->with('err','We could not confirm your account with this token.');
+      }
+    }
+
     public function createMailInvite(Request $request,$token){
       $invite = PendingInvite::where('token',$token)->first();
 
@@ -241,6 +252,7 @@ class RegistrationController extends Controller
         }
 
         //sendmail
+        $this->mailConfirm($user);
         return redirect('/login');
     }
 
@@ -312,6 +324,7 @@ class RegistrationController extends Controller
         }
 
         //sendmail
+        $this->mailConfirm($user);
         return redirect('/login');
     }
 
@@ -368,6 +381,7 @@ class RegistrationController extends Controller
         $invite->delete();
 
         //sendmail
+        $this->mailConfirm($user);
         return redirect('/login');
     }
 

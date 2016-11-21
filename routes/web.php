@@ -42,5 +42,7 @@ Route::group(['middleware' => 'web'], function () {
 
   Route::get('invite/{token}','RegistrationController@createMailInvite');
 
+  Route::get('confirmation/{token}','RegistrationController@userConfirmation');
+
 
 });
