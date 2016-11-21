@@ -161,22 +161,23 @@ class RegistrationController extends Controller
     public function update(Request $request){}
 
     public function ajaxTeams($gameid){
-    $teams;
-    $collection2 = Team::where('gameID',$gameid)->where('isPublic','1')->get();
-    foreach($collection2 as $t){
-      if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
-        $teams[] = $t;
+      $teams;
+      $collection2 = Team::where('gameID',$gameid)->where('isPublic','1')->get();
+      foreach($collection2 as $t){
+        if(($t->game->maxPlayers - $t->invites()->count() - $t->users()->count()) > 0){
+          $teams[] = $t;
+        }
       }
+      $view = view('ajax.team');
+      if(!empty($teams)){
+        $view->with('teams',$teams);
+      }
+      return $view;
     }
-    $view = view('ajax.team');
-    if(!empty($teams)){
-      $view->with('teams',$teams);
-    }
-    return $view;
-  }
 
     public function createMailInvite(Request $request,$token){
-      return view('registration.create-mail');
+      $invite = PendingInvite::where('token',$token);
+      return view('registration.create-mail')->with('invite',$invite)->with('team',$invite->team());
     }
 
     public function storeCasual(Request $request){
