@@ -172,8 +172,9 @@ class RegistrationController extends Controller
 
     public function userConfirmation($token){
         $user = User::where('confirmationToken',$token)->first();
-        if(!empty($user)){
+        if(isset($user)){
             $user->confirmed = true;
+            $user->save();
             return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
         }
         else{
@@ -461,7 +462,7 @@ class RegistrationController extends Controller
         $title = "Welcome to EhackB!";
         $content = "Please confirm your email adress!";
 
-        Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content], function($message) use ($user){
+        Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'token' => $user->confirmationToken], function($message) use ($user){
             $message->sender('godverdommewafels@gmail.com', $name = 'Dhr. Wafels');
             $message->subject('You have been invited to a team for EhackB!');
             $message->to($user->email, $name = null);
