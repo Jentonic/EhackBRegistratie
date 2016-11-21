@@ -19,6 +19,15 @@ Route::group(['middleware' => 'web'], function () {
 
   Route::resource('registration', 'RegistrationController',['except' => ['index','destroy']]);
 
+<<<<<<< HEAD
+    Route::get('invite','RegisterController@createMailInvite');
+
+
+
+
+
+    Route::get('test','RegistrationController@test');
+=======
   // Display form to register Casual
   Route::get('registerCasual', 'RegistrationController@createCasual');
 
@@ -41,5 +50,6 @@ Route::group(['middleware' => 'web'], function () {
   Route::post('registerteam', 'RegistrationController@storeTeam');
 
   Route::get('invite/{token}','RegistrationController@createMailInvite');
+>>>>>>> master
 
 });
