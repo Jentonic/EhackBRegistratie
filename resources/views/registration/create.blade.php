@@ -86,14 +86,3 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/storeTeam.js') }}"></script>
 @stop
-
-{{--
-'email' => 'required|email|unique:users',
-'firstname' => 'required',
-'lastname' => 'required',
-'password' => 'required',
-'teamname' => 'required|required',
-'teammembers' => 'required|array',
-'teammembers.*' => 'distinct|email',
-'gameid' => 'required|integer',
---}}
