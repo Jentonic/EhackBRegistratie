@@ -21,7 +21,7 @@
 
   <br/>
   <div class="col-md-10 col-md-offset-1">
-    <form method="POST" action="registercasual" id="registercasualform">
+    <form method="POST" action="storecasual" id="registercasualform">
         {{ csrf_field() }}
 
         <div class="form-group row">
