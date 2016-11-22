@@ -17,14 +17,14 @@
       @endforeach
     @endif
   @endif
-  @if(!isEmpty($activities))
+  @if(empty($activities))
     <br />
     <h1>Activiteiten</h1>
     @foreach($activities as $activity)
       <li>{{ $activity->name . ": " . $activity->description . " | " . $activity->group()->get()->first()->name }}</li>
     @endforeach
   @endif
-  @if(!isEmpty($options))
+  @if(empty($options))
     <br />
     <h1>Extra opties</h1>
     @foreach($options as $option)

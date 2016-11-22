@@ -25,11 +25,11 @@ class RegistrationController extends Controller
         $activities = array();
         $options = array();
 
-        if (!isEmpty($user->activities())) {
+        if (!empty($user->activities())) {
           $activities = $user->activities()->get();
         }
 
-        if (!isEmpty($user->options())) {
+        if (!empty($user->options())) {
           $options = $user->options()->get();
         }
 
