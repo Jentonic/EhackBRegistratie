@@ -27,7 +27,7 @@
 		</li>
 	</ul>
 </nav>
-<div class="container col-xs-12 col-md-9 pull-md-3 bd-content">
+<div style="margin-top:50px" class="container col-xs-12 col-md-9 pull-md-3 bd-content">
 
 	<div class="row">
 		@yield('content')
