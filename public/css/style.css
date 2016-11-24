@@ -17,7 +17,7 @@ body {
     /* Standard syntax */
     text-align: center;
 }
-form {
+.ehackbg {
     background: #FFF;
     border-radius: 25px;
     box-shadow: 0 0 7px #FFF;
@@ -73,6 +73,15 @@ h3{
     margin-bottom: 4em;
 }
 
+input[type='email']{
+    border: 0;
+    border-bottom: 1px solid #666;
+    border-radius: 0;
+    box-shadow: 0;
+    background: #FFF;
+    padding: 5px 2px;
+}
+
 input[type='text']{
     border: 0;
     border-bottom: 1px solid #666;
@@ -91,7 +100,7 @@ input[type='password']{
     padding: 5px 2px;
 }
 
-#submitbutton{
+#submitbutton {
     background: red;
     /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(90deg, #79C3FC, #4BB0FC);
