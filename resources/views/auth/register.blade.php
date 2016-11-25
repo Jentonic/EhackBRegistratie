@@ -5,10 +5,8 @@
 @stop
 
 @section('content')
-  <div class="col-md-10 col-md-offset-1">
-    <form method="POST" action="storeteam" id="registerteamform" class="group ehackbg">
+    <form method="POST" action="storeteam" id="registerteamform" class="group">
       {{ csrf_field() }}
-      <center><img src="img/logo.png" alt="logo" id="logo"></center>
       <h2>inschrijving</h2>
       <div class="line"></div>
       <div class="left">
