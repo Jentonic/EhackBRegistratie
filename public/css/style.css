@@ -28,7 +28,7 @@ body {
 
 #logo{
     margin: auto;
-    width: 15%;
+    width: 50%;
 }
 
 h2{
@@ -39,7 +39,11 @@ h2{
 }
 
 h3{
-    margin-top: .3em;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+    font-size: large;
 }
 
 .line{

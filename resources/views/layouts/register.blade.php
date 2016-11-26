@@ -9,34 +9,37 @@
 
     <body>
         <div class="col-md-10 col-md-offset-1">
-            <div class="group ehackbg">
-                <ul class="nav">
-                    <center><a href="#"><img src="../img/logo.png" alt="logo" id="logo"></a></center>
-
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->firstName }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Logout
+            <div class="group ehackbg container-fluid">
+                <div class="nav row text-center">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><a href="#"><img src="../img/logo.png" alt="logo" id="logo"></a></div>
+                    <div class="col-md-4">
+                        <!-- Authentication Links -->
+                        <div class="right text-right">
+                            @if (Auth::guest())
+                                <h3 class=""><a href="{{ url('/login') }}">Login</a>/<a href="{{ url('/register') }}">Register</a></h3>
+                            @else
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        <h3>{{ Auth::user()->firstName }} <span class="caret"></span></h3>
                                     </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
+                            @endif
+                        </div>
+                    </div>
+                </div>
                 @yield ('content')
             </div>
         </div>

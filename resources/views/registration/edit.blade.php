@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.register')
 
 @section('content')
   <form action="#" method="post">
