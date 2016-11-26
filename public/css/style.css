@@ -22,13 +22,25 @@ body {
     border-radius: 25px;
     box-shadow: 0 0 7px #FFF;
     margin-top: 3em;
-    padding: 2em;
+    margin-bottom: 3em;
+    padding: 1em 2em;
     text-align: left;
+}
+
+.navbar-nav{
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    float: none;
+}
+
+.navbar {
+    margin-bottom: 0;
 }
 
 #logo{
     margin: auto;
-    width: 50%;
+    width: 15%;
 }
 
 h2{

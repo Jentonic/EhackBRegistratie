@@ -10,35 +10,56 @@
     <body>
         <div class="col-md-10 col-md-offset-1">
             <div class="group ehackbg container-fluid">
-                <div class="nav row text-center">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"><a href="#"><img src="../img/logo.png" alt="logo" id="logo"></a></div>
-                    <div class="col-md-4">
-                        <!-- Authentication Links -->
-                        <div class="right text-right">
+                <nav class="navbar navbar-static-top">
+                    <div class="container-fluid">
+                        {{--<div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>--}}
+                        {{--<div class="collapse navbar-collapse" id="navigationbar">--}}
+                            <ul class="nav navbar-nav">
                             @if (Auth::guest())
-                                <h3 class=""><a href="{{ url('/login') }}">Login</a>/<a href="{{ url('/register') }}">Register</a></h3>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registreren
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="nav-link" href="{{url('registercasual')}}">Ik speel casual</a></li>
+                                        <li><a class="nav-link" href="{{url('register')}}">Maak een team</a></li>
+                                        <li><a class="nav-link" href="{{url('registerteam')}}">Ga bij een publiek team</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('login') }}">Inloggen</a>
+                                </li>
                             @else
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        <h3>{{ Auth::user()->firstName }} <span class="caret"></span></h3>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">
+                                        {{ Auth::user()->firstName }} <span class="caret"></span>
                                     </a>
 
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 Logout
                                             </a>
 
-                                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
                                         </li>
                                     </ul>
                                 </li>
                             @endif
-                        </div>
+                            </ul>
+                        {{--</div>--}}
                     </div>
+                </nav>
+                <div class="text-center">
+                    <a href="#"><img src="../img/logo.png" alt="logo" id="logo"></a>
                 </div>
                 @yield ('content')
             </div>
