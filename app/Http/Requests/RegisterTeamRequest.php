@@ -24,15 +24,14 @@ class RegisterTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email|unique:pendingInvites,email',
             'firstname' => 'required',
             'lastname' => 'required',
             'password' => 'required',
             'teamname' => 'required|required',
+            'gameid' => 'required|integer|exists:games,id',
             'teammembers' => 'required|array',
-            'teammembers.*' => 'email',
-            'gameid' => 'required|integer',
-            'ispublic' => 'required|boolean'
+            'teammembers.*' => 'distinct|email|unique:users,email',
         ];
     }
 }

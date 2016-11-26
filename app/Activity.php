@@ -11,6 +11,6 @@ class Activity extends Model
     }
 
     public function users(){
-      return $this->belongsToMany('App\User','userActivities','userID','activityID');
+      return $this->belongsToMany('App\User','userActivities','activityID','userID');
     }
 }
