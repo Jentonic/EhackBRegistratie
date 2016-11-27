@@ -42,7 +42,14 @@ Route::group(['middleware' => 'web'], function () {
 
   Route::get('confirmation/{token}','RegistrationController@userConfirmation');
 
+  // Show user his info
+  Route::get('show', 'RegistrationController@show');
 
 
-    Route::get('test', 'RegistrationController@test');
+  // Show user edit screen
+  Route::get('edit', 'RegistrationController@edit');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -6,6 +6,6 @@
 <div class="wrapper">
     <h1 class="cover-heading">{!! $title !!}</h1>
     <p class="lead">{!! $content !!}</p>
-    <a href="{{url('invite', ['token'=>$token])}}">Join {{$team}}</a></div>
+    <a href="{{url('confirmation',['token' => $token])}}">Confirm your email!</a></div>
 </body>
 </html>
