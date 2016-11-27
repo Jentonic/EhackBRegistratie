@@ -67,6 +67,7 @@
             </div>
         </div>
 
+
         <div class="form-group row">
             <label for="teammembers" class="col-sm-2 col-form-label">Teammembers</label>
             <div class="col-sm-10" id="teammembers">
@@ -77,6 +78,29 @@
                 <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
             </div>
         </div>
+
+        {{-- Activities --}}
+        <div class="col-md-4">
+            <h3>Activiteiten</h3>
+        </div>
+        @foreach($activities as $activity)
+            <div class="form-group row">
+                <div class="checkbox col-md-4">
+                    <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}} - Places left: {{$activity->maxUsers - $activity->users->count()}}</label>
+                </div>
+            </div>
+        @endforeach
+        {{-- options --}}
+        <div class="col-md-4">
+            <h3>Extra Opties</h3>
+        </div>
+        @foreach($options as $option)
+            <div class="form-group row">
+                <div class="checkbox col-md-4">
+                    <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Price: €{{ number_format($option->price,2) }}</label>
+                </div>
+            </div>
+        @endforeach
 
         <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
 

@@ -67,31 +67,16 @@ class RegistrationController extends Controller
 
     public function create()
     {
-        return view('registration.create');
+        return view('registration.create')->with('activities');
     }
 
     public function createCasual()
     {
-        $activities;
-        $collection = Activity::all();
-        foreach ($collection as $ac) {
-            if ($ac->users()->count() < $ac->maxUsers) {
-                $activities[] = $ac;
-            }
-        }
-        return view('registration.create-casual')->with('activities', collect($activities))->with('options', Option::all());
+        return view('registration.create-casual')->with('activities', $this->getAvailableActivities())->with('options', Option::all());
     }
 
     public function createPublic()
     {
-        $activities;
-        $collection = Activity::all();
-        foreach ($collection as $ac) {
-            if ($ac->users()->count() < $ac->maxUsers) {
-                $activities[] = $ac;
-            }
-        }
-
         $games = Game::orderBy('name')->where('maxPlayers', '>', 1)->get();
 
         $teams;
@@ -107,7 +92,7 @@ class RegistrationController extends Controller
             $view->with('teams', collect($teams));
         }
         if (!empty($activities)) {
-            $view->with('activities', collect($activities));
+            $view->with('activities', $this->getAvailableActivities());
         }
         return $view->with('options', Option::all());
     }
@@ -162,7 +147,7 @@ class RegistrationController extends Controller
             //create new team
             $team = new Team();
             $team->teamleaderID = $user->id;
-            $team->gameID = $gameID;
+            $team->gameID = $game->id;
             $game = Game::find($team->gameID);
             $team->isPublic = $request->input('isPublic');
             $savedTeam = $team->save(); //create team
@@ -271,8 +256,6 @@ class RegistrationController extends Controller
 
     public function storeCasual(Request $request)
     {
-
-
         //creating user
         $user = new User();
         $user->email = $request->input('email');
@@ -539,5 +522,16 @@ class RegistrationController extends Controller
             $message->to($user->email, $name = null);
         });
 
+    }
+
+    private function getAvailableActivities(){
+        $activities=array();
+        $collection = Activity::all();
+        foreach ($collection as $ac) {
+            if ($ac->users()->count() < $ac->maxUsers) {
+                $activities[] = $ac;
+            }
+        }
+        return collect($activities);
     }
 }
