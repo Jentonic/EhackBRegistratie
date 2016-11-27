@@ -61,30 +61,33 @@
                 <input type="password" name="verifypassword" class="form-control" id="inputVerifyPassword" placeholder="Repeat your password">
             </div>
         </div>
+
+
         <!-- Activities -->
         <div class="col-md-4">
           <h3>Activiteiten</h3>
         </div>
+        <div class="form-group row">
         @foreach($activities as $activity)
-          <div class="form-group row">
-            <div class="checkbox col-md-4">
-              <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}} - Places left: {{$activity->maxUsers - $activity->users->count()}}</label>
-            </div>
+          <div class="checkbox col-md-6">
+            <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}} - Places left: {{$activity->maxUsers - $activity->users->count()}}</label>
           </div>
         @endforeach
+        </div>
+
         <!-- Options -->
         <div class="col-md-4">
           <h3>Extra Opties</h3>
         </div>
+        <div class="form-group row">
         @foreach($options as $option)
-          <div class="form-group row">
-            <div class="checkbox col-md-4">
-              <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Price: €{{ number_format($option->price,2) }}</label>
-            </div>
+          <div class="checkbox col-md-4">
+            <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Price: €{{ number_format($option->price,2) }}</label>
           </div>
         @endforeach
-        <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
+        </div>
 
+        <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
     </form>
 @stop
 
