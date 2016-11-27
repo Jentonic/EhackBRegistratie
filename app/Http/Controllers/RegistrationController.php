@@ -266,7 +266,7 @@ class RegistrationController extends Controller
         }
     }
 
-    public function storeCasual(Request $request)
+    public function storeCasual(RegisterCasualRequest $request)
     {
         //creating user
         $user = new User();
