@@ -31,7 +31,6 @@
                     <strong>{{ $errors->first('email') }}</strong>
                 </span>
             @endif
-
             <div class="form-group row {{ $errors->has('firstname') ? ' has-error' : '' }}">
                 <div class="col-sm-10">
                     <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="Voornaam" required />
@@ -99,7 +98,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <h3>Activiteiten</h3>
         </div>

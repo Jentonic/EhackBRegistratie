@@ -1,7 +1,7 @@
 @if(!empty($teams))
 @foreach($teams as $team)
   <div class="form-group row">
-    <div class="checkbox col-sm-10 col-sm-offset-1">
+    <div class="checkbox col-sm-4">
       <label>
         <input type="radio" name="team" value="{{$team->id}}">
          {{$team->name}} - Places left: {{ ($team->game->maxPlayers) - $team->invites()->count() - $team->users()->count() }}

@@ -91,7 +91,6 @@ class RegistrationController extends Controller
     public function createPublic()
     {
         $games = Game::orderBy('name')->where('maxPlayers', '>', 1)->get();
-
         $teams;
         $collection2 = Team::where('gameID', $games[0]->id)->where('isPublic', '1')->get();
         foreach ($collection2 as $t) {
