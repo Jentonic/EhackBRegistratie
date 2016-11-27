@@ -66,12 +66,26 @@ class RegistrationController extends Controller
 
     public function create()
     {
-        return view('registration.create')->with('activities', $this->getAvailableActivities())->with('options', Option::all());
+        $activities;
+        $collection = Activity::all();
+        foreach ($collection as $ac) {
+            if ($ac->users()->count() < $ac->maxUsers) {
+                $activities[] = $ac;
+            }
+        }
+        return view('registration.create')->with('activities', collect($activities))->with('options', Option::all());
     }
 
     public function createCasual()
     {
-        return view('registration.create-casual')->with('activities', $this->getAvailableActivities())->with('options', Option::all());
+        $activities;
+        $collection = Activity::all();
+        foreach ($collection as $ac) {
+            if ($ac->users()->count() < $ac->maxUsers) {
+                $activities[] = $ac;
+            }
+        }
+        return view('registration.create-casual')->with('activities', collect($activities))->with('options', Option::all());
     }
 
     public function createPublic()
