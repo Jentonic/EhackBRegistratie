@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.register')
 
 @section('content')
 
@@ -12,73 +12,95 @@
         </div>
     @endif
 
-    <form method="POST" action="storeteam" id="registerteamform">
+    <form class="form-horizontal" method="POST" action="storeteam" id="registerteamform">
         {{ csrf_field() }}
-
-        <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
-            <div class="col-sm-10">
-                <input type="text" name="email" class="form-control" id="inputEmail" placeholder="E-mail">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-                <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="First Name">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-10">
-                <input type="text" name="lastname" class="form-control" id="inputLastName" placeholder="Last name">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputVerifyPassword" class="col-sm-2 col-form-label">Password verification</label>
-            <div class="col-sm-10">
-                <input type="password" name="verifypassword" class="form-control" id="inputVerifyPassword" placeholder="Repeat your password">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputGameID" class="col-sm-2 col-form-label">Game</label>
-            <div class="col-sm-10">
-                <select name="gameid" id="inputGameID" class="form-control">
-                    @foreach(App\Game::all() as $game)
-                        <option value={{$game->id}}>{{$game->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-
         @foreach(App\Game::all() as $game)
             <input type="hidden" id="game{{$game->id}}players" value="{{$game->maxPlayers}}">
         @endforeach
 
-        <div class="form-group row">
-            <label for="inputTeamName" class="col-sm-2 col-form-label">Team Name</label>
-            <div class="col-sm-10">
-                <input type="text" name="teamname" class="form-control" id="inputTeamName" placeholder="Team Name">
+        <h2>inschrijven als team</h2>
+        <div class="line"></div>
+
+        <div class="left">
+            <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="E-mail" required autofocus />
+                </div>
+            </div>
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+
+            <div class="form-group row {{ $errors->has('firstname') ? ' has-error' : '' }}">
+                <div class="col-sm-10">
+                    <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="Voornaam" required />
+                </div>
+            </div>
+            @if ($errors->has('firstname'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('firstname') }}</strong>
+                </span>
+            @endif
+
+            <div class="form-group row {{ $errors->has('lastname') ? ' has-error' : '' }}">
+                <div class="col-sm-10">
+                    <input type="text" name="lastname" class="form-control" id="inputLastName" placeholder="Achternaam" required />
+                </div>
+            </div>
+            @if ($errors->has('lastname'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('lastname') }}</strong>
+                </span>
+            @endif
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Wachtwoord" required />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="password" name="password_confirmation" class="form-control" id="inputVerifyPassword" placeholder="Herhaal je wachtwoord" required>
+                </div>
+            </div>
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <select name="gameid" id="inputGameID" class="form-control">
+                        @foreach(App\Game::all() as $game)
+                            <option value={{$game->id}}>{{$game->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="text" name="teamname" class="form-control" id="inputTeamName" placeholder="Teamnaam">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10" id="teammembers">
+                    <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
+                    <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
+                    <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
+                    <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
+                    <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
+                </div>
             </div>
         </div>
 
-        <div class="form-group row">
-            <label for="teammembers" class="col-sm-2 col-form-label">Teammembers</label>
-            <div class="col-sm-10" id="teammembers">
-                <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
-                <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
-                <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
-                <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
-                <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
-            </div>
-        </div>
-
-        <!-- Activities -->
         <div class="col-md-4">
             <h3>Activiteiten</h3>
         </div>
@@ -90,17 +112,17 @@
             @endforeach
         </div>
 
-        <!-- Options -->
         <div class="col-md-4">
-            <h3>Extra Opties</h3>
+            <h3>Extra's</h3>
         </div>
         <div class="form-group row">
             @foreach($options as $option)
-                <div class="checkbox col-md-4">
+                <div class="checkbox col-md-6">
                     <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Price: €{{ number_format($option->price,2) }}</label>
                 </div>
             @endforeach
         </div>
+
         <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
     </form>
 @stop

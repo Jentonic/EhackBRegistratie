@@ -74,7 +74,7 @@ class RegistrationController extends Controller
                 $activities[] = $ac;
             }
         }
-        return view('registration.create-casual')->with('activities', collect($activities))->with('options', Option::all());
+        return view('registration.create')->with('activities', collect($activities))->with('options', Option::all());
     }
 
     public function createCasual()

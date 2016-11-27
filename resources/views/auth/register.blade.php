@@ -84,7 +84,6 @@
             <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
           </div>
         </div>
-
       </div>
 
       <input type="submit" name="submitbutton" id="submitbutton" class="btn btn-primary" />
