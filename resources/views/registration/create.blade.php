@@ -17,25 +17,6 @@
         @foreach(App\Game::all() as $game)
             <input type="hidden" id="game{{$game->id}}players" value="{{$game->maxPlayers}}">
         @endforeach
-
-<<<<<<< HEAD
-        <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
-            <div class="col-sm-10">
-                <input type="text" name="email" class="form-control" id="inputEmail" placeholder="E-mail">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputReminderEmail" class="col-md-4 control-label">Reminder E-mail (Deze mail wordt gebruikt voor nieuwsbrieven en is optioneel)</label>
-          <div class="col-md-4">
-                <input type="text" name="reminderemail" class="form-control" id="inputReminderEmail" placeholder="Reminder E-mail" value="{{ old('reminderemail') }}">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-                <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="First Name">
-=======
         <h2>inschrijven als team</h2>
         <div class="line"></div>
 
@@ -44,7 +25,6 @@
                 <div class="col-sm-10">
                     <input type="email" name="email" class="form-control" id="inputEmail" placeholder="E-mail" required autofocus />
                 </div>
->>>>>>> master
             </div>
             @if ($errors->has('email'))
                 <span class="help-block">
