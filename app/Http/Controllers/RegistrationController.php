@@ -41,7 +41,6 @@ class RegistrationController extends Controller
             if (!empty($user->options())) {
                 $options = $user->options()->get();
             }
-
             if ($user->hasTeam) {
                 $team = $user->team()->get()->first();
                 $game = $team->game()->get()->first();
@@ -67,7 +66,7 @@ class RegistrationController extends Controller
 
     public function create()
     {
-        return view('registration.create')->with('activities');
+        return view('registration.create')->with('activities', $this->getAvailableActivities())->with('options', Option::all());
     }
 
     public function createCasual()
@@ -533,5 +532,9 @@ class RegistrationController extends Controller
             }
         }
         return collect($activities);
+    }
+
+    private function getAvailableOptions(){
+
     }
 }
