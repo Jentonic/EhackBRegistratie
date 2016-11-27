@@ -64,7 +64,7 @@
                 @yield ('content')
             </div>
         </div>
-
+        <script type="text/javascript" src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
         @yield ('scripts')
         <script src="/js/app.js"></script>
     </body>

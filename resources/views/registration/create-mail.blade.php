@@ -31,6 +31,12 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="inputReminderEmail" class="col-md-4 control-label">Reminder E-mail (Deze mail wordt gebruikt voor nieuwsbrieven en is optioneel)</label>
+          <div class="col-md-4">
+                <input type="text" name="reminderemail" class="form-control" id="inputReminderEmail" placeholder="Reminder E-mail" value="{{ old('reminderemail') }}">
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
             <div class="col-sm-10">
                 <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="First Name" value="{{ old('firstname') }}">
@@ -58,7 +64,6 @@
             <label for="inputGameID" class="col-sm-2 col-form-label">Game</label>
             <div class="col-sm-10">
                 <select name="game" id="game" class="form-control">
-
                         <option value='{{ $team->game->id }}'>{{$team->game->name}}</option>
                 </select>
             </div>

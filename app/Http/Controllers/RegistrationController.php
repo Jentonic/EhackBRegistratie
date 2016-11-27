@@ -269,6 +269,7 @@ class RegistrationController extends Controller
         //creating user
         $user = new User();
         $user->email = $request->input('email');
+        $user->reminderMail = $request->input('reminderemail');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
@@ -318,6 +319,7 @@ class RegistrationController extends Controller
         //creating user
         $user = new User();
         $user->email = $request->input('email');
+        $user->reminderMail = $request->input('reminderemail');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
@@ -388,6 +390,7 @@ class RegistrationController extends Controller
         //creating user
         $user = new User();
         $user->email = $invite->email;
+        $user->reminderMail = $request->input('reminderemail');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
@@ -442,6 +445,7 @@ class RegistrationController extends Controller
         $user = new User();
 
         $user->email = $request->input('email');
+        $user->reminderMail = $request->input('reminderemail');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
