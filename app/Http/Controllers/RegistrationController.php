@@ -67,31 +67,16 @@ class RegistrationController extends Controller
 
     public function create()
     {
-        return view('registration.create');
+        return view('registration.create')->with('activities');
     }
 
     public function createCasual()
     {
-        $activities;
-        $collection = Activity::all();
-        foreach ($collection as $ac) {
-            if ($ac->users()->count() < $ac->maxUsers) {
-                $activities[] = $ac;
-            }
-        }
-        return view('registration.create-casual')->with('activities', collect($activities))->with('options', Option::all());
+        return view('registration.create-casual')->with('activities', $this->getAvailableActivities())->with('options', Option::all());
     }
 
     public function createPublic()
     {
-        $activities;
-        $collection = Activity::all();
-        foreach ($collection as $ac) {
-            if ($ac->users()->count() < $ac->maxUsers) {
-                $activities[] = $ac;
-            }
-        }
-
         $games = Game::orderBy('name')->where('maxPlayers', '>', 1)->get();
 
         $teams;
@@ -107,7 +92,7 @@ class RegistrationController extends Controller
             $view->with('teams', collect($teams));
         }
         if (!empty($activities)) {
-            $view->with('activities', collect($activities));
+            $view->with('activities', $this->getAvailableActivities());
         }
         return $view->with('options', Option::all());
     }
@@ -137,8 +122,12 @@ class RegistrationController extends Controller
         return view('registration.edit');
     }
 
-    public function store(Request $request)
-    {
+    /**
+     * Stores the teamleader + the new team he wants to create
+     *
+     * @param Request $request
+     */
+    public function store(RegisterTeamRequest $request){
         //creating user
         $user = new User();
         $user->email = $request->input('email');
@@ -149,13 +138,16 @@ class RegistrationController extends Controller
 
         $savedUser = $user->save(); // create user
 
+        $game = Game::where('id',$request->input('gameID'));
+        $maxTeamsReached = Game::where('id', $game->id)->first()->maxTeams < $game->teams()->count();
+
         //check if user wants new team and if user succesfully saved
-        if (!$request->has('casual') && !$request->has('teamID') && $savedUser) {
+        if(!$request->has('casual') && !$request->has('teamID') && $savedUser && $maxTeamsReached){
 
             //create new team
             $team = new Team();
             $team->teamleaderID = $user->id;
-            $team->gameID = $request->input('gameID');
+            $team->gameID = $game->id;
             $game = Game::find($team->gameID);
             $team->isPublic = $request->input('isPublic');
             $savedTeam = $team->save(); //create team
@@ -264,8 +256,6 @@ class RegistrationController extends Controller
 
     public function storeCasual(Request $request)
     {
-
-
         //creating user
         $user = new User();
         $user->email = $request->input('email');
@@ -507,20 +497,21 @@ class RegistrationController extends Controller
         $leader = User::where('id', $team->leaderID)->first();
 
         $title = "Welcome to EhackB!";
-        $content1 = "You were invited to a {$game->name} team by {$leader->firstName} {$leader->lastName}<br>
+        $content = "You were invited to a {$game->name} team by {$leader->firstName} {$leader->lastName}<br>
                     Want to join in on the fun? Click the link below.";
 
+        /*
         $content2 = "Hi, <br><br>
             Join me 16-17 december in the fight for the best {$game->name} team at EhackB 2016.
             Click the link below to join our team {$team->name}<br><br>
             Regards,<br><br>{$leader->firstName} {$leader->lastName}<br>";
-
-        $content = $content1 . "<br><br><br>" . $content2;
+        */
 
         $token = $invite->token;
-        Mail::send(['html' => 'mail.invite'], ['title' => $title, 'content' => $content, 'team' => $team->name, 'token' => $token], function ($message) use ($invite) {
-            $message->sender('godverdommewafels@gmail.com', $name = 'Dhr. Wafels');
+        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name, 'token'=>$token], function($message) use ($invite){
+            $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
             $message->subject('You have been invited to a team at EhackB!');
+            $message->replyTo('ehackb@ehackb.be', $name = null);
             $message->to($invite->email, $name = null);
         });
     }
@@ -530,10 +521,21 @@ class RegistrationController extends Controller
         $title = "Welcome to EhackB!";
         $content = "Please confirm your email adress!";
         Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'token' => $user->confirmationToken], function($message) use ($user){
-
-            $message->sender('godverdommewafels@gmail.com', $name = 'Dhr. Wafels');
+            $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
             $message->subject('You have been invited to a team for EhackB!');
             $message->to($user->email, $name = null);
         });
+
+    }
+
+    private function getAvailableActivities(){
+        $activities=array();
+        $collection = Activity::all();
+        foreach ($collection as $ac) {
+            if ($ac->users()->count() < $ac->maxUsers) {
+                $activities[] = $ac;
+            }
+        }
+        return collect($activities);
     }
 }
