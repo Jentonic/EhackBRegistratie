@@ -60,7 +60,6 @@
                     <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Wachtwoord" required />
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
 
         {{-- Activities --}}
@@ -136,8 +135,6 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-=======
         <div class="col-md-4">
             <h3>Activiteiten</h3>
         </div>
@@ -160,8 +157,7 @@
             @endforeach
         </div>
 
->>>>>>> e666d8670d23ac34591d12ef17db0191f1c6879b
-        <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
+        <button id="submitbutton" name="submitbtton" type="button" class="btn btn-primary">Submit</button>
     </form>
 @stop
 
