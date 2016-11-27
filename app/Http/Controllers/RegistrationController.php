@@ -67,7 +67,14 @@ class RegistrationController extends Controller
 
     public function create()
     {
-        return view('registration.create');
+        $activities;
+        $collection = Activity::all();
+        foreach ($collection as $ac) {
+            if ($ac->users()->count() < $ac->maxUsers) {
+                $activities[] = $ac;
+            }
+        }
+        return view('registration.create-casual')->with('activities', collect($activities))->with('options', Option::all());
     }
 
     public function createCasual()
