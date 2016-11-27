@@ -96,6 +96,7 @@
                 </div>
             </div>
         @endforeach
+
         {{-- options --}}
         <div class="col-md-4">
             <h3>Extra Opties</h3>
