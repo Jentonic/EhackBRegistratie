@@ -90,9 +90,9 @@ class RegistrationController extends Controller
         if (!empty($teams)) {
             $view->with('teams', collect($teams));
         }
-        if (!empty($activities)) {
-            $view->with('activities', $this->getAvailableActivities());
-        }
+
+        $view->with('activities', $this->getAvailableActivities());
+
         return $view->with('options', Option::all());
     }
 
@@ -535,6 +535,7 @@ class RegistrationController extends Controller
                 $activities[] = $ac;
             }
         }
+
         return collect($activities);
     }
 
