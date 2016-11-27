@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <form method="POST" action="storeteam" id="registerteamform">
+    <form method="POST" action="test" id="registerteamform">
         {{ csrf_field() }}
 
         <div class="form-group row">
