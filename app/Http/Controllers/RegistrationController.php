@@ -298,7 +298,7 @@ class RegistrationController extends Controller
             }
         }
 
-        if ($request->has('options')) {
+        if($request->has('options')) {
             $options = $request->input('options');
             foreach ($options as $option) {
                 $op = Option::find($option);
