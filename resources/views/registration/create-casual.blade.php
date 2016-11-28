@@ -103,7 +103,7 @@
         <div class="form-group row">
         @foreach($options as $option)
           <div class="checkbox col-md-4">
-            <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Price: €{{ number_format($option->price,2) }}</label>
+            <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Prijs: €{{ number_format($option->price,2) }}</label>
           </div>
         @endforeach
         </div>

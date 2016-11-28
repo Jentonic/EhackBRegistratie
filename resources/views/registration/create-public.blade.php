@@ -104,7 +104,7 @@
             @include('ajax.team', array('teams' => $teams))
           @else
             <div class="form-group row col-md-4">
-              <p>No public teams for this game available</p>
+              <p>Geen publieke teams beschikbaar voor deze game</p>
             </div>
           @endif
         </div>
@@ -117,7 +117,7 @@
             @foreach($activities as $activity)
                 <div class="checkbox col-md-4">
                     <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}}
-                    @if($activity->maxUsers != 9999) - Places left: {{ $activity->maxUsers - $activity->users->count() }} @endif
+                    @if($activity->maxUsers != 9999) - Plaatsen: {{ $activity->maxUsers - $activity->users->count() }} @endif
                     </label>
                 </div>
             @endforeach
@@ -130,7 +130,7 @@
         <div class="form-group row">
             @foreach($options as $option)
                 <div class="checkbox col-md-4">
-                    <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Price: €{{ number_format($option->price,2) }}</label>
+                    <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Prijs: €{{ number_format($option->price,2) }}</label>
                 </div>
             @endforeach
         </div>
