@@ -135,24 +135,17 @@ class RegistrationController extends Controller
         return view('registration.edit');
     }
 
-    /**
-     * Stores the teamleader + the new team he wants to create
-     *
-     * @param Request $request
-     */
-    public function store(RegisterTeamRequest $request){
-        //creating user
+    public function storeTeam(RegisterTeamRequest $request)
+    {
         $user = new User();
+
         $user->email = $request->input('email');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
-        $user->confirmationToken = Str::random(60);
 
-        $savedUser = $user->save(); // create user
-
-        $game = Game::where('id',$request->input('gameID'));
-        $maxTeamsReached = Game::where('id', $game->id)->first()->maxTeams < $game->teams()->count();
+        $user->confirmationToken = str_replace('/', '_', Str::random(60));
+        $savedUser = $user->save(); // create user in db
 
         if ($request->has('activities')) {
             $activities = $request->input('activities');
@@ -182,65 +175,53 @@ class RegistrationController extends Controller
             }
         }
 
-
-        //check if user wants new team and if user succesfully saved
-        if(!$request->has('casual') && !$request->has('teamID') && $savedUser && $maxTeamsReached){
-
-            //create new team
+        if ($savedUser) {
             $team = new Team();
-            $team->teamleaderID = $user->id;
-            $team->gameID = $game->id;
-            $game = Game::find($team->gameID);
-            $team->isPublic = $request->input('isPublic');
-            $savedTeam = $team->save(); //create team
+            $team->leaderID = $user->id;
+            $team->name = $request->input('teamname');
+            $team->gameID = $request->input('gameid');
 
-            //check if team succesfully saved
+            $mailarr = $request->input('teammembers');
+            $gameTeamSize = Game::where('id', $team->gameID)->first()->maxPlayers;
+
+            //remove empty fields
+            $mailarr = array_filter($mailarr);
+
+            if ($gameTeamSize == count($mailarr)) {
+                // non public team
+                $team->isPublic = false;
+            } else {
+                // public team
+                $team->isPublic = true;
+            }
+            $savedTeam = $team->save();
             if ($savedTeam) {
-                $teamUsers = $request->input('teamUsers');//array of emails
+                $pendingInvites = array();
 
-                if ($team->isPublic || (!$team->isPublic && count($teamUsers) == $game->maxPlayers)) {
-                    $checkAttach = true;
-
-                    foreach ($teamUsers as $teamUser) {
-                        $userTeam = new User();
-                        $userTeam->email = $teamUser;
-                        $userTeam->hasRole = false;
-                        $userTeam->confirmed = false;
-                        $userTeam->confirmationToken = Str::random(60);
-                        $userTeam->save();
-                        $savedTeamUser = $team->users()->attach($userTeam);//insert into teamUserstable
-                        if (!$savedTeamUser) {
-                            $checkAttach = false;
-                        }
-                    }
-                    if ($checkAttach) {
-                        $team->delete();
-                        $user->delete();
-                        //stuur hier de teaminvites
-                    } else {
-                        //return with error niet alle teamgenoten konden geinvite worden
-                    }
-                } else {
-                    $team->delete();
-                    $user->delete();
-                    //return with error not enough players for private team
+                for ($i = 0; $i < count($mailarr); $i++) {
+                    $membermail = $mailarr[$i];
+                    $inv = new PendingInvite();
+                    $inv->email = $membermail;
+                    $inv->teamID = $team->id;
+                    $inv->token = str_replace('/', '_', Str::random(60));
+                    array_push($pendingInvites, $inv);
                 }
+                foreach ($pendingInvites as $pendingInvite) {
+                    if ($pendingInvite->save()) {
+                        $this->mailInvite($pendingInvite, $team);
+                    }
+                }
+                $team->users()->attach($user);
+                $this->mailConfirm($user);
             } else {
+                $team->delete();
                 $user->delete();
-                //return with error could not make team;
+                return redirect()->back()->with('err', 'Could not save the team.');
             }
-        } else if ($request->has('teamID') && $savedUser) {//want to join existing team
-            $team = Team::find($request->input('teamID'));
-            if ($team) {
-                $team->users()->attach($user);//insert into teamUserstable
-            } else {
-                //return with could not find team
-            }
-        } else if (!$savedUser) {
-            //return with error could not make user;
+        } else {
+            return redirect()->back()->with('err', 'Could not save the user.');
         }
-        //stuur hier een confirmatie mail
-        //return with ayyy it worked
+        return redirect("/login");
     }
 
     public function update(Request $request)
@@ -465,66 +446,6 @@ class RegistrationController extends Controller
         //sendmail
         $this->mailConfirm($user);
         return redirect('/login');
-    }
-
-    public function storeTeam(RegisterTeamRequest $request)
-    {
-        $user = new User();
-
-        $user->email = $request->input('email');
-        $user->reminderMail = $request->input('reminderemail');
-        $user->firstname = $request->input('firstname');
-        $user->lastname = $request->input('lastname');
-        $user->password = Hash::make($request->input('password'));
-
-        $user->confirmationToken = str_replace('/', '_', Str::random(60));
-        $savedUser = $user->save(); // create user in db
-
-        if ($savedUser) {
-            $team = new Team();
-            $team->leaderID = $user->id;
-            $team->name = $request->input('teamname');
-            $team->gameID = $request->input('gameid');
-
-            $mailarr = $request->input('teammembers');
-
-            $gameTeamSize = Game::where('id', $team->gameID)->first()->maxPlayers;
-
-            //remove empty fields
-            $mailarr = array_filter($mailarr);
-
-            if ($gameTeamSize == count($mailarr)) {
-                // non public team
-                $team->isPublic = false;
-            } else {
-                // public team
-                $team->isPublic = true;
-            }
-
-            $savedTeam = $team->save();
-            if ($savedTeam) {
-                $pendingInvites = array();
-
-                for ($i = 0; $i < count($mailarr); $i++) {
-                    $membermail = $mailarr[$i];
-                    $inv = new PendingInvite();
-                    $inv->email = $membermail;
-                    $inv->teamID = $team->id;
-                    $inv->token = str_replace('/', '_', Str::random(60));
-                    array_push($pendingInvites, $inv);
-                }
-                foreach ($pendingInvites as $pendingInvite) {
-                    if ($pendingInvite->save()) {
-                        $this->mailInvite($pendingInvite, $team);
-                    }
-                }
-            } else {
-                $team->delete();
-            }
-
-        } else {
-            // cri
-        }
     }
 
     private function mailInvite(PendingInvite $invite, Team $team)
