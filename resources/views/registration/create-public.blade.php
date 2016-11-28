@@ -12,7 +12,7 @@
   <br/>
     <form class="form-horizontal" method="POST" action="registerpublic" id="registerpublicform">
         {{ csrf_field() }}
-        <h2>Registreren en join een public team</h2>
+        <h2>Registreren en join een publiek team</h2>
         <div class="line"></div>
         <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
@@ -37,9 +37,9 @@
             @endif
         </div>
         <div class="form-group row {{ $errors->has('firstname') ? ' has-error' : '' }}">
-            <label for="inputFirstName" class="col-md-4 control-label">First Name</label>
+            <label for="inputFirstName" class="col-md-4 control-label">Voornaam</label>
             <div class="col-md-4">
-                <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="First Name" value="{{ old('firstname') }}">
+                <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="Voornaam" value="{{ old('firstname') }}">
             </div>
             @if ($errors->has('firstname'))
                 <span class="help-block">
@@ -48,9 +48,9 @@
             @endif
         </div>
         <div class="form-group row {{ $errors->has('lastname') ? ' has-error' : '' }}">
-            <label for="inputLastName" class="col-md-4 control-label">Last Name</label>
+            <label for="inputLastName" class="col-md-4 control-label">Achternaam</label>
             <div class="col-md-4">
-                <input type="text" name="lastname" class="form-control" id="inputLastName" placeholder="Last name" value="{{ old('lastname') }}">
+                <input type="text" name="lastname" class="form-control" id="inputLastName" placeholder="Achternaam" value="{{ old('lastname') }}">
             </div>
             @if ($errors->has('lastname'))
                 <span class="help-block">
@@ -59,9 +59,9 @@
             @endif
         </div>
         <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
-            <label for="inputPassword" class="col-md-4 control-label">Password</label>
+            <label for="inputPassword" class="col-md-4 control-label">Wachtwoord</label>
             <div class="col-md-4">
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Wachtwoord">
             </div>
             @if ($errors->has('password'))
                 <span class="help-block">
@@ -70,9 +70,9 @@
             @endif
         </div>
         <div class="form-group row {{ $errors->has('verifypassword') ? ' has-error' : '' }}">
-            <label for="inputVerifyPassword" class="col-md-4 control-label">Password verification</label>
+            <label for="inputVerifyPassword" class="col-md-4 control-label">Wachtwoordverificatie</label>
             <div class="col-md-4">
-                <input type="password" name="verifypassword" class="form-control" id="inputVerifyPassword" placeholder="Repeat your password">
+                <input type="password" name="verifypassword" class="form-control" id="inputVerifyPassword" placeholder="Herhaal je wachtwoord">
             </div>
             @if ($errors->has('verifypassword'))
                 <span class="help-block">
@@ -97,7 +97,7 @@
         </div>
         <!-- Public Team -->
         <div class="col-md-4">
-          <h3>Public teams</h3>
+          <h3>Publieke teams</h3>
         </div>
         <div id="teamholder" class="form-group row">
           @if(isset($teams))
