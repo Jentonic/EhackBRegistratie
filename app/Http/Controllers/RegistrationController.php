@@ -454,7 +454,7 @@ class RegistrationController extends Controller
         $game = Game::where('id', $team->gameID)->first();
         $leader = User::where('id', $team->leaderID)->first();
 
-        $title = "Welcome to EhackB!";
+        $title = "Welkom bij EhackB!";
         $content = "Je bent uitgenodigd voor een {$game->name} team door {$leader->firstName} {$leader->lastName}<br>
                     Wil je meedoen? Klik op de link hieronder!";
 
@@ -476,8 +476,8 @@ class RegistrationController extends Controller
 
     private function mailConfirm(User $user)
     {
-        $title = "Welcome to EhackB!";
-        $content = "Please confirm your email adress!";
+        $title = "Welkom bij EhackB!";
+        $content = "Confirmeer je email adres!";
         Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'user' => $user,'token' => $user->confirmationToken], function($message) use ($user){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
             $message->subject('Welcome to EhackB!');
