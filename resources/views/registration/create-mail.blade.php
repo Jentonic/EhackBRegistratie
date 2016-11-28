@@ -18,7 +18,6 @@
       {{ Session::get('err') }}
     </div>
   @endif
-
     <form class="form-horizontal" method="POST" action="/registermail" id="registermailform">
       {{ csrf_field() }}
       <input type="hidden" name="token" value="{{$invite->token}}"/>
@@ -27,6 +26,12 @@
         <div class="col-md-4">
           <input type="text" name="email" class="form-control" id="inputEmail" placeholder="E-mail"
                  value="{{ $invite->email }}" readonly="readonly">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputReminderEmail" class="col-md-4 control-label">Reminder E-mail</label>
+        <div class="col-md-4">
+          <input type="text" name="reminderemail" class="form-control" id="inputReminderEmail" placeholder="Reminder E-mail">
         </div>
       </div>
       <div class="form-group row">

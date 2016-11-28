@@ -30,6 +30,12 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="inputReminderEmail" class="col-md-4 control-label">Reminder E-mail (Deze mail wordt gebruikt voor nieuwsbrieven en is optioneel)</label>
+          <div class="col-md-4">
+                <input type="text" name="reminderemail" class="form-control" id="inputReminderEmail" placeholder="Reminder E-mail" value="{{ old('reminderemail') }}">
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="inputFirstName" class="col-md-4 control-label">First Name</label>
             <div class="col-md-4">
                 <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="First Name" value="{{ old('firstname') }}">

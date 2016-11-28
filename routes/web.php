@@ -10,12 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
+Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'web'], function () {
 
   Route::get('/', 'RegistrationController@index');
+
+  Route::get('/home', 'RegistrationController@show');
 
   Route::get('/get/teams/{gameid}','RegistrationController@ajaxTeams');
 
@@ -51,5 +53,3 @@ Route::group(['middleware' => 'web'], function () {
   // Show user edit screen
   Route::get('edit', 'RegistrationController@edit');
 });
-
-Route::get('/home', 'HomeController@index');

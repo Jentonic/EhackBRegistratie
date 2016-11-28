@@ -40,6 +40,7 @@ class RegistrationController extends Controller
 
             if (!empty($user->options())) {
                 $options = $user->options()->get();
+
             }
             if ($user->hasTeam) {
                 $team = $user->team()->get()->first();
@@ -60,7 +61,7 @@ class RegistrationController extends Controller
             }
         } else {
             // Make unauthorized page
-            return view('errors.503');
+            return redirect('/login');
         }
     }
 
@@ -91,7 +92,6 @@ class RegistrationController extends Controller
     public function createPublic()
     {
         $games = Game::orderBy('name')->where('maxPlayers', '>', 1)->get();
-
         $teams;
         $collection2 = Team::where('gameID', $games[0]->id)->where('isPublic', '1')->get();
         foreach ($collection2 as $t) {
@@ -104,9 +104,9 @@ class RegistrationController extends Controller
         if (!empty($teams)) {
             $view->with('teams', collect($teams));
         }
-        if (!empty($activities)) {
-            $view->with('activities', $this->getAvailableActivities());
-        }
+
+        $view->with('activities', $this->getAvailableActivities());
+
         return $view->with('options', Option::all());
     }
 
@@ -247,10 +247,13 @@ class RegistrationController extends Controller
 
     public function userConfirmation($token){
         $user = User::where('confirmationToken',$token)->first();
-        if(isset($user)){
+        if(isset($user) && $user->confirmed = false){
             $user->confirmed = true;
             $user->save();
             return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
+        }
+        else if($user->confirmed = true){
+          return view('registration.confirmation')->with('succ','Your account was already confirmed');
         }
         else{
             return view('registration.confirmation')->with('err','We could not confirm your account with this token.');
@@ -269,11 +272,12 @@ class RegistrationController extends Controller
         }
     }
 
-    public function storeCasual(Request $request)
+    public function storeCasual(RegisterCasualRequest $request)
     {
         //creating user
         $user = new User();
         $user->email = $request->input('email');
+        $user->reminderMail = $request->input('reminderemail');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
@@ -288,7 +292,7 @@ class RegistrationController extends Controller
             $activities = $request->input('activities');
             foreach ($activities as $activity) {
                 $ac = Activity::find($activity);
-                if (!$ac->users()->count() < $ac->maxUsers) {
+                if ($ac->users()->count() >= $ac->maxUsers) {
                     $error = 'Maximum amount of people reached for ' . $ac->name;
                     $user->delete();
                     return redirect()->back()->with('err', $error);
@@ -302,7 +306,7 @@ class RegistrationController extends Controller
             }
         }
 
-        if ($request->has('options')) {
+        if($request->has('options')) {
             $options = $request->input('options');
             foreach ($options as $option) {
                 $op = Option::find($option);
@@ -323,6 +327,7 @@ class RegistrationController extends Controller
         //creating user
         $user = new User();
         $user->email = $request->input('email');
+        $user->reminderMail = $request->input('reminderemail');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
@@ -393,6 +398,7 @@ class RegistrationController extends Controller
         //creating user
         $user = new User();
         $user->email = $invite->email;
+        $user->reminderMail = $request->input('reminderemail');
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
@@ -460,7 +466,7 @@ class RegistrationController extends Controller
         */
 
         $token = $invite->token;
-        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name, 'token'=>$token], function($message) use ($invite){
+        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name,'user' => $user, 'token'=>$token], function($message) use ($invite){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
             $message->subject('You have been invited to a team at EhackB!');
             $message->replyTo('ehackb@ehackb.be', $name = null);
@@ -472,9 +478,9 @@ class RegistrationController extends Controller
     {
         $title = "Welcome to EhackB!";
         $content = "Please confirm your email adress!";
-        Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'token' => $user->confirmationToken], function($message) use ($user){
+        Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'user' => $user,'token' => $user->confirmationToken], function($message) use ($user){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
-            $message->subject('You have been invited to a team for EhackB!');
+            $message->subject('Welcome to EhackB!');
             $message->to($user->email, $name = null);
         });
 
@@ -488,6 +494,7 @@ class RegistrationController extends Controller
                 $activities[] = $ac;
             }
         }
+
         return collect($activities);
     }
 

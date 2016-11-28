@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <title>EhackB</title>
         @yield ('head')
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/style.css">
@@ -22,6 +23,9 @@
                         </div>--}}
                         {{--<div class="collapse navbar-collapse" id="navigationbar">--}}
                             <ul class="nav navbar-nav">
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{ url('/') }}">Home</a>
+                              </li>
                             @if (Auth::guest())
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registreren
@@ -38,7 +42,7 @@
                             @else
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">
-                                        {{ Auth::user()->firstName }} <span class="caret"></span>
+                                        {{ Auth::user()->firstName. " ".Auth::user()->lastName }} <span class="caret"></span>
                                     </a>
 
                                     <ul class="dropdown-menu" role="menu">
@@ -64,7 +68,7 @@
                 @yield ('content')
             </div>
         </div>
-
+        <script type="text/javascript" src="{{ asset('bower/jquery/dist/jquery.min.js') }}"></script>
         @yield ('scripts')
         <script src="/js/app.js"></script>
     </body>

@@ -25,6 +25,7 @@ class RegisterMailRequest extends FormRequest
     {
       return [
           'email' => 'required|email|unique:users,email',
+          'reminderemail' => 'email',
           'firstname' => 'required',
           'lastname' => 'required',
           'password' => 'required',

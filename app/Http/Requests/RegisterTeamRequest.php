@@ -25,6 +25,7 @@ class RegisterTeamRequest extends FormRequest
     {
         return [
             'email' => 'required|email|unique:users,email|unique:pendingInvites,email',
+            'reminderemail' => 'email',
             'firstname' => 'required',
             'lastname' => 'required',
             'password' => 'required',
