@@ -40,6 +40,7 @@ class RegistrationController extends Controller
 
             if (!empty($user->options())) {
                 $options = $user->options()->get();
+
             }
             if ($user->hasTeam) {
                 $team = $user->team()->get()->first();
@@ -60,7 +61,7 @@ class RegistrationController extends Controller
             }
         } else {
             // Make unauthorized page
-            return view('errors.503');
+            return redirect('/login');
         }
     }
 
@@ -265,10 +266,13 @@ class RegistrationController extends Controller
 
     public function userConfirmation($token){
         $user = User::where('confirmationToken',$token)->first();
-        if(isset($user)){
+        if(isset($user) && $user->confirmed = false){
             $user->confirmed = true;
             $user->save();
             return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
+        }
+        else if($user->confirmed = true){
+          return view('registration.confirmation')->with('succ','Your account was already confirmed');
         }
         else{
             return view('registration.confirmation')->with('err','We could not confirm your account with this token.');
@@ -307,7 +311,7 @@ class RegistrationController extends Controller
             $activities = $request->input('activities');
             foreach ($activities as $activity) {
                 $ac = Activity::find($activity);
-                if (!$ac->users()->count() < $ac->maxUsers) {
+                if ($ac->users()->count() >= $ac->maxUsers) {
                     $error = 'Maximum amount of people reached for ' . $ac->name;
                     $user->delete();
                     return redirect()->back()->with('err', $error);
@@ -541,7 +545,7 @@ class RegistrationController extends Controller
         */
 
         $token = $invite->token;
-        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name, 'token'=>$token], function($message) use ($invite){
+        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name,'user' => $user, 'token'=>$token], function($message) use ($invite){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
             $message->subject('You have been invited to a team at EhackB!');
             $message->replyTo('ehackb@ehackb.be', $name = null);
@@ -553,9 +557,9 @@ class RegistrationController extends Controller
     {
         $title = "Welcome to EhackB!";
         $content = "Please confirm your email adress!";
-        Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'token' => $user->confirmationToken], function($message) use ($user){
+        Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'user' => $user,'token' => $user->confirmationToken], function($message) use ($user){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
-            $message->subject('You have been invited to a team for EhackB!');
+            $message->subject('Welcome to EhackB!');
             $message->to($user->email, $name = null);
         });
 

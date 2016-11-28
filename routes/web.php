@@ -17,6 +17,8 @@ Route::group(['middleware' => 'web'], function () {
 
   Route::get('/', 'RegistrationController@index');
 
+  Route::get('/home', 'RegistrationController@show');
+
   Route::get('/get/teams/{gameid}','RegistrationController@ajaxTeams');
 
   // Display form to register Casual

@@ -23,6 +23,9 @@
                         </div>--}}
                         {{--<div class="collapse navbar-collapse" id="navigationbar">--}}
                             <ul class="nav navbar-nav">
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{ url('/') }}">Home</a>
+                              </li>
                             @if (Auth::guest())
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registreren
@@ -39,7 +42,7 @@
                             @else
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">
-                                        {{ Auth::user()->firstName }} <span class="caret"></span>
+                                        {{ Auth::user()->firstName. " ".Auth::user()->lastName }} <span class="caret"></span>
                                     </a>
 
                                     <ul class="dropdown-menu" role="menu">

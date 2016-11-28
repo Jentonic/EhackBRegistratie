@@ -12,39 +12,48 @@
       <li class="list-group-item"><b>Voornaam: </b>{{ $user->firstName }}</li>
       <li class="list-group-item"><b>Achternaam: </b>{{ $user->lastName }}</li>
       <li class="list-group-item"><b>E-mailadres: </b>{{ $user->email }}</li>
-    </ul>
-  </div>
-
-  <div class="right">
-    @if(isset($team) && isset($game))
-      <br />
-      <h1>{{ $game->name . ": " . $team->name }}</h1>
-      @if(isset($members))
-        <h2>Leden</h2>
-        @foreach($members as $member)
-          <li>{{ $member->firstName . " " . $member.lastName . " | " . $member.email }}</li>
-        @endforeach
+      @if(!empty($user->reminderMail))
+        <li class="list-group-item"><b>Reminder E-mailadres: </b>{{ $user->reminderMail }}</li>
       @endif
-    @endif
-
-    @if(empty($activities))
-      <br />
-      <h1>Activiteiten</h1>
-      @foreach($activities as $activity)
-        <li>{{ $activity->name . ": " . $activity->description . " | " . $activity->group()->get()->first()->name }}</li>
+    </ul>
+    @if(!$user->activities->isEmpty())
+      <ul class="list-unstyled">
+      <li class="list-group-item"><b>Activiteiten</b></li>
+      @foreach($user->activities as $activity)
+        <li class="list-group-item">{{ $activity->name }}</li>
       @endforeach
+      </ul>
     @endif
+    @if(!$user->options->isEmpty())
+    <ul class="list-unstyled">
+      <li class="list-group-item"><b>Extra opties</b></li>
+      @foreach($user->options as $option)
 
-    @if(empty($options))
-      <br />
-      <h1>Extra opties</h1>
-      @foreach($options as $option)
         @if ($option->hasPrice)
-          <li>{{ $option->name . ": €" . $options->price }}</li>
+          <li class="list-group-item">{{ $option->name . ": €" . number_format($option->price,2) }}</li>
         @else
-          <li>{{ $option->name . ": gratis" }}</li>
+          <li class="list-group-item">{{ $option->name . ": gratis" }}</li>
         @endif
       @endforeach
+    </ul>
     @endif
   </div>
+  <div class="right">
+    @if(isset($user->team) && isset($user->team[0]->game))
+      <ul class="list-unstyled">
+      <li class="list-group-item"><b>{{ $user->team[0]->game->name . ": " . $user->team[0]->name }}</b></li>
+      @if(isset($user->team[0]->users))
+        <li class="list-group-item"><b>Leden</b></li>
+        @foreach($user->team[0]->users as $member)
+          <li class="list-group-item">{{ $member->firstName . " " . $member->lastName . " | " . $member->email }}</li>
+        @endforeach
+      @endif
+      @if(isset($user->team[0]->invites))
+        <li class="list-group-item"><b>Pending Invites</b></li>
+        @foreach($user->team[0]->invites as $invite)
+          <li class="list-group-item">{{ $invite->email }}</li>
+        @endforeach
+      @endif
+      <ul>
+    @endif
 @stop
