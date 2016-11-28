@@ -7,7 +7,7 @@
 @section('content')
   <h2>Jouw info</h2>
   <div class="line"></div>
-  <div class="left">
+  <div class="col-md-6">
     <ul class="list-unstyled">
       <li class="list-group-item"><b>Voornaam: </b>{{ $user->firstName }}</li>
       <li class="list-group-item"><b>Achternaam: </b>{{ $user->lastName }}</li>
@@ -38,7 +38,7 @@
     </ul>
     @endif
   </div>
-  <div class="right">
+  <div class="col-md-6">
     @if(isset($user->team) && isset($user->team[0]->game))
       <ul class="list-unstyled">
       <li class="list-group-item"><b>{{ $user->team[0]->game->name . ": " . $user->team[0]->name }}</b></li>

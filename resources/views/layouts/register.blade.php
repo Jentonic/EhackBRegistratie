@@ -13,15 +13,6 @@
             <div class="group ehackbg container-fluid">
                 <nav class="navbar navbar-static-top">
                     <div class="container-fluid">
-                        {{--<div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>--}}
-                        {{--<div class="collapse navbar-collapse" id="navigationbar">--}}
                             <ul class="nav navbar-nav">
                               <li class="nav-item">
                                   <a class="nav-link" href="{{ url('/') }}">Home</a>
@@ -47,6 +38,9 @@
 
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
+                                            <a href="{{ url('show') }}">
+                                                Toon profiel
+                                            </a>
                                             <a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 Logout
                                             </a>
