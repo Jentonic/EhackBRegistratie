@@ -143,7 +143,7 @@ class RegistrationController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->password = Hash::make($request->input('password'));
-
+        $user->reminderMail = $request->input('reminderemail');
         $user->confirmationToken = str_replace('/', '_', Str::random(60));
         $savedUser = $user->save(); // create user in db
 
