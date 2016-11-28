@@ -1,0 +1,174 @@
+article#locatie {
+    width: 100%;
+    text-align: center;
+    display: block;
+    float: left;
+}
+
+article#locatie .contentLocatie {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+}
+
+article#locatie .contentLocatie h2 {
+    font-size: 4em;
+    font-weight: bold;
+    color: #FFFCFA;
+    padding-bottom: 30px;
+}
+
+article#locatie section {
+    width: 30%;
+    height: 600px;
+    float: left;
+    background-color: #FFF;
+    border-radius: 15px;
+    box-shadow: -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+article#locatie section.hide {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+article#locatie section.selected {
+    z-index: 4;
+    opacity: 1;
+    width: 100%;
+    display: block;
+    height: auto;
+    margin: 0 !important;
+}
+
+article#locatie section img.descriptionIMG {
+    max-height: 70px;
+    margin: 40px auto;
+    display: block;
+}
+
+article#locatie section img.goButton1, article#locatie section img.goButton2, article#locatie section img.goButton3 {
+    height: 60px;
+    margin: 0 auto -30px;
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+}
+
+article#locatie section img.goButton1:hover {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+article#locatie section img.goButton2:hover {
+    animation: bounce 1s;
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(15px);
+        transform: translateY(15px);
+    }
+    80% {
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px);
+    }
+}
+
+article#locatie section img.goButton3:hover {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+article#locatie section.public {
+    margin: 0 5%;
+}
+
+article#locatie h3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #3e3e3e;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+article#locatie h4 {
+    margin: 0 40px;
+}
+
+article#locatie p {
+    text-align: center;
+    margin: 10px 40px;
+}
+
+article#locatie section.map {
+    width: 100%;
+    height: 300px;
+    float: left;
+    clear: both;
+    margin-top: 80px;
+    background-color: #FFF;
+    border-radius: 15px;
+    box-shadow: -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 1250px) {
+    article#locatie section {
+        height: inherit;
+        width: 96%;
+        margin: 40px 2%;
+        padding-bottom: 40px;
+        float: left;
+        background-color: #FFF;
+        border-radius: 15px;
+        box-shadow: -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    }
+    article#locatie section.public {
+        margin: 40px 2%;
+    }
+    article#locatie section.map {
+        width: 96%;
+        margin: 40px 2%;
+    }
+    article#locatie section img.goButton1:hover {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    article#locatie section img.goButton2:hover {
+        animation: bounce 1s;
+    }
+    @keyframes bounce {
+        0%, 20%, 60%, 100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        40% {
+            -webkit-transform: translateY(15px);
+            transform: translateY(15px);
+        }
+        80% {
+            -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+        }
+    }
+    article#locatie section img.goButton3:hover {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+}
+
+
+}

@@ -1,0 +1,311 @@
+/*
+COLORS
+#FFFFFF
+#F2A698
+#92C0BB
+#fbd986
+#7CC3FA
+#6FED9C
+Bas Vleugels
+Jef Vastenavondt
+*/
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    color: white;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 90px;
+    background-color: rgba(55, 59, 68, 0.9);
+    transition: top 0.2s ease-in-out;
+    z-index: 9999;
+}
+
+.nav-up {
+    top: -90px;
+}
+
+nav {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+nav ul#mainMenu {
+    list-style: none;
+    display: block;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+nav ul#mainMenu li {
+    display: inline-block;
+}
+
+nav ul#mainMenu li a {
+    padding-bottom: 10px;
+}
+
+nav ul .left {
+    float: left;
+}
+
+nav ul .right {
+    float: right;
+}
+
+nav ul .right li {
+    margin: 0 5px;
+}
+
+nav ul .left li:first-child {
+    font-size: 1.8em;
+}
+
+nav ul .right li :first-child a:hover {
+    border-bottom: 2px solid #FFFFFF;
+}
+
+nav ul .right li:nth-child(2) a:hover {
+    border-bottom: 2px solid #F2A698;
+}
+
+nav ul .right li:nth-child(3) a:hover {
+    border-bottom: 2px solid #92C0BB;
+}
+
+nav ul .right li:nth-child(4) a:hover {
+    border-bottom: 2px solid #fbd986;
+}
+
+nav ul .right li:nth-child(5) a:hover {
+    border-bottom: 2px solid #7CC3FA;
+}
+
+nav ul .right li:nth-child(6) a:hover {
+    border-bottom: 2px solid #6FED9C;
+}
+
+nav ul .right li:first-child a.active {
+    border-bottom: 2px solid #FFFFFF;
+}
+
+nav ul .right li:nth-child(2) a.active {
+    border-bottom: 2px solid #F2A698;
+}
+
+nav ul .right li:nth-child(3) a.active {
+    border-bottom: 2px solid #92C0BB;
+}
+
+nav ul .right li:nth-child(4) a.active {
+    border-bottom: 2px solid #fbd986;
+}
+
+nav ul .right li:nth-child(5) a.active {
+    border-bottom: 2px solid #7CC3FA;
+}
+
+nav ul .right li:nth-child(6) a.active {
+    border-bottom: 2px solid #6FED9C;
+}
+
+main {
+    float: left;
+}
+
+article {
+    padding: 90px 0;
+    float: left;
+    width: 100%;
+}
+
+article#intro {
+    background: url(../img/landing.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
+article#intro img {
+    width: 300px;
+    display: block;
+    margin: 20vh auto 0;
+}
+
+article#intro p {
+    text-align: center;
+    font-size: 2em;
+    color: #FFF;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+article#intro p:last-child {
+    font-size: 3em;
+    margin-top: 60px;
+}
+
+article#sprekers {
+    background: #F2A698;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #F2A698, #EF816A);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #F2A698, #EF816A);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #F2A698, #EF816A);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #F2A698, #EF816A);
+    /* Standard syntax */
+}
+
+article#games {
+    background: #92C0BB;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #92C0BB, #6FABA4);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #92C0BB, #6FABA4);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #92C0BB, #6FABA4);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #92C0BB, #6FABA4);
+    /* Standard syntax */
+}
+
+article#programma {
+    background: #fbd986;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #fbd986, #EA952F);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #fbd986, #EA952F);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #fbd986, #EA952F);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #fbd986, #EA952F);
+    /* Standard syntax */
+}
+
+article#locatie {
+    background: #7CC3FA;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #7CC3FA, #5BB5F9);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7CC3FA, #5BB5F9);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7CC3FA, #5BB5F9);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7CC3FA, #5BB5F9);
+    /* Standard syntax */
+}
+
+article#registratie {
+    text-align: center;
+    background: #6FED9C;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #6FED9C, #47E980);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #6FED9C, #47E980);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #6FED9C, #47E980);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #6FED9C, #47E980);
+    /* Standard syntax */
+}
+
+.disc img {
+    height: 30px;
+    margin: auto;
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        float: left;
+        height: auto;
+    }
+    nav {
+        width: 100%;
+        text-align: center;
+        float: left;
+        margin-top: 0;
+    }
+    nav ul {
+        padding: 0;
+        margin: 0;
+    }
+    nav ul#mainMenu {
+        width: 100%;
+        float: left;
+        list-style: none;
+        display: block;
+        text-transform: uppercase;
+        margin: 0;
+        text-align: center;
+    }
+    nav ul#mainMenu li {
+        display: block;
+        width: 100%;
+    }
+    nav ul#mainMenu .right {}
+    nav ul#mainMenu li a {
+        padding-bottom: 0px;
+    }
+    nav ul .left {
+        float: left;
+        height: 60px;
+        width: 80%;
+        margin: 30px 10% 0 10%;
+    }
+    nav ul#mainMenu .left li {
+        padding-bottom: 15px;
+    }
+    nav ul .right {
+        float: left;
+        width: 100%;
+        margin-top: 65px;
+    }
+    nav ul#mainMenu .right {
+        margin: 0;
+    }
+    nav ul#mainMenu .right li:first-child {
+        margin: 5px 0 0 0 !important;
+    }
+    nav ul#mainMenu .right li {
+        margin: 15px 0;
+    }
+    nav ul .right li a:hover {
+        border-bottom: none !important;
+    }
+    nav ul .right li a.active {
+        border-bottom: none !important;
+    }
+    #intro, #sprekers, #programma, #locatie, #registratie, #games {
+        padding: 80px 0;
+    }
+    .mobil_icon {
+        top: 10px;
+        left: 10px;
+        height: 50px;
+        width: 50px;
+        position: absolute;
+    }
+    .toggle_mobil_menu {
+        display: none;
+    }
+}
