@@ -91,30 +91,34 @@
             </div>
         </div>
 
-        {{-- activities --}}
-        <div class="col-md-4">
-            <h3>Activiteiten</h3>
-        </div>
+        <!-- Activities -->
         <div class="form-group row">
-            @foreach($activities as $activity)
-            <div class="checkbox col-md-6">
-              <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}}
-                @if($activity->maxUsers != 9999) - Places left: {{ $activity->maxUsers - $activity->users->count() }} @endif
-              </label>
+            <div class="col-md-4">
+                <h3>Activiteiten</h3>
             </div>
-            @endforeach
+            <div class="col-md-4">
+                @foreach($activities as $activity)
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}}
+                            @if($activity->maxUsers != 9999) - Plaatsen: {{ $activity->maxUsers - $activity->users->count() }} @endif
+                        </label>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
-        {{-- options --}}
-        <div class="col-md-4">
-            <h3>Extra Opties</h3>
-        </div>
+        <!-- Options -->
         <div class="form-group row">
-            @foreach($options as $option)
-                <div class="checkbox col-md-4">
-                    <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Prijs: €{{ number_format($option->price,2) }}</label>
-                </div>
-            @endforeach
+            <div class="col-md-4">
+                <h3>Extra Opties</h3>
+            </div>
+            <div class="col-md-4">
+                @foreach($options as $option)
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Prijs: €{{ number_format($option->price,2) }}</label>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
         <div class="col-md-4">

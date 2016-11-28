@@ -96,44 +96,49 @@
             @endif
         </div>
         <!-- Public Team -->
-        <div class="col-md-4">
-          <h3>Publieke teams</h3>
-        </div>
-        <div id="teamholder" class="form-group row">
-          @if(isset($teams))
-            @include('ajax.team', array('teams' => $teams))
-          @else
-            <div class="form-group row col-md-4">
-              <p>Geen publieke teams beschikbaar voor deze game</p>
-            </div>
-          @endif
+        <div class="form-group row">
+          <div class="col-md-4">
+            <h3>Publieke teams</h3>
+          </div>
+          <div id="teamholder" class="col-md-4">
+            @if(isset($teams))
+              @include('ajax.team', array('teams' => $teams))
+            @else
+                <p>Geen publieke teams beschikbaar voor deze game</p>
+            @endif
+          </div>
         </div>
 
         <!-- Activities -->
-        <div class="col-md-4">
-            <h3>Activiteiten</h3>
-        </div>
         <div class="form-group row">
-            @foreach($activities as $activity)
-                <div class="checkbox col-md-4">
-                    <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}}
-                    @if($activity->maxUsers != 9999) - Plaatsen: {{ $activity->maxUsers - $activity->users->count() }} @endif
-                    </label>
-                </div>
-            @endforeach
+          <div class="col-md-4">
+              <h3>Activiteiten</h3>
+          </div>
+          <div class="col-md-4">
+              @foreach($activities as $activity)
+                  <div class="checkbox">
+                      <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}}
+                      @if($activity->maxUsers != 9999) - Plaatsen: {{ $activity->maxUsers - $activity->users->count() }} @endif
+                      </label>
+                  </div>
+              @endforeach
+          </div>
         </div>
 
         <!-- Options -->
-        <div class="col-md-4">
-            <h3>Extra Opties</h3>
-        </div>
         <div class="form-group row">
-            @foreach($options as $option)
-                <div class="checkbox col-md-4">
-                    <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Prijs: €{{ number_format($option->price,2) }}</label>
-                </div>
-            @endforeach
+          <div class="col-md-4">
+              <h3>Extra Opties</h3>
+          </div>
+          <div class="col-md-4">
+              @foreach($options as $option)
+                  <div class="checkbox">
+                      <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Prijs: €{{ number_format($option->price,2) }}</label>
+                  </div>
+              @endforeach
+          </div>
         </div>
+
         <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
     </form>
 @stop
