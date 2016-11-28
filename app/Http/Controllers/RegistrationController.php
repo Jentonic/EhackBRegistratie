@@ -23,7 +23,7 @@ class RegistrationController extends Controller
 {
     public function index()
     {
-        return view('registration.index');
+        return view('ehackb.index');
     }
 
     public function show()
