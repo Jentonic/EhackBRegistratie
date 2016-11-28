@@ -8,7 +8,7 @@ $(window).ready(function() {
     var window_w = $(window).width()
     var my_menu = $('.right')
     var append_here = $('.left')
-    var mobil_li = '<li><a href="">ehack4</a></li><li class="mobil_li"><img class="mobil_icon" src="img/menu.png"></li>'
+    var mobil_li = '<li><a href="">ehack4</a></li><li class="mobil_li"><img class="mobil_icon" src="ehackb/img/menu.png"></li>'
 
     if (window_w <= 900) {
         $(append_here).html(mobil_li)

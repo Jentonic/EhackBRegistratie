@@ -23,7 +23,7 @@ class RegistrationController extends Controller
 {
     public function index()
     {
-        return view('registration.index');
+        return view('ehackb.index');
     }
 
     public function show()
@@ -454,9 +454,9 @@ class RegistrationController extends Controller
         $game = Game::where('id', $team->gameID)->first();
         $leader = User::where('id', $team->leaderID)->first();
 
-        $title = "Welcome to EhackB!";
-        $content = "You were invited to a {$game->name} team by {$leader->firstName} {$leader->lastName}<br>
-                    Want to join in on the fun? Click the link below.";
+        $title = "Welkom bij EhackB!";
+        $content = "Je bent uitgenodigd voor een {$game->name} team door {$leader->firstName} {$leader->lastName}<br>
+                    Wil je meedoen? Klik op de link hieronder!";
 
         /*
         $content2 = "Hi, <br><br>
@@ -468,7 +468,7 @@ class RegistrationController extends Controller
         $token = $invite->token;
         Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name,'user' => $user, 'token'=>$token], function($message) use ($invite){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
-            $message->subject('You have been invited to a team at EhackB!');
+            $message->subject('Je bent uitgenodigd voor een team op EhackB!');
             $message->replyTo('ehackb@ehackb.be', $name = null);
             $message->to($invite->email, $name = null);
         });
@@ -476,8 +476,8 @@ class RegistrationController extends Controller
 
     private function mailConfirm(User $user)
     {
-        $title = "Welcome to EhackB!";
-        $content = "Please confirm your email adress!";
+        $title = "Welkom bij EhackB!";
+        $content = "Confirmeer je email adres!";
         Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'user' => $user,'token' => $user->confirmationToken], function($message) use ($user){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
             $message->subject('Welcome to EhackB!');

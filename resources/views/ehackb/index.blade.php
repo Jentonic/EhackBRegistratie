@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EHACKB 4</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/timetable.css">
-    <link rel="stylesheet" href="css/sprekers.css">
-    <link rel="stylesheet" href="css/games.css">
-    <link rel="stylesheet" href="css/locatie.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="ehackb/css/style.css">
+    <link rel="stylesheet" href="ehackb/css/timetable.css">
+    <link rel="stylesheet" href="ehackb/css/sprekers.css">
+    <link rel="stylesheet" href="ehackb/css/games.css">
+    <link rel="stylesheet" href="ehackb/css/locatie.css">
+    <link rel="stylesheet" href="ehackb/css/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/navHandlr.js"></script>
-    <script type="text/javascript" src="js/timetable.js"></script>
-    <script type="text/javascript" src="js/mobil_menu.js"></script>
+    <script type="text/javascript" src="ehackb/js/navHandlr.js"></script>
+    <script type="text/javascript" src="ehackb/js/timetable.js"></script>
+    <script type="text/javascript" src="ehackb/js/mobil_menu.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css" rel="stylesheet" />
 
@@ -43,7 +43,7 @@
 </header>
 <main>
     <article id="intro">
-        <img src="img/logo.png" alt="EHACKB 4">
+        <img src="ehackb/img/logo.png" alt="EHACKB 4">
         <p>16 &amp; 17 DECEMBER</p>
         <p>GAME | HACK | LEARN | CREATE</p>
     </article>
@@ -52,8 +52,8 @@
             <h2 class="animated fadeInDown">Sprekers</h2>
             <div class="lijstsprekers">
                 <section class="spreker">
-                    <img src="img/sprekers/inti_de_ceukelaire.png" alt="Casey" class="thumbnail thumbnail-lineup">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/sprekers/inti_de_ceukelaire.png" alt="Casey" class="thumbnail thumbnail-lineup">
+                    <a href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Inti De Ceukelaire</h3>
                     <p class="title">Creative Hacking v2</p>
                     <p class="hour">16:45-17:45 - AUDI 4</p>
@@ -62,8 +62,8 @@
                         Inti de Ceukelaire is oud Multec student (academiejaar 2015-2016) en is securityblogger en ethisch hacker.</p>
                 </section>
                 <section class="spreker">
-                    <img src="img/sprekers/Valery_Vermeulen.png" alt="Casey" class="thumbnail thumbnail-lineup">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/sprekers/Valery_Vermeulen.png" alt="Casey" class="thumbnail thumbnail-lineup">
+                    <a href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Valery Vermeulen</h3>
                     <p class="title">How to make music from (deep) space, wall street or biofeedback</p>
                     <p class="hour">17:45-18:45 - AUDI 1</p>
@@ -72,24 +72,24 @@
                         Valery Vermeulen is an electronic musician, music producer, mathematician, new media artist, author and a visiting professor at Erasmus University College in Brussels where he teaches "Multimedia Art and Technology." In 2001 he obtained a Ph.D. in pure mathematics at Ghent University (BE), and Between 2001 and 2005 Vermeulen worked at the Institute for Psychoacoustics and Electronic Music at the same university on a research project focusing on the link between music and emotions. Meanwhile, he started writing and recording music in my his production studio. In 2013 he moreover finished a master degree in music composition at the Royal Conservatory of Ghent (BE). Since 2003 Vermeulen has been working on various interactive multimedia projects where the man-machine interaction and crossover between art and science plays a central role. Topics in his work cover a broad range of disciplines including generative art, creative evolutionary systems design, algorithmic sound and image generation, (generative) sound synthesis, affective computing, artificial intelligence, and econometrics.</p>
                 </section>
                 <section class="spreker">
-                    <img src="img/sprekers/Luk_Schoonaert.png" alt="Casey" class="thumbnail thumbnail-lineup">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/sprekers/Luk_Schoonaert.png" alt="Casey" class="thumbnail thumbnail-lineup">
+                    <a href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Luk Schoonaert</h3>
                     <p class="title">IT security: de trends van de laatste jaren</p>
                     <p class="hour">17:45-18:45 - AUDI 4</p>
                     <p class="info">Luk Schoonaert, director of Technology bij Exclusive Networks, komt ons een stand van zaken geven omtrent cybersecurity en de trends van de laatste jaren (cryptolockers, DDOS, Internet of things, …). Hoe kunnen we ons beschermen? Na deze sessie kan je terecht bij zijn collega Steven Eerdekens voor een workshop, waar je aan de slag gaat met Palo Alto firewalls.</p>
                 </section>
                 <section class="spreker">
-                    <img src="img/sprekers/wannes_gennar.png" alt="Casey" class="thumbnail thumbnail-lineup">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/sprekers/wannes_gennar.png" alt="Casey" class="thumbnail thumbnail-lineup">
+                    <a href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Wannes Gennar</h3>
                     <p class="title">Realtime communication in web technologieën</p>
                     <p class="hour">18:45-19:45 - AUDI 1</p>
                     <p class="info">Wannes is een laatstejaarsstudent Dig-X (Toegepaste Informatica), optie Software Engineering aan de Erasmushogeschool. Hij heeft een passie voor software design en web applicaties. Wannes bespreekt de technologieën achter realtime web applicaties, hoe ze zijn opgebouwd, en waarin ze verschillen met de traditionele technologieën.</p>
                 </section>
                 <section class="spreker">
-                    <img src="img/sprekers/hans_ameel.png" alt="Casey" class="thumbnail thumbnail-lineup">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/sprekers/hans_ameel.png" alt="Casey" class="thumbnail thumbnail-lineup">
+                    <a href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Hans Ameel</h3>
                     <p class="title">temp</p>
                     <p class="hour">18:45-19:45 - AUDI 4</p>
@@ -105,24 +105,24 @@
             <h2 class="animated fadeInDown">Games</h2>
             <div class="lijstgames">
                 <section class="game">
-                    <img src="img/games/lol.jpg" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/lol.jpg" alt="LoL">
+                    <a href="{{url('/registerteam')}}">Doe mee</a>
                     <h3 class="name">League of Legends</h3>
                     <p class="title">Team of 5</p>
                     <p class="hour">20.00 - ...</p>
                     <p class="info">Voor het League of Legends tornooi gaan we werken met een poulesysteem waarbij er 2 poules van 6 teams zijn. Elk team zal eenmaal tegen elk team spelen en de 4 teams die het meeste hebben gewonnen gaan door naar de volgende ronde. In deze ronde zal er met een bracket systeem gewerkt worden voor de 8 overblijvende teams. Als je wint ga je door naar de volgende ronde in de bracket als je verliest is het gedaan. We gebruiken de custom draft game mode voorzien door het spel zelf. Er zullen ook vaak mods en streamers aanwezig zijn in deze games om zo het tornooi vlot te laten verlopen. Who will be the last one standing on the Rift?</p>
                 </section>
                 <section class="game">
-                    <img src="img/games/csgo.png" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/csgo.png" alt="LoL">
+                    <a href="{{url('/registerteam')}}">Doe mee</a>
                     <h3 class="name">Counter strike : global offensive</h3>
                     <p class="title">Team of 5</p>
                     <p class="hour">20.00 - ...</p>
                     <p class="info">Voor het Counter Strike: Global Offensive starten we met een poulesysteem waarbij er 2 poules van 6 teams zijn. Elk team zal eenmaal tegen elk team spelen en de 4 teams die het meeste hebben gewonnen gaan door naar de volgende ronde. In deze ronde zal er met een bracket systeem gewerkt worden voor de 8 overblijvende teams. Als je wint ga je door naar de volgende ronde in de bracket als je verliest is het gedaan. De games worden gespeeld op servers voorzien door de organisatie.</p>
                 </section>
                 <section class="game">
-                    <img src="img/games/overwatch.png" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/overwatch.png" alt="LoL">
+                    <a href="{{url('/registerteam')}}">Doe mee</a>
                     <h3 class="name">Overwatch</h3>
                     <p class="title">Team of 6</p>
                     <p class="hour">20.00 - ...</p>
@@ -140,8 +140,8 @@
                     <p>Killcams worden uitgezet voor de matches.</p>
                 </section>
                 <section class="game">
-                    <img src="img/games/Super_Smash_Bros.png" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/Super_Smash_Bros.png" alt="LoL">
+                    <a href="{{url('/registerteam')}}">Doe mee</a>
                     <h3 class="name">Super Smash Bros</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
@@ -166,8 +166,8 @@
                     <p>• Alleen “Omega’ maps zijn toegelaten en worden random geselecteerd</p></p>
                 </section>
                 <section class="game">
-                    <img src="img/games/fifa.png" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/fifa.png" alt="LoL">
+                    <a href="{{url('/registerteam')}}">Doe mee</a>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
@@ -189,8 +189,8 @@
                     </p>
                 </section>
                 <section class="game">
-                    <img src="img/games/hearthstone.png" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/hearthstone.png" alt="LoL">
+                    <a href="{{url('/registerteam')}}">Doe mee</a>
                     <h3 class="name">Hearthstone</h3>
                     <p class="title">1 player</p>
                     <p class="hour">23.00 - ...</p>
@@ -203,8 +203,8 @@
                     </p>
                 </section>
                 <section class="game">
-                    <img src="img/games/rocket_league.png" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/rocket_league.png" alt="LoL">
+                    <a href="{{url('/registerteam')}}">Doe mee</a>
                     <h3 class="name">Rocket League</h3>
                     <p class="title">1 player</p>
                     <p class="hour">23.00 - ...</p>
@@ -212,8 +212,8 @@
                 </section>
                 </section>
                 <section class="game">
-                    <img src="img/games/casual.png" alt="LoL">
-                    <a href="#">Doe mee</a>
+                    <img src="ehackb/img/games/casual.png" alt="LoL">
+                    <a href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Casual gaming</h3>
                     <p class="title">Iedereen welkom</p>
                     <p class="hour">20.00 - ...</p>
@@ -334,7 +334,7 @@
         <div class="contentLocatie">
             <h2>Locatie</h2>
             <section class="walk">
-                <img class="descriptionIMG" src="img/fiets.png" alt="Fiets">
+                <img class="descriptionIMG" src="ehackb/img/fiets.png" alt="Fiets">
                 <h3>stappen/fietsen</h3>
                 <h4>Stappen</h4>
                 <p>
@@ -346,7 +346,7 @@
                 </p>
             </section>
             <section class="public">
-                <img class="descriptionIMG" src="img/metro.png" alt="Fiets">
+                <img class="descriptionIMG" src="ehackb/img/metro.png" alt="Fiets">
                 <h3>openbaar vervoer</h3>
                 <h4>Trein</h4>
                 <p>
@@ -362,7 +362,7 @@
                 </p>
             </section>
             <section class="car">
-                <img class="descriptionIMG" src="img/auto.png" alt="Fiets">
+                <img class="descriptionIMG" src="ehackb/img/auto.png" alt="Fiets">
                 <h3>met de auto</h3>
                 <p>
                     Parkeren kan gemakkelijk voor of achter de campus. De binnenparking tussen A & B zijn dit jaar ook toegankelijk. (Beperkte & onbewaakte parking)
@@ -375,21 +375,21 @@
         </div>
     </article>
     <article id="registratie">
-        secRegister
+          <a href="{{url('/registercasual')}}">Doe mee</a>
     </article>
 </main>
 <footer class="footer" role="contentinfo">
     <div class="footer-logo">
-        <img src="img/spon/cisco_meraki.jpg" alt="cisco">
-        <img src="img/spon/dell_blue_rgb.jpg" alt="dell">
-        <img src="img/spon/EN_Logo_New_Font_WTE-2.png" alt="exnet">
-        <img src="img/spon/innoviris-brussels-empowering-research.png" alt="innov">
-        <img src="img/spon/logo-av-apps.png" alt="av"><br>
-        <img src="img/spon/MME_logo-groot.png" alt="mme">
-        <img src="img/spon/Redcorp_logo.png" alt="redc">
-        <img src="img/spon/signpost.jpg" alt="sign">
-        <img src="img/spon/sopra-banking-software.png" alt="sop">
-        <img src="img/spon/switchpoint-logo-color-no_border-final.jpg" alt="switch">
+        <img src="ehackb/img/spon/cisco_meraki.jpg" alt="cisco">
+        <img src="ehackb/img/spon/dell_blue_rgb.jpg" alt="dell">
+        <img src="ehackb/img/spon/EN_Logo_New_Font_WTE-2.png" alt="exnet">
+        <img src="ehackb/img/spon/innoviris-brussels-empowering-research.png" alt="innov">
+        <img src="ehackb/img/spon/logo-av-apps.png" alt="av"><br>
+        <img src="ehackb/img/spon/MME_logo-groot.png" alt="mme">
+        <img src="ehackb/img/spon/Redcorp_logo.png" alt="redc">
+        <img src="ehackb/img/spon/signpost.jpg" alt="sign">
+        <img src="ehackb/img/spon/sopra-banking-software.png" alt="sop">
+        <img src="ehackb/img/spon/switchpoint-logo-color-no_border-final.jpg" alt="switch">
     </div>
     <div class="footer-links">
         <ul>
@@ -421,7 +421,7 @@
 
     <hr>
 
-    <p class="disc"><img src="img/spon/LOGO.png" alt="logo"><br></p>
+    <p class="disc"><img src="ehackb/img/spon/LOGO.png" alt="logo"><br></p>
 </footer>
 </body>
 

@@ -2,17 +2,6 @@
 
 @section('content')
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-
     @if(Session::has('err'))
     <div class="alert alert-danger">
         {{ Session::get('err') }}
@@ -25,41 +14,71 @@
         <h2>Registreren als casual</h2>
         <div class="line"></div>
 
-        <div class="form-group row">
+        <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="inputEmail" class="col-md-4 control-label">E-mail</label>
           <div class="col-md-4">
                 <input type="text" name="email" class="form-control" id="inputEmail" placeholder="E-mail" value="{{ old('email') }}">
             </div>
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
         </div>
-        <div class="form-group row">
+        <div class="form-group row {{ $errors->has('reminderemail') ? ' has-error' : '' }}">
             <label for="inputReminderEmail" class="col-md-4 control-label">Reminder E-mail (Deze mail wordt gebruikt voor nieuwsbrieven en is optioneel)</label>
           <div class="col-md-4">
                 <input type="text" name="reminderemail" class="form-control" id="inputReminderEmail" placeholder="Reminder E-mail" value="{{ old('reminderemail') }}">
             </div>
+            @if ($errors->has('reminderemail'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('reminderemail') }}</strong>
+                </span>
+            @endif
         </div>
-        <div class="form-group row">
-            <label for="inputFirstName" class="col-md-4 control-label">First Name</label>
+        <div class="form-group row {{ $errors->has('firstname') ? ' has-error' : '' }}">
+            <label for="inputFirstName" class="col-md-4 control-label">Voornaam</label>
           <div class="col-md-4">
-                <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="First Name" value="{{ old('firstname') }}">
+                <input type="text" name="firstname" class="form-control" id="inputFirstName" placeholder="Voornaam" value="{{ old('firstname') }}">
             </div>
+            @if ($errors->has('firstname'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('firstname') }}</strong>
+                </span>
+            @endif
         </div>
-        <div class="form-group row">
-            <label for="inputLastName" class="col-md-4 control-label">Last Name</label>
+        <div class="form-group row {{ $errors->has('lastname') ? ' has-error' : '' }}">
+            <label for="inputLastName" class="col-md-4 control-label">Achternaam</label>
           <div class="col-md-4">
-                <input type="text" name="lastname" class="form-control" id="inputLastName" placeholder="Last name" value="{{ old('lastname') }}">
+                <input type="text" name="lastname" class="form-control" id="inputLastName" placeholder="Achternaam" value="{{ old('lastname') }}">
             </div>
+            @if ($errors->has('lastname'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('lastname') }}</strong>
+                </span>
+            @endif
         </div>
-        <div class="form-group row">
-            <label for="inputPassword" class="col-md-4 control-label">Password</label>
+        <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
+            <label for="inputPassword" class="col-md-4 control-label">Wachtwoord</label>
           <div class="col-md-4">
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Wachtwoord">
             </div>
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
         </div>
-        <div class="form-group row">
-            <label for="inputVerifyPassword" class="col-md-4 control-label">Password verification</label>
+        <div class="form-group row {{ $errors->has('verifypassword') ? ' has-error' : '' }}">
+            <label for="inputVerifyPassword" class="col-md-4 control-label">Wachtwoordverificatie</label>
             <div class="col-md-4">
-                <input type="password" name="verifypassword" class="form-control" id="inputVerifyPassword" placeholder="Repeat your password">
+                <input type="password" name="verifypassword" class="form-control" id="inputVerifyPassword" placeholder="Herhaal je wachtwoord">
             </div>
+            @if ($errors->has('verifypassword'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('verifypassword') }}</strong>
+                </span>
+            @endif
         </div>
 
 

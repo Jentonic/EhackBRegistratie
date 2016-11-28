@@ -63,7 +63,7 @@
                     </div>
                 </nav>
                 <div class="text-center">
-                    <a href="#"><img src="../img/logo.png" alt="logo" id="logo"></a>
+                    <a href="{{url('/')}}"><img src="../img/logo.png" alt="logo" id="logo"></a>
                 </div>
                 @yield ('content')
             </div>
