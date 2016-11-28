@@ -29,6 +29,7 @@ class RegisterTeamRequest extends FormRequest
             'firstname' => 'required',
             'lastname' => 'required',
             'password' => 'required',
+            'verifypassword' => 'required|same:password',
             'teamname' => 'required|required',
             'gameid' => 'required|integer|exists:games,id',
             'teammembers' => 'required|array',

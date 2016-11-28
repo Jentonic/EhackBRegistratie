@@ -87,7 +87,7 @@
         <div class="form-group row">
             <label for="inputReminderEmail" class="col-md-4 control-label">Wachtwoordverificatie</label>
             <div class="col-md-4">
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Wachtwoordverificatie" required />
+                <input type="password" name="verifypassword" class="form-control" id="inputPassword" placeholder="Wachtwoordverificatie" required />
             </div>
         </div>
 
