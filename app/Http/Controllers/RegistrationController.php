@@ -252,7 +252,7 @@ class RegistrationController extends Controller
             $user->save();
             return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
         }
-        else if($user->confirmed = true){
+        else if(isset($user) && $user->confirmed == true){
           return view('registration.confirmation')->with('succ','Your account was already confirmed');
         }
         else{
@@ -466,7 +466,7 @@ class RegistrationController extends Controller
         */
 
         $token = $invite->token;
-        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name,'user' => $user, 'token'=>$token], function($message) use ($invite){
+        Mail::send(['html'=>'mail.invite'],['title' => $title, 'content' => $content, 'team' => $team->name, 'token'=>$token], function($message) use ($invite){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
             $message->subject('Je bent uitgenodigd voor een team op EhackB!');
             $message->replyTo('ehackb@ehackb.be', $name = null);
