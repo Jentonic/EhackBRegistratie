@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.timetable {
+    min-height: 80vh;
+    width: 100%;
+    text-align: center;
+}
+
+.timetable h2 {
+    font-size: 4em;
+    font-weight: bold;
+    color: #FFFCFA;
+}
+
+.tableitem {
+    margin: 12vh 0;
+}
+
+.tableitem.open .table {
+    display: block;
+    opacity: 1;
+}
+
+.tableitem h3 {
+    color: #3e3e3e;
+    font-size: 3em;
+    font-weight: bold;
+    background-color: #FFF;
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px 0 20px;
+    border-radius: 15px;
+    box-shadow: -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.tableitem a {
+    position: absolute;
+    left: 35vw;
+    margin-top: -20px;
+    width: 30vw;
+    padding: 10px 0;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 1.2em;
+    border-radius: 100px;
+    background: #FFBC55;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #FFBC55, #EEA247);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #FFBC55, #EEA247);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #FFBC55, #EEA247);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #FFBC55, #EEA247);
+    /* Standard syntax */
+    -webkit-transition: box-shadow 0.5s;
+    /* Safari */
+    transition: box-shadow 0.5s;
+}
+
+.timetable a:hover {
+    box-shadow: -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.tableitem .table {
+    margin: 0 auto;
+    z-index: -1;
+    width: 55%;
+    background-color: #FFF7F0;
+    -webkit-border-bottom-right-radius: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: none;
+    opacity: 0;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+
+.tableitem .table ul {
+    padding: 40px 0 30px;
+}
+
+.tableitem .table li {
+    padding: 10px;
+    list-style: none;
+    font-size: 1.2em;
+}
+
+.table .hour {
+    color: #EEA247;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.table .title {
+    color: #3e3e3e;
+    font-size: 1.2em;
+}
+
+.table .info {
+    width: 70%;
+    margin: 0 auto;
+    color: #898989;
+    font-size: 1em;
+    border-bottom: 1px solid #EEA247;
+    padding-bottom: 20px;
+}
+
+.table li:last-child .info {
+    border: none;
+    padding-bottom: 0;
+}
+
+@media screen and (max-width: 1050px) {
+    .tableitem h3 {
+        width: 80%;
+    }
+    .tableitem a {
+        position: absolute;
+        left: 30vw;
+        margin-top: -20px;
+        width: 40vw;
+    }
+    .tableitem .table {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .tableitem h3 {
+        width: 90%;
+    }
+    .tableitem a {
+        position: absolute;
+        left: 20vw;
+        margin-top: -20px;
+        width: 60vw;
+    }
+    .tableitem .table {
+        width: 80%;
+    }
+}

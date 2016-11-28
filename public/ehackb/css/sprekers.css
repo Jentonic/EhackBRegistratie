@@ -1,0 +1,150 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.sprekers {
+    width: 100%;
+    text-align: center;
+}
+
+.sprekers h2 {
+    font-size: 4em;
+    font-weight: bold;
+    color: #FFFCFA;
+    padding-bottom: 30px;
+}
+
+.lijstsprekers {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.spreker {
+    position: relative;
+    float: left;
+    width: 30%;
+    background-color: #FFF;
+    border-radius: 15px;
+    box-shadow: -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+    margin: 0 0 50px;
+    min-height: 700px;
+    max-height: 700px;
+    overflow-y: scroll;
+}
+
+.spreker a {
+    position: absolute;
+    left: 30%;
+    top: 210px;
+    width: 40%;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 1.2em;
+    border-radius: 100px;
+    background: #F2A698;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #F2A698, #EF816A);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #F2A698, #EF816A);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #F2A698, #EF816A);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #F2A698, #EF816A);
+    /* Standard syntax */
+    -webkit-transition: box-shadow 0.5s;
+    /* Safari */
+    transition: box-shadow 0.5s;
+    z-index: 100;
+}
+
+.spreker a:hover {
+    box-shadow: -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.spreker:nth-child(3n+2) {
+    margin: 0 5%;
+}
+
+.spreker img {
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.clear {
+    clear: left;
+}
+
+.spreker .name {
+    color: #EF816A;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 20px 5px 0 5px;
+    padding: 10px 0 0;
+}
+
+.spreker .hour {
+    color: #EF816A;
+    font-size: 1.2em;
+}
+
+.spreker .info {
+    margin: 40px;
+    text-align: left;
+}
+
+@media screen and (max-width: 1250px) {
+    .spreker {
+        width: 45%;
+    }
+    .spreker:nth-child(3n+2) {
+        margin: 0;
+    }
+    .spreker:nth-child(odd) {
+        margin-right: 10%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .spreker:nth-child(3n+2) {
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-bottom: 50px;
+    }
+    .spreker:nth-child(odd) {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .spreker {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .spreker:nth-child(3n+2) {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 50px;
+    }
+    .spreker:nth-child(odd) {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .spreker {
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+}
