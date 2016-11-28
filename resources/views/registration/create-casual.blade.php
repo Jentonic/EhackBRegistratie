@@ -89,7 +89,9 @@
         <div class="form-group row">
         @foreach($activities as $activity)
           <div class="checkbox col-md-6">
-            <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}} - Places left: {{$activity->maxUsers - $activity->users->count()}}</label>
+            <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}}
+              @if($activity->maxUsers != 9999) - Places left: {{ $activity->maxUsers - $activity->users->count() }} @endif
+            </label>
           </div>
         @endforeach
         </div>
