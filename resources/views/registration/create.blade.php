@@ -58,6 +58,40 @@
                     <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Wachtwoord" required />
                 </div>
             </div>
+        </div>
+
+        {{-- Activities --}}
+        <div class="col-md-4">
+            <h3>Activiteiten</h3>
+        </div>
+        @foreach($activities as $activity)
+            <div class="form-group row">
+                <div class="checkbox col-md-4">
+                    <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}} - Places left: {{$activity->maxUsers - $activity->users->count()}}</label>
+                </div>
+            </div>
+        @endforeach
+
+        {{-- options --}}
+        <div class="col-md-4">
+            <h3>Extra Opties</h3>
+        </div>
+        @foreach($options as $option)
+            <div class="form-group row">
+                <div class="checkbox col-md-4">
+                    <label><input type="checkbox" name="options[]"value="{{$option->id}}">{{$option->name}} - Price: €{{ number_format($option->price,2) }}</label>
+                </div>
+            </div>
+        @endforeach
+
+        <div class="form-group row">
+            <label for="inputGameID" class="col-sm-2 col-form-label">Game</label>
+            <div class="col-sm-10">
+                <select name="gameid" id="inputGameID" class="form-control">
+                    @foreach(App\Game::all() as $game)
+                        <option value={{$game->id}}>{{$game->name}}</option>
+                    @endforeach
+                </select>
             <div class="form-group row">
                 <div class="col-sm-10">
                     <input type="password" name="password_confirmation" class="form-control" id="inputVerifyPassword" placeholder="Herhaal je wachtwoord" required>
@@ -120,7 +154,7 @@
             @endforeach
         </div>
 
-        <button id="submitbutton" name="submitbutton" type="button" class="btn btn-primary">Submit</button>
+        <button id="submitbutton" name="submitbtton" type="button" class="btn btn-primary">Submit</button>
     </form>
 @stop
 

@@ -153,6 +153,35 @@ class RegistrationController extends Controller
         $game = Game::where('id',$request->input('gameID'));
         $maxTeamsReached = Game::where('id', $game->id)->first()->maxTeams < $game->teams()->count();
 
+        if ($request->has('activities')) {
+            $activities = $request->input('activities');
+            foreach ($activities as $activity) {
+                $ac = Activity::find($activity);
+                if (!$ac->users()->count() < $ac->maxUsers) {
+                    $error = 'Maximum amount of people reached for ' . $ac->name;
+                    $user->delete();
+                    return redirect()->back()->with('err', $error);
+                }
+            }
+            foreach ($activities as $activity) {
+                $ac = Activity::find($activity);
+                if (!is_null($ac)) {
+                    $ac->users()->attach($user);
+                }
+            }
+        }
+
+        if ($request->has('options')) {
+            $options = $request->input('options');
+            foreach ($options as $option) {
+                $op = Option::find($option);
+                if (!is_null($op)) {
+                    $op->users()->attach($user);
+                }
+            }
+        }
+
+
         //check if user wants new team and if user succesfully saved
         if(!$request->has('casual') && !$request->has('teamID') && $savedUser && $maxTeamsReached){
 
@@ -250,19 +279,11 @@ class RegistrationController extends Controller
     {
         $invite = PendingInvite::where('token', $token)->first();
 
-        $activities;
-        $collection = Activity::all();
-        foreach ($collection as $ac) {
-            if ($ac->users()->count() < $ac->maxUsers) {
-                $activities[] = $ac;
-            }
-        }
-
 
         if (!empty($invite)) {
-            return view('registration.create-mail')->with('activities', collect($activities))->with('invite', $invite)->with('team', $invite->team)->with('options', Option::all());
+            return view('registration.create-mail')->with('activities', $this->getAvailableActivities())->with('invite', $invite)->with('team', $invite->team)->with('options', Option::all());
         } else {
-            return view('registration.mail-error')->with('activities', collect($activities))->with('options', Option::all());
+            return view('registration.mail-error')->with('activities', $this->getAvailableActivities())->with('options', Option::all());
         }
     }
 
@@ -552,7 +573,4 @@ class RegistrationController extends Controller
         return collect($activities);
     }
 
-    private function getAvailableOptions(){
-
-    }
 }
