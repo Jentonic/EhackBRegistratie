@@ -11,7 +11,7 @@ $(function(){
         var teammembers = $("#game"+gameID+"players").val();
         
         if(teammembers!=1) {
-            for (var i = 0; i < teammembers; i++) {
+            for (var i = 0; i < teammembers-1; i++) {
                 var html2 = "<input type='text' class='form-control' placeholder='E-mail' name='teammembers[]'>";
                 $("#members").append(html2);
             }

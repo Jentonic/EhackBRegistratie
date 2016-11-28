@@ -142,7 +142,6 @@
                         <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
                         <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
                         <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
-                        <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
                     </div>
                 </div>
             </div>
