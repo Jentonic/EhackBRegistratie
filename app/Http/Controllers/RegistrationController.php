@@ -35,7 +35,7 @@ class RegistrationController extends Controller
             $options = array();
 
             if (!empty($user->activities())) {
-                $activities = $user->activities()->get();
+                $activities = $user->activities()->orderBy('name','asc')->get();
             }
 
             if (!empty($user->options())) {
@@ -68,7 +68,7 @@ class RegistrationController extends Controller
     public function create()
     {
         $activities;
-        $collection = Activity::all();
+        $collection = Activity::orderBy('name','asc')->get();
         foreach ($collection as $ac) {
             if ($ac->users()->count() < $ac->maxUsers) {
                 $activities[] = $ac;
@@ -80,7 +80,7 @@ class RegistrationController extends Controller
     public function createCasual()
     {
         $activities;
-        $collection = Activity::all();
+        $collection = Activity::orderBy('name','asc')->get();
         foreach ($collection as $ac) {
             if ($ac->users()->count() < $ac->maxUsers) {
                 $activities[] = $ac;
@@ -118,7 +118,7 @@ class RegistrationController extends Controller
             $activities = null;
 
             if (!isEmpty($user->activities())) {
-                $activities = $user->activities()->get();
+                $activities = $user->activities()->orderBy('name','asc')->get();
             }
 
             if ($user->hasTeam) {
@@ -488,7 +488,7 @@ class RegistrationController extends Controller
 
     private function getAvailableActivities(){
         $activities=array();
-        $collection = Activity::all();
+        $collection = Activity::orderBy('name','asc')->get();
         foreach ($collection as $ac) {
             if ($ac->users()->count() < $ac->maxUsers) {
                 $activities[] = $ac;
