@@ -250,13 +250,13 @@ class RegistrationController extends Controller
         if(isset($user) && $user->confirmed == false){
             $user->confirmed = true;
             $user->save();
-            return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
+            return view('registration.confirmation')->with('succ','Je account was geconfirmeerd. Veel plezier bij EhackB!');
         }
         else if(isset($user) && $user->confirmed == true){
-          return view('registration.confirmation')->with('succ','Your account was already confirmed');
+          return view('registration.confirmation')->with('succ','Je account was al geconfirmeerd.');
         }
         else{
-            return view('registration.confirmation')->with('err','We could not confirm your account with this token.');
+            return view('registration.confirmation')->with('err','We konden je account niet confirmeren met deze token.');
         }
     }
 
