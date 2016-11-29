@@ -124,7 +124,6 @@ body {
 @media screen and (max-width: 1250px) {
     .game {
         width: 45%;
-        height: auto;
     }
     .games h2 {
         font-size: 3em;
@@ -163,7 +162,6 @@ body {
     }
     .game {
         width: 70%;
-        height: auto;
         margin-left: 15%;
         margin-right: 15%;
     }
@@ -182,8 +180,6 @@ body {
 @media screen and (max-width: 650px) {
     .game:nth-child(3n+2) {
         margin: 0;
-        margin-left: 0;
-        margin-right: 0;
         margin-bottom: 50px;
     }
     .games h2 {
@@ -194,7 +190,6 @@ body {
         margin-right: 0;
     }
     .game {
-        height: auto;
         width: 100%;
         margin-left: 0;
         margin-right: 0;

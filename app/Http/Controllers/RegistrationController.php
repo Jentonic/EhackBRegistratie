@@ -67,26 +67,50 @@ class RegistrationController extends Controller
 
     public function create()
     {
-        $activities;
+        $activities = array();
         $collection = Activity::orderBy('name','asc')->get();
         foreach ($collection as $ac) {
-            if ($ac->users()->count() < $ac->maxUsers) {
-                $activities[] = $ac;
-            }
+          if ($ac->users()->count() < $ac->maxUsers) {
+            $activities[] = $ac;
+          }
         }
-        return view('registration.create')->with('activities', collect($activities))->with('options', Option::all());
+
+        $talks = array();
+        $workshops = array();
+
+        foreach ($collection as $activity) {
+          if ($activity->activityGroupID == 1) {
+            array_push($talks, $activity);
+          } else {
+            array_push($workshops, $activity);
+          }
+        }
+
+        return view('registration.create')->with('talks', $talks)->with('workshops', $workshops)->with('options', Option::all());
     }
 
     public function createCasual()
     {
-        $activities;
+        $activities = array();
         $collection = Activity::orderBy('name','asc')->get();
         foreach ($collection as $ac) {
-            if ($ac->users()->count() < $ac->maxUsers) {
-                $activities[] = $ac;
-            }
+          if ($ac->users()->count() < $ac->maxUsers) {
+            $activities[] = $ac;
+          }
         }
-        return view('registration.create-casual')->with('activities', collect($activities))->with('options', Option::all());
+
+        $talks = array();
+        $workshops = array();
+
+        foreach ($collection as $activity) {
+          if ($activity->activityGroupID == 1) {
+            array_push($talks, $activity);
+          } else {
+            array_push($workshops, $activity);
+          }
+        }
+
+        return view('registration.create-casual')->with('talks', $talks)->with('workshops', $workshops)->with('options', Option::all());
     }
 
     public function createPublic()
@@ -100,12 +124,31 @@ class RegistrationController extends Controller
             }
         }
 
+        $activities = array();
+        $collection = Activity::orderBy('name','asc')->get();
+        foreach ($collection as $ac) {
+          if ($ac->users()->count() < $ac->maxUsers) {
+            $activities[] = $ac;
+          }
+        }
+
+        $talks = array();
+        $workshops = array();
+
+        foreach ($collection as $activity) {
+          if ($activity->activityGroupID == 1) {
+            array_push($talks, $activity);
+          } else {
+            array_push($workshops, $activity);
+          }
+        }
+
         $view = view('registration.create-public')->with('games', $games);
         if (!empty($teams)) {
             $view->with('teams', collect($teams));
         }
 
-        $view->with('activities', $this->getAvailableActivities());
+        $view->with('talks', $talks)->with('workshops', $workshops);
 
         return $view->with('options', Option::all());
     }
@@ -264,11 +307,29 @@ class RegistrationController extends Controller
     {
         $invite = PendingInvite::where('token', $token)->first();
 
+        $activities = array();
+        $collection = Activity::orderBy('name','asc')->get();
+        foreach ($collection as $ac) {
+          if ($ac->users()->count() < $ac->maxUsers) {
+            $activities[] = $ac;
+          }
+        }
+
+        $talks = array();
+        $workshops = array();
+
+        foreach ($collection as $activity) {
+          if ($activity->activityGroupID == 1) {
+            array_push($talks, $activity);
+          } else {
+            array_push($workshops, $activity);
+          }
+        }
 
         if (!empty($invite)) {
-            return view('registration.create-mail')->with('activities', $this->getAvailableActivities())->with('invite', $invite)->with('team', $invite->team)->with('options', Option::all());
+            return view('registration.create-mail')->with('talks', $talks)->with('workshops', $workshops)->with('invite', $invite)->with('team', $invite->team)->with('options', Option::all());
         } else {
-            return view('registration.mail-error')->with('activities', $this->getAvailableActivities())->with('options', Option::all());
+            return view('registration.mail-error')->with('talks', $talks)->with('workshops', $workshops)->with('options', Option::all());
         }
     }
 

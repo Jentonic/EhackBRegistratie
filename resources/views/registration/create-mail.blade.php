@@ -83,10 +83,21 @@
           <h3>Activiteiten</h3>
         </div>
         <div class="col-md-4">
-          @foreach($activities as $activity)
+          <h3 class="h3left">Talks</h3>
+          @foreach($talks as $talk)
+
             <div class="checkbox">
-              <label><input type="checkbox" name="activities[]"value="{{$activity->id}}">{{$activity->name}}
-                @if($activity->maxUsers != 9999) - Plaatsen: {{ $activity->maxUsers - $activity->users->count() }} @endif
+              <label><input type="checkbox" name="activities[]"value="{{$talk->id}}">{{$talk->name}}
+                @if($talk->maxUsers != 9999) - Plaatsen: {{ $talk->maxUsers - $talk->users->count() }} @endif
+              </label>
+            </div>
+          @endforeach
+
+          <h3 class="h3left">Workshops</h3>
+          @foreach($workshops as $workshop)
+            <div class="checkbox">
+              <label><input type="checkbox" name="activities[]"value="{{$workshop->id}}">{{$workshop->name}}
+                @if($workshop->maxUsers != 9999) - Plaatsen: {{ $workshop->maxUsers - $workshop->users->count() }} @endif
               </label>
             </div>
           @endforeach
@@ -96,7 +107,7 @@
       <!-- Options -->
       <div class="form-group row">
         <div class="col-md-4">
-          <h3>Extra Opties</h3>
+          <h3 class="h3antifix">Extra Opties</h3>
         </div>
         <div class="col-md-4">
           @foreach($options as $option)

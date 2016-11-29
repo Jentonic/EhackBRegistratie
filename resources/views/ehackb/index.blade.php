@@ -122,11 +122,17 @@
                         <img src="ehackb/img/sprekers/hans_ameel.png" alt="Hans" class="thumbnail thumbnail-lineup">
                         <a href="{{url('/registercasual')}}">Doe mee</a>
                         <h3 class="name">Hans Ameel</h3>
-                        <p class="title">temp</p>
+                        <p class="title">Contactless hacking</p>
                         <p class="hour">18:45-19:45 - AUDI 4</p>
                         <div class="scrolloverflow">
-                            <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p class="info">
+                                Docent aan de Howest
+                                <br /><br />
+                                Overzicht security concepten, Risk / Vulnerabilities
+                                <br /><br />
+                                Voorbeelden over uitgevoerde analyses in de ICS (industrial control systems) omgevingen (PLC's, industrie)
+                                <br /><br />
+                                Voorbeelden over contactloze communicatie, NFC, rfID, Sub-GHz toepassingen</p>
                         </div>
                     </section>
                     <section class="spreker">
