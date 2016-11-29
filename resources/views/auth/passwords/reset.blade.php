@@ -3,7 +3,6 @@
 @section('content')
     <div class="col-md-10 col-md-offset-1">
         <div class="group ehackbg">
-            <center><img src="../img/logo.png" alt="logo" id="logo"></center>
             <h2>Wachtwoord resetten</h2>
             <div class="line"></div>
 

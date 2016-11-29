@@ -132,7 +132,11 @@ body {
 }
 
 @media screen and (max-width: 1050px) {
+    .timetable h2 {
+        font-size: 3em;
+    }
     .tableitem h3 {
+        font-size: 2em;
         width: 80%;
     }
     .tableitem a {
@@ -147,7 +151,11 @@ body {
 }
 
 @media screen and (max-width: 900px) {
+    .timetable h2 {
+        font-size: 3em;
+    }
     .tableitem h3 {
+        font-size: 2em;
         width: 90%;
     }
     .tableitem a {

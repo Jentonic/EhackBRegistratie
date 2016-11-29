@@ -11,6 +11,10 @@ article#locatie .contentLocatie {
     margin: 0 auto;
 }
 
+article#locatie .contentLocatie .loccontainer {
+    margin: 0 30px;
+}
+
 article#locatie .contentLocatie h2 {
     font-size: 4em;
     font-weight: bold;
@@ -92,22 +96,27 @@ article#locatie section.public {
     margin: 0 5%;
 }
 
+article#locatie section.car p {
+    margin: 0;
+}
+
 article#locatie h3 {
     margin-top: 50px;
     margin-bottom: 20px;
-    color: #3e3e3e;
-    font-size: 1.2em;
+    color: #7CC3FA;
+    font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 article#locatie h4 {
-    margin: 0 40px;
+    margin: 0;
+    text-align: left;
 }
 
 article#locatie p {
-    text-align: center;
-    margin: 10px 40px;
+    text-align: left;
+    margin: 10px 0;
 }
 
 article#locatie section.map {
@@ -123,12 +132,18 @@ article#locatie section.map {
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
 }
 
+.map iframe {
+    width: 100%;
+    display: block;
+    pointer-events: none;
+    position: relative;
+}
+
 @media screen and (max-width: 1250px) {
     article#locatie section {
-        height: inherit;
         width: 96%;
         margin: 40px 2%;
-        padding-bottom: 40px;
+        height: auto;
         float: left;
         background-color: #FFF;
         border-radius: 15px;
@@ -136,12 +151,32 @@ article#locatie section.map {
         -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
         box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
     }
+    article#locatie .contentLocatie {
+        width: 90%;
+    }
+    article#locatie .contentLocatie h2 {
+        font-size: 3em;
+    }
+    article#locatie .contentLocatie .loccontainer {
+        margin: 0 30px 40px;
+    }
     article#locatie section.public {
         margin: 40px 2%;
     }
     article#locatie section.map {
         width: 96%;
+        height: 500px;
         margin: 40px 2%;
+    }
+    .map iframe {
+        width: 100%;
+        display: block;
+        pointer-events: none;
+        position: relative;
+        border-radius: 15px;
+        box-shadow: -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
     }
     article#locatie section img.goButton1:hover {
         -webkit-transform: rotate(90deg);
@@ -149,20 +184,6 @@ article#locatie section.map {
     }
     article#locatie section img.goButton2:hover {
         animation: bounce 1s;
-    }
-    @keyframes bounce {
-        0%, 20%, 60%, 100% {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-        }
-        40% {
-            -webkit-transform: translateY(15px);
-            transform: translateY(15px);
-        }
-        80% {
-            -webkit-transform: translateY(10px);
-            transform: translateY(10px);
-        }
     }
     article#locatie section img.goButton3:hover {
         -webkit-transform: rotate(-90deg);

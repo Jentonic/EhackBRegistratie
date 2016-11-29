@@ -34,15 +34,14 @@ body {
     -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
     margin: 0 0 50px;
-    min-height: 700px;
-    max-height: 700px;
-    overflow-y: scroll;
+    height: 700px;
+    overflow: hidden;
 }
 
 .spreker a {
     position: absolute;
     left: 30%;
-    top: 210px;
+    top: 225px;
     width: 40%;
     padding: 10px 0;
     text-decoration: none;
@@ -76,7 +75,9 @@ body {
 }
 
 .spreker img {
+    object-fit: cover;
     width: 100%;
+    height: 250px;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
 }
@@ -93,19 +94,49 @@ body {
     padding: 10px 0 0;
 }
 
+.spreker .title {
+    margin: 0 40px;
+}
+
 .spreker .hour {
     color: #EF816A;
     font-size: 1.2em;
 }
 
 .spreker .info {
-    margin: 40px;
     text-align: left;
+}
+
+.scrolloverflow {
+    position: absolute;
+    margin: 0 30px;
+    bottom: 40px;
+    height: 255px;
+    overflow-y: scroll;
+}
+
+.scrollindicator {
+    font-size: 0.4em;
+    position: absolute;
+    bottom: 18px;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.spreker .info::-webkit-scrollbar {
+    display: none;
 }
 
 @media screen and (max-width: 1250px) {
     .spreker {
         width: 45%;
+    }
+    .lijstsprekers {
+        width: 90%;
+    }
+    .sprekers h2 {
+        font-size: 3em;
     }
     .spreker:nth-child(3n+2) {
         margin: 0;
@@ -121,6 +152,9 @@ body {
         margin-right: 15%;
         margin-bottom: 50px;
     }
+    .sprekers h2 {
+        font-size: 3em;
+    }
     .spreker:nth-child(odd) {
         margin-left: 15%;
         margin-right: 15%;
@@ -134,17 +168,30 @@ body {
 
 @media screen and (max-width: 650px) {
     .spreker:nth-child(3n+2) {
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 50px;
     }
+    .sprekers h2 {
+        font-size: 3em;
+    }
     .spreker:nth-child(odd) {
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 0;
+        margin-right: 0;
     }
     .spreker {
-        width: 96%;
-        margin-left: 2%;
-        margin-right: 2%;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .scrolloverflow {
+        position: inherit;
+        height: auto;
+        margin: 10px 30px 30px 30px;
+        bottom: 0;
+    }
+    .scrollindicator {
+        display: none;
     }
 }

@@ -1,6 +1,6 @@
 $(function() {
     var visible = 0;
-    $("#mainMenu .right li a").on("click", function(e) {
+    $("#mainMenu .right li.mobil_click a").on("click", function(e) {
         e.preventDefault();
         if ($($(this).attr("href"))) {
             $("html, body").animate({

@@ -3,29 +3,6 @@
     margin: 0;
 }
 
-#registratie a{
-  width: 40%;
-  padding: 10px 50px 10px 50px;
-  text-decoration: none;
-  color: #FFF;
-  font-size: 1.5em;
-  border-radius: 100px;
-  background: #76B9A2;
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #76B9A2, #65A59E);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #76B9A2, #65A59E);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #76B9A2, #65A59E);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #76B9A2, #65A59E);
-  /* Standard syntax */
-  -webkit-transition: box-shadow 0.5s;
-  /* Safari */
-  transition: box-shadow 0.5s;
-  z-index: 100;
-}
-
 body {
     font-family: 'Quicksand', sans-serif;
 }
@@ -56,9 +33,8 @@ body {
     -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
     margin: 0 0 50px;
-    min-height: 700px;
-    max-height: 700px;
-    overflow-y: scroll;
+    height: 700px;
+    overflow-y: hidden;
     position: relative;
 }
 
@@ -114,7 +90,7 @@ body {
     color: #6FABA4;
     font-size: 2em;
     font-weight: bold;
-    margin: 20px 5px 0;
+    margin: 20px 10% 0 10%;
     padding: 10px 0 0;
 }
 
@@ -124,19 +100,51 @@ body {
 }
 
 .game .info {
-    margin: 30px 40px 40px;
     text-align: left;
+}
+
+.game ul .info {
+    padding: 0;
+    margin: 0;
+}
+
+.game .info li {
+    list-style: none;
+}
+
+.game:nth-of-type(7) {
+    margin-left: 17.5%
+}
+
+.game:nth-of-type(8) {
+    margin: 0;
+    margin-left: 5%;
 }
 
 @media screen and (max-width: 1250px) {
     .game {
         width: 45%;
+        height: auto;
+    }
+    .games h2 {
+        font-size: 3em;
+    }
+    .lijstgames {
+        width: 90%;
+        margin: 0 auto;
     }
     .game:nth-child(3n+2) {
         margin: 0;
     }
     .game:nth-child(odd) {
         margin-right: 10%;
+    }
+    .game:nth-of-type(7) {
+        margin-left: 0;
+        margin-right: 10%;
+    }
+    .game:nth-of-type(8) {
+        margin-left: 0;
     }
 }
 
@@ -146,11 +154,25 @@ body {
         margin-right: 15%;
         margin-bottom: 50px;
     }
+    .games h2 {
+        font-size: 3em;
+    }
     .game:nth-child(odd) {
         margin-left: 15%;
         margin-right: 15%;
     }
     .game {
+        width: 70%;
+        height: auto;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .game:nth-of-type(7) {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .game:nth-of-type(8) {
         width: 70%;
         margin-left: 15%;
         margin-right: 15%;
@@ -160,17 +182,31 @@ body {
 @media screen and (max-width: 650px) {
     .game:nth-child(3n+2) {
         margin: 0;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 50px;
     }
+    .games h2 {
+        font-size: 3em;
+    }
     .game:nth-child(odd) {
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 0;
+        margin-right: 0;
     }
     .game {
-        width: 96%;
-        margin-left: 2%;
-        margin-right: 2%;
+        height: auto;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .game:nth-of-type(7) {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .game:nth-of-type(8) {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
