@@ -73,8 +73,8 @@
       <div class="col-md-4">
         <h3>Team</h3>
       </div>
-      <div id="teamholder" class="form-group row antifixfix">
-        <p>Je gaat jezelf bij dit team voegen: {{ $team->name }}</p>
+      <div id="teamholder" class="form-group row">
+        <p class="antifixfix">Je gaat jezelf bij dit team voegen: {{ $team->name }}</p>
       </div>
 
       <!-- Activities -->
