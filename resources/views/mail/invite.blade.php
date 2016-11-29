@@ -1,6 +1,5 @@
 <html>
 <head>
-    <link href="{{ asset('bower/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">

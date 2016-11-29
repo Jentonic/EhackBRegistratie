@@ -247,7 +247,7 @@ class RegistrationController extends Controller
 
     public function userConfirmation($token){
         $user = User::where('confirmationToken',$token)->first();
-        if(isset($user) && $user->confirmed = false){
+        if(isset($user) && $user->confirmed == false){
             $user->confirmed = true;
             $user->save();
             return view('registration.confirmation')->with('succ','Your account is confirmed. Enjoy EhackB!');
