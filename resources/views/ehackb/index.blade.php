@@ -324,7 +324,9 @@
                             </p>challenges.
                             <br>
                             <br>
-                            <p>En last but not least: net zoals vorige editie zullen we weer iets rond Virtual Reality doen. Meer info volgt nog…</p>
+                            <p>Net zoals op de vorige editie zal er ook wat te doen zijn rond Virtual Reality. Ga hiervoor zeker eens langs op de Create stand.</p>
+                            <br>
+                            <p>En last but not least: er is natuurlijk ook catering voorzien, inclusief een gezellige bar mét een streekbiertje, en dit alles aan studentvriendelijke prijzen</p>
                         </li>
                     </ul>
                 </div>
@@ -562,6 +564,22 @@
         <img src="ehackb/img/spon/switchpoint-logo-color-no_border-final.jpg" alt="switch">
     </div>
 </footer>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.hack.ehb.be","*.ehackb.be"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.arco.me/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.arco.me/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
 </body>
 
 </html>
