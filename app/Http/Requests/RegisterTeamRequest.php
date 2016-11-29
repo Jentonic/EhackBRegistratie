@@ -25,10 +25,11 @@ class RegisterTeamRequest extends FormRequest
     {
         return [
             'email' => 'required|email|unique:users,email|unique:pendingInvites,email',
-            'reminderemail' => 'email',
+            'reminderemail' => 'email|unique:users,reminderMail',
             'firstname' => 'required',
             'lastname' => 'required',
             'password' => 'required',
+            'verifypassword' => 'required|same:password',
             'teamname' => 'required|required',
             'gameid' => 'required|integer|exists:games,id',
             'teammembers' => 'required|array',
