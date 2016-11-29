@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.register')
 
 @section('content')
 <div class="alert alert-danger">
