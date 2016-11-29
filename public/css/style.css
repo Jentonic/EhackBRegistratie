@@ -70,6 +70,14 @@ h3{
     margin-top: 20px;
 }
 
+.halfantifixfix {
+    margin-top: 10px;
+}
+
+.afix {
+    margin-top: -20px;
+}
+
 .line{
     min-height: 4px;
     width: 40px;

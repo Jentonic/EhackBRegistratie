@@ -97,9 +97,8 @@
                 <h3>Activiteiten</h3>
             </div>
             <div class="col-md-4">
-                <h3 class="h3left">Talks</h3>
+                <h3 class="h3left">Keynotes</h3>
                 @foreach($talks as $talk)
-
                     <div class="checkbox">
                         <label><input type="checkbox" name="activities[]"value="{{$talk->id}}">{{$talk->name}}
                             @if($talk->maxUsers != 9999) - Plaatsen: {{ $talk->maxUsers - $talk->users->count() }} @endif
@@ -136,7 +135,7 @@
             <h3>Game</h3>
         </div>
         <div class="form-group row">
-            <div class="col-md-4">
+            <div class="col-md-4 halfantifixfix">
                 <select name="gameid" id="inputGameID" class="form-control">
                     @foreach(App\Game::all() as $game)
                         <option value={{$game->id}}>{{$game->name}}</option>
@@ -151,7 +150,7 @@
                 <h3>Team</h3>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 halfantifixfix">
                 <input type="text" name="teamname" class="form-control" id="inputTeamName" placeholder="Teamnaam">
                 <div id="members">
                     <div id="team">
@@ -161,8 +160,8 @@
                         <input type="text" class="form-control" placeholder="E-mail" name="teammembers[]">
                     </div>
                 </div>
+                <div class="alert-info small">Opgepast: als niet alle mailvelden ingevuld zijn wordt het team publiek gemaakt!</div>
             </div>
-
         </div>
 
         <button id="submitbutton" name="submitbtton" type="button" class="btn btn-primary">Submit</button>

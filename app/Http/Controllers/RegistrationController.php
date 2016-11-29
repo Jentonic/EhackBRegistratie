@@ -346,7 +346,7 @@ class RegistrationController extends Controller
         $savedUser = $user->save(); // create user
 
         if (!$savedUser) {
-            return redirect()->back()->with('err', 'Could not save the user.');
+            return redirect()->back()->with('err', 'Kon de gebruiker niet opslaan.');
         }
 
         if ($request->has('activities')) {
@@ -354,7 +354,7 @@ class RegistrationController extends Controller
             foreach ($activities as $activity) {
                 $ac = Activity::find($activity);
                 if ($ac->users()->count() >= $ac->maxUsers) {
-                    $error = 'Maximum amount of people reached for ' . $ac->name;
+                    $error = 'Maximum aantal personen voor activiteit bereikt: ' . $ac->name;
                     $user->delete();
                     return redirect()->back()->with('err', $error);
                 }
@@ -396,7 +396,7 @@ class RegistrationController extends Controller
         $savedUser = $user->save(); // create user
 
         if (!$savedUser) {
-            return redirect()->back()->with('err', 'Could not save the user.');
+            return redirect()->back()->with('err', 'Kon de gebruiker niet opslaan.');
         }
 
         if ($request->has('team')) {
@@ -409,11 +409,11 @@ class RegistrationController extends Controller
                     }
                 } else {
                     $user->delete();
-                    return redirect()->back()->with('err', 'This team is full');
+                    return redirect()->back()->with('err', 'Dit team is vol.');
                 }
             } else {
                 $user->delete();
-                return redirect()->back()->with('err', 'Could not find this team');
+                return redirect()->back()->with('err', 'Kon geen team vinden.');
             }
         }
 
@@ -422,7 +422,7 @@ class RegistrationController extends Controller
             foreach ($activities as $activity) {
                 $ac = Activity::find($activity);
                 if ($ac->users()->count() >= $ac->maxUsers) {
-                    $error = 'Maximum amount of people reached for ' . $ac->name;
+                    $error = 'Maximum aantal personen voor activiteit bereikt: ' . $ac->name;
                     $user->delete();
                     return redirect()->back()->with('err', $error);
                 }
@@ -468,7 +468,7 @@ class RegistrationController extends Controller
 
 
         if (!$savedUser) {
-            return redirect()->back()->with('err', 'Could not save the user.');
+            return redirect()->back()->with('err', 'Kon de gebruiker niet opslaan.');
         }
 
         if ($request->has('activities')) {
@@ -476,7 +476,7 @@ class RegistrationController extends Controller
             foreach ($activities as $activity) {
                 $ac = Activity::find($activity);
                 if ($ac->users()->count() >= $ac->maxUsers) {
-                    $error = 'Maximum amount of people reached for ' . $ac->name;
+                    $error = 'Maximum aantal personen voor activiteit bereikt   : ' . $ac->name;
                     $user->delete();
                     return redirect()->back()->with('err', $error);
                 }

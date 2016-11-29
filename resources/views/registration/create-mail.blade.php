@@ -83,9 +83,8 @@
           <h3>Activiteiten</h3>
         </div>
         <div class="col-md-4">
-          <h3 class="h3left">Talks</h3>
+          <h3 class="h3left">Keynotes</h3>
           @foreach($talks as $talk)
-
             <div class="checkbox">
               <label><input type="checkbox" name="activities[]"value="{{$talk->id}}">{{$talk->name}}
                 @if($talk->maxUsers != 9999) - Plaatsen: {{ $talk->maxUsers - $talk->users->count() }} @endif

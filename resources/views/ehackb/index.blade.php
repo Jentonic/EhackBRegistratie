@@ -52,7 +52,7 @@
   <article id="intro">
     <img src="ehackb/img/logo.png" alt="EHACKB 4">
     <p>16 &amp; 17 DECEMBER</p>
-    <p>GAME | HACK | LEARN | CREATE</p>
+    <p>HACK | LEARN | CREATE | GAME</p>
   </article>
   <article id="sprekers">
     <div class="sprekers">
@@ -454,54 +454,6 @@
           </ul>
         </div>
       </section>
-      <section class="tableitem gaming">
-        <h3>GAMING</h3>
-        <a href="#">Toon programma</a>
-        <div class="table">
-          <ul>
-            <li>
-              <p class="hour">20.00 - ...</p>
-              <p class="title">League of Legends</p>
-              <p class="info">Game competition</p>
-            </li>
-            <li>
-              <p class="hour">20:00 - ...</p>
-              <p class="title">Counter strike Global Offensive</p>
-              <p class="info">Game competition</p>
-            </li>
-            <li>
-              <p class="hour">20:00 - ...</p>
-              <p class="title">Overwatch</p>
-              <p class="info">Game competition</p>
-            </li>
-            <li>
-              <p class="hour">20:00 - ...</p>
-              <p class="title">Super Smash Bros</p>
-              <p class="info">Game competition</p>
-            </li>
-            <li>
-              <p class="hour">20:00 - ...</p>
-              <p class="title">FIFA</p>
-              <p class="info">Game competition</p>
-            </li>
-            <li>
-              <p class="hour">23:00 - ...</p>
-              <p class="title">Heartstone</p>
-              <p class="info">Game competition</p>
-            </li>
-            <li>
-              <p class="hour">23:00 - ...</p>
-              <p class="title">Rocket League</p>
-              <p class="info">Game competition</p>
-            </li>
-            <li>
-              <p class="hour">From start to finish</p>
-              <p class="title">All games</p>
-              <p class="info">Casual gaming</p>
-            </li>
-          </ul>
-        </div>
-      </section>
       <section class="tableitem workshops">
         <h3>WORKSHOPS</h3>
         <a href="#">Toon programma</a>
@@ -585,6 +537,54 @@
               <p class="info">Frederic is onderzoeker binnen het SeCloud project, en verbonden aan het kenniscentrum
                 “Design & Technology for Mobile & Wearable” van het departement Design & Technologie van de
                 Erasmushogeschool.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="tableitem gaming">
+        <h3>GAMING</h3>
+        <a href="#">Toon programma</a>
+        <div class="table">
+          <ul>
+            <li>
+              <p class="hour">20.00 - ...</p>
+              <p class="title">League of Legends</p>
+              <p class="info">Game competition</p>
+            </li>
+            <li>
+              <p class="hour">20:00 - ...</p>
+              <p class="title">Counter strike Global Offensive</p>
+              <p class="info">Game competition</p>
+            </li>
+            <li>
+              <p class="hour">20:00 - ...</p>
+              <p class="title">Overwatch</p>
+              <p class="info">Game competition</p>
+            </li>
+            <li>
+              <p class="hour">20:00 - ...</p>
+              <p class="title">Super Smash Bros</p>
+              <p class="info">Game competition</p>
+            </li>
+            <li>
+              <p class="hour">20:00 - ...</p>
+              <p class="title">FIFA</p>
+              <p class="info">Game competition</p>
+            </li>
+            <li>
+              <p class="hour">23:00 - ...</p>
+              <p class="title">Heartstone</p>
+              <p class="info">Game competition</p>
+            </li>
+            <li>
+              <p class="hour">23:00 - ...</p>
+              <p class="title">Rocket League</p>
+              <p class="info">Game competition</p>
+            </li>
+            <li>
+              <p class="hour">From start to finish</p>
+              <p class="title">All games</p>
+              <p class="info">Casual gaming</p>
             </li>
           </ul>
         </div>
