@@ -4,7 +4,7 @@
 <body>
 <div class="wrapper">
     <h1 class="cover-heading">{!! $title !!}</h1>
-    <p class="lead">Bedankt voor jou deelname aan EhackB!</p>
+    <p class="lead">Bedankt voor uw deelname aan EhackB!</p>
     @if(!$user->options->isEmpty())
     <p>U heeft de volgende opties aangeduid:</p>
 		<ul>
