@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="alert alert-danger">
-    <p>Token was not found, please contact game@ehb.be for further support</p>
+    <p>Invite token niet gevonden, contacteer game@ehb.be voor hulp.</p>
 </div>
 @stop

@@ -259,12 +259,12 @@ class RegistrationController extends Controller
             } else {
                 $team->delete();
                 $user->delete();
-                return redirect()->back()->with('err', 'Could not save the team.');
+                return redirect()->back()->with('err', 'Kon het team niet opslaan.');
             }
         } else {
-            return redirect()->back()->with('err', 'Could not save the user.');
+            return redirect()->back()->with('err', 'Kon de gebruiker niet opslaan.');
         }
-        return redirect("/login");
+        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
     }
 
     public function update(Request $request)
@@ -379,12 +379,11 @@ class RegistrationController extends Controller
 
         //sendmail
         $this->mailConfirm($user);
-        return redirect('/login');
+        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
     }
 
     public function storePublicTeam(RegisterPublicRequest $request)
     {
-
         //creating user
         $user = new User();
         $user->email = $request->input('email');
@@ -447,7 +446,7 @@ class RegistrationController extends Controller
 
         //sendmail
         $this->mailConfirm($user);
-        return redirect('/login');
+        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
     }
 
     public function storeMailInvite(RegisterMailRequest $request)
@@ -506,7 +505,7 @@ class RegistrationController extends Controller
 
         //sendmail
         $this->mailConfirm($user);
-        return redirect('/login');
+        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
     }
 
     private function mailInvite(PendingInvite $invite, Team $team)
@@ -538,10 +537,10 @@ class RegistrationController extends Controller
     private function mailConfirm(User $user)
     {
         $title = "Welkom bij EhackB!";
-        $content = "Confirmeer je email adres!";
+        $content = "Bevestig je e-mailadres!";
         Mail::send('mail.confirmation',  ['title' => $title, 'content' => $content,'user' => $user,'token' => $user->confirmationToken], function($message) use ($user){
             $message->sender('no-reply@ehackb.be', $name = 'EhackB crew');
-            $message->subject('Welcome to EhackB!');
+            $message->subject('Welkom bij EhackB!');
             $message->to($user->email, $name = null);
         });
 

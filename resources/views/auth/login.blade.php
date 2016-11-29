@@ -10,6 +10,11 @@
       <h2>login</h2>
       <div class="line"></div>
 
+      @if(isset($msg))
+        <div class="form-group col-md-4 panel-success">
+          {{ $msg }}
+        </div>
+      @endif
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         <label for="email" class="col-md-4 control-label">E-Mail</label>
         <div class="col-md-4">
