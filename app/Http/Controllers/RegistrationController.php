@@ -264,7 +264,9 @@ class RegistrationController extends Controller
         } else {
             return redirect()->back()->with('err', 'Kon de gebruiker niet opslaan.');
         }
-        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
+
+        $msg = 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!';
+        return redirect("/login")->with('msg', $msg);
     }
 
     public function update(Request $request)
@@ -379,7 +381,8 @@ class RegistrationController extends Controller
 
         //sendmail
         $this->mailConfirm($user);
-        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
+        $msg = 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!';
+        return redirect("/login")->with('msg', $msg);
     }
 
     public function storePublicTeam(RegisterPublicRequest $request)
@@ -446,7 +449,9 @@ class RegistrationController extends Controller
 
         //sendmail
         $this->mailConfirm($user);
-        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
+
+        $msg = 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!';
+        return redirect("/login")->with('msg', $msg);
     }
 
     public function storeMailInvite(RegisterMailRequest $request)
@@ -505,7 +510,9 @@ class RegistrationController extends Controller
 
         //sendmail
         $this->mailConfirm($user);
-        return redirect("/login")->with('msg', 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!');
+
+        $msg = 'Registratie gelukt! Er is een bevestigingsmail gestuurd naar je mailbox!';
+        return redirect("/login")->with('msg', $msg);
     }
 
     private function mailInvite(PendingInvite $invite, Team $team)
