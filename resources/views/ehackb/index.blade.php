@@ -410,44 +410,51 @@
                     <div class="table">
                         <ul>
                             <li>
-                                <p class="hour">20.00 - ...</p>
-                                <p class="title">League of Legends</p>
-                                <p class="info">Game competition</p>
+                                <p class="hour">Steven Eerdekens (Exclusive Networks)</p>
+                                <p class="title">IT security: de trends van de laatste jaren</p>
+                                <p class="info">Na de keynote van Luk Schoonaert kan je terecht bij zijn collega Steven Eerdekens voor een workshop, waar je aan de slag gaat met Palo Alto firewalls. In deze Ultimate Test Drive Next-Generation Firewall ga je aan de slag met Palo Alto’s cutting edge firewalls. Door het volgen van stap-voor-stap instructies kan je een aantal praktische cases van configuratie doorlopen en dit op een heel toegankelijke wijze! Typische problematieken die in bedrijven voorkomen kan je leren oplossen in deze corner, waaronder beheer van sociale media, evasive applications (P2P, Tor), malware en URL filtering. Een sterke aanrader voor iedereen met interesse in networking security!</p>
                             </li>
                             <li>
-                                <p class="hour">20:00 - ...</p>
-                                <p class="title">Counter strike Global Offensive</p>
-                                <p class="info">Game competition</p>
+                                <p class="hour">Malik Mesellem (MME)</p>
+                                <p class="title">bWAPP</p>
+                                <p class="info">Malik Mesellem is an IT security professional with over 15 years of experience. Malik has always had a passion for Ethical Hacking and Penetration Testing... obsessed with Windows and Web Application (in)Security.<br />
+                                <br />
+                                In 2010, he started his own company, MME BVBA. MME is specialized in Security Audits, User Awareness Campaigns, Vulnerability Assessments, Penetration Testing and Security Training.<br />
+                                <br />
+                                Malik gives master classes, lectures, and workshops on conferences and for several institutions. He is an OWASP ZAP evangelist and used to be a mentor for the SANS Institute, mentoring the SANS 'SEC560 - Network Penetration Testing and Ethical Hacking' course.<br />
+                                <br />
+                                Malik is also the founder and developer of bWAPP…<br />
+                                <br />
+                                bWAPP, or a buggy web application, is a free and open source deliberately insecure web application. It helps security enthusiasts, developers and students to discover and to prevent web vulnerabilities. bWAPP prepares one to conduct successful penetration testing and ethical hacking projects.<br />
+                                <br />
+                                What makes bWAPP so unique? Well, it has over 100 web vulnerabilities! It covers all major known web bugs, including all risks from the OWASP Top 10 project. It has 100.000+ downloads worldwide.<br />
+                                <br />
+                                In this workshop, students will be introduced to the OWASP Top 10 risks. Ready to attack?!?<br />
+                                <br />
+                                <u>Prerequisites:</u> laptop with the latest version of Kali Linux (already installed and working). This will be provided by the EHACKB organisation. More information:<br /><br /><a href="http://www.mmebvba.be">http://www.mmebvba.be</a><br /><br />
+                              </p>
                             </li>
                             <li>
-                                <p class="hour">20:00 - ...</p>
-                                <p class="title">Overwatch</p>
-                                <p class="info">Game competition</p>
+                                <p class="title">Modem en router hacking</p>
+                                <p class="info">In de modem en router hacking corner kan je kennis maken met een aantal gesofisticeerde hacks op computerhardware. We hebben daarvoor enkele zeer getalenteerde hackers ter beschikking: wie de Koppen-reportage over white-hat hacking heeft gezien zal zich vast nog de Telenet-modem hack herinneren. Het zijn deze hackers die op EHACKB uitleg komen geven hoe je modems, routers en andere hardware kan beginnen hacken. Get ready for some serious hardware hacking...</p>
                             </li>
                             <li>
-                                <p class="hour">20:00 - ...</p>
-                                <p class="title">Super Smash Bros</p>
-                                <p class="info">Game competition</p>
+                                <p class="title">Create</p>
+                                <p class="info">In de create corner laten we de creatieve breinen los op een hoop hardware. Door gebruik te maken van onder andere Arduino’s, motor shields en ander materiaal kunnen deelnemers hun skills meten in robot races, een arena of een leuke voetbalwedstrijd. Voor de developers voorzien we twee hackathons, zowel Unity als Processing, waar leuke prijzen aan vast hangen. De designers kunnen zich dan weer uitleven met ludieke Photoshop en 3D modeling challenges.</p>
                             </li>
                             <li>
-                                <p class="hour">20:00 - ...</p>
-                                <p class="title">FIFA</p>
-                                <p class="info">Game competition</p>
+                                <p class="hour">Christophe Swolfs</p>
+                                <p class="title">Introductie tot Polymer (setup + kleine demo app bouwen)</p>
+                                <p class="info">Christophe is student Dig-X (Toegepaste Informatica) aan de Erasmushogeschool. Hij heeft echter hieraan voorafgaand al een opleiding gevolgd: Digital Arts &amp; Entertainment aan Howest in Kortrijk. Deze opleiding is vooral gericht op videogames. Het grafische aspect, front-end development, gebruikerservaring, en vloeiende animaties zijn aspecten die hem als programmeur erg interesseren. Polymer is dus een ideale library voor hem.<br />
+                                <br />
+                                Polymer is eigenlijk meer dan enkel een HTML library. Het laat je toe om eigen HTML elementen te creëren met een eigen ingebakken lay-out of gedrag wat toch enigszins een andere aanpak is dan de traditionele javascript libraries.<br />
+                                <br />
+                                Tijdens de workshop Polymer starten we met het opzetten van de ontwikkelingsomgeving. Vervolgens hacken we dus elk onze eigen HTML componenten bij elkaar om in geen tijd een moderne website te creëren.</p>
                             </li>
                             <li>
-                                <p class="hour">23:00 - ...</p>
-                                <p class="title">Heartstone</p>
-                                <p class="info">Game competition</p>
-                            </li>
-                            <li>
-                                <p class="hour">23:00 - ...</p>
-                                <p class="title">Rocket League</p>
-                                <p class="info">Game competition</p>
-                            </li>
-                            <li>
-                                <p class="hour">From start to finish</p>
-                                <p class="title">All games</p>
-                                <p class="info">Casual gaming</p>
+                                <p class="hour">Frederic Vleminckx</p>
+                                <p class="title">CTF-game</p>
+                                <p class="info">Frederic is onderzoeker binnen het SeCloud project, en verbonden aan het kenniscentrum “Design & Technology for Mobile & Wearable” van het departement Design & Technologie van de Erasmushogeschool.</p>
                             </li>
                         </ul>
                     </div>
