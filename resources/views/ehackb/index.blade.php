@@ -298,7 +298,7 @@
               <li>- Achtste Finale: 6’</li>
               <li>- Achtste Finale: 6’</li>
               <li>- Vierde Finale: 6’</li>
-              <li>- Halve Finake: 8’</li>
+              <li>- Halve Finale: 8’</li>
               <li>- Finale: 8’</li>
               <li>- Kleine Finale: 8’</li>
             </ul>
