@@ -22,7 +22,7 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registreren
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="nav-link" href="{{url('registercasual')}}">Ik speel casual</a></li>
+                                        <li><a class="nav-link" href="{{url('registercasual')}}">Gewoon registreren</a></li>
                                         <li><a class="nav-link" href="{{url('register')}}">Maak een team</a></li>
                                         <li><a class="nav-link" href="{{url('registerteam')}}">Ga bij een publiek team</a></li>
                                     </ul>

@@ -1,5 +1,9 @@
 @extends('layouts.register')
 
+@section('head')
+  <title>Registreren en bij een publiek team gaan</title>
+@stop
+
 @section('content')
 
 
@@ -12,7 +16,7 @@
   <br/>
     <form class="form-horizontal" method="POST" action="registerpublic" id="registerpublicform">
         {{ csrf_field() }}
-        <h2>Registreren en join een publiek team</h2>
+        <h2>Registreren en bij een publiek team gaan</h2>
         <div class="line"></div>
         <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="inputEmail" class="col-md-4 control-label">E-mail</label>

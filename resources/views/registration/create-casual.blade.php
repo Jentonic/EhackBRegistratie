@@ -1,5 +1,9 @@
 @extends('layouts.register')
 
+@section('head')
+  <title>Algemene registratie</title>
+@stop
+
 @section('content')
 
     @if(Session::has('err'))
@@ -11,7 +15,7 @@
   <br/>
     <form class="form-horizontal" method="POST" action="storecasual" id="registercasualform">
         {{ csrf_field() }}
-        <h2>Registreren als casual</h2>
+        <h2>Algemene registratie</h2>
         <div class="line"></div>
 
         <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">

@@ -194,8 +194,8 @@ class RegistrationController extends Controller
             $activities = $request->input('activities');
             foreach ($activities as $activity) {
                 $ac = Activity::find($activity);
-                if (!$ac->users()->count() < $ac->maxUsers) {
-                    $error = 'Maximum amount of people reached for ' . $ac->name;
+                if ($ac->users()->count() >= $ac->maxUsers) {
+                    $error = 'Maximum aantal inschrijvingen voor activiteit bereikt: ' . $ac->name;
                     $user->delete();
                     return redirect()->back()->with('err', $error);
                 }

@@ -1,5 +1,9 @@
 @extends('layouts.register')
 
+@section('head')
+    <title>Inschrijven als team</title>
+@stop
+
 @section('content')
 
     @if (count($errors) > 0)
