@@ -242,4 +242,8 @@ body {
         margin-left: 0;
         margin-right: 0;
     }
+    .game .locked {
+        left: 10%;
+        width: 80%;
+    }
 }
