@@ -32,7 +32,7 @@ class RegisterTeamRequest extends FormRequest
             'verifypassword' => 'required|same:password',
             'teamname' => 'required|required',
             'gameid' => 'required|integer|exists:games,id',
-            'teammembers' => 'required|array',
+            'teammembers' => 'array',
             'teammembers.*' => 'distinct|email|unique:users,email',
         ];
     }
