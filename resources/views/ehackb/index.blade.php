@@ -449,7 +449,12 @@
             <li>
               <p class="hour">18:45-19:45 - AUDI 4</p>
               <p class="title">Hans Ameel</p>
-              <p class="info">Realtime communication in web technologieën</p>
+              <p class="info">Contactless hacking</p>
+            </li>
+            <li>
+              <p class="hour">18:45-19:45 - AUDI 5</p>
+              <p class="title">Jonathan Van Beneden</p>
+              <p class="info">Virtual reality development</p>
             </li>
           </ul>
         </div>
