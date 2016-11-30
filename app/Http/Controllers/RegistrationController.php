@@ -224,7 +224,11 @@ class RegistrationController extends Controller
             $team->name = $request->input('teamname');
             $team->gameID = $request->input('gameid');
 
-            $mailarr = $request->input('teammembers');
+            $mailarr = array();
+            if($request->has('teammembers')){
+                $mailarr = $request->input('teammembers');
+            }
+
             $gameTeamSize = Game::where('id', $team->gameID)->first()->maxPlayers;
 
             //remove empty fields

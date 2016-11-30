@@ -2,7 +2,7 @@
  * Created by Kamiel Klumpers on 20/11/2016.
  */
 
-function updateView() {
+function updateView(){
     $("#members").html('');
 
     var gameID = $("#inputGameID").val();
