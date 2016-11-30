@@ -345,7 +345,7 @@
         </section>
         <section class="game">
           <img src="ehackb/img/games/rocket_league.png" alt="rl">
-          <a href="{{url('/register')}}">Doe mee</a>
+          <div class="locked">Inschrijving ter plekke</div>
           <h3 class="name">Rocket League</h3>
           <p class="title">1 player</p>
           <p class="hour">23.00 - ...</p>
