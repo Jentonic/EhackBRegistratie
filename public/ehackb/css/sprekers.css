@@ -124,6 +124,15 @@ body {
     text-transform: uppercase;
 }
 
+.spreker:nth-of-type(7) {
+    margin-left: 17.5%
+}
+
+.spreker:nth-of-type(8) {
+    margin: 0;
+    margin-left: 5%;
+}
+
 .spreker .info::-webkit-scrollbar {
     display: none;
 }
