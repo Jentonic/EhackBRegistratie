@@ -5,7 +5,9 @@
 @stop
 
 @section('content')
-
+    <div class="alert alert-warning">
+        <p><b>Opgelet!</b> Voor een team te maken moeten er minstens twee ehb en/of vub studenten geregistreerd staan in je team!</p>
+    </div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>

@@ -6,7 +6,9 @@
 
 @section('content')
 
-
+    <div class="alert alert-warning">
+        <p><b>Opgelet!</b> Voor een team te maken moeten er minstens twee ehb en/of vub studenten geregistreerd staan in je team!</p>
+    </div>
     @if(Session::has('err'))
     <div class="alert alert-danger">
         {{ Session::get('err') }}
