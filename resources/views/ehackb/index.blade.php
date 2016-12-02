@@ -58,26 +58,6 @@
         <div class="sprekers">
             <h2 class="animated fadeInDown">Sprekers</h2>
             <div class="lijstsprekers">
-
-                {{--
-                    ARNAUD HIERONDER
-                --}}
-                <section class="spreker">
-                    <img src="ehackb/img/sprekers/malik_mesellem.jpg" alt="Malik" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
-                    <h3 class="name">Malik Mesellem</h3>
-                    <p class="title">ARNAUD_INSERT_TITLE</p>
-                    <p class="hour">ARNAUD_INSERT_UUR</p>
-                    <div class="scrolloverflow">
-                        <p class="info">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem doloribus ea et eveniet harum illo in incidunt itaque laboriosam minus, nisi, porro, quisquam sed sunt tempore ullam vitae voluptate. Dolorem magni necessitatibus optio ratione sed veritatis voluptatem. Accusantium atque doloremque inventore iure nisi, officia perferendis perspiciatis qui repellendus rerum sapiente, sint veritatis voluptatum. Ab aliquam assumenda deleniti dicta dolor eos impedit ipsa officiis optio possimus quo, sed vel voluptatum. Aut dolore doloribus eligendi error ipsam iure, possimus provident sint veritatis. Autem ex numquam voluptatibus voluptatum. Culpa eius exercitationem ipsa vitae voluptatem. Accusamus accusantium, asperiores ducimus enim eos error hic minima nisi, obcaecati quam sapiente tempora vitae? Ab aliquid at debitis error excepturi illo iusto labore laudantium officiis. Asperiores delectus deleniti distinctio eius eligendi quibusdam rem soluta voluptatibus. Aspernatur assumenda, autem consectetur eius iusto maxime nemo nobis obcaecati possimus quisquam sint temporibus totam vel. At, commodi consequatur dicta distinctio doloremque dolores doloribus est ex excepturi fugiat ipsum iure labore laborum magnam maxime perspiciatis possimus qui quo quod quos reiciendis ullam voluptatem. Accusantium amet, consequuntur deleniti doloribus est expedita itaque, laudantium mollitia nisi rem reprehenderit tempora tempore totam ullam ut. Consectetur doloribus facere fugit molestiae nesciunt nobis reiciendis temporibus voluptate? Architecto?
-                        </p>
-                    </div>
-                    <div class="scrollindicator">
-                        Scroll me
-                    </div>
-                </section>
-
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/inti_de_ceukelaire.jpg" alt="Inti" class="thumbnail thumbnail-lineup">
                     <a href="{{url('/registercasual')}}">Doe mee</a>
@@ -197,6 +177,26 @@
                             VR applicaties te bouwen en te optimaliseren voor een leuke user experience.</p>
                     </div>
                 </section>
+
+                <section class="spreker">
+                    <img src="ehackb/img/sprekers/malik_mesellem.jpg" alt="Malik" class="thumbnail thumbnail-lineup">
+                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <h3 class="name">Malik Mesellem</h3>
+                    <p class="title">bWAPP, a buggy web application</p>
+                    <p class="hour">20:00-... Zaal (Keynote + Workshop)</p>
+                    <div class="scrolloverflow">
+                        <p class="info">
+                            Malik Mesellem is een IT security professional met meer dan 15 jaar ervaring. Hij heeft een passie voor ethisch hacken, penetration tests, en windows –en web application beveiligingslekken. Hij heeft al enkele jaren zijn eigen bedrijf, MME BBVA, dat gespecialiseerd is in ondermeer security audits en security training. Hij geeft ook les en is de ontwikkelaar van bWAPP. BWAPP, of buggy web application is een open source web applicatie die niet veilig is. Hij gebruikt het ondermeer als ondersteuning voor zijn lessen. Er zitten enorm veel beveiligingslekken in, ondermeer alles uit de OWASP top 10.<br />
+                            <br />
+                            In de workshop zal hij studenten laten kennis maken met de OWASP top 10. Hieraan gaat een kleine keynote vooraf die ook in de grote zaal doorgaat. Ben je klaar om aan de slag te gaan?<br />
+                            <br />
+                            Als je je eigen laptop meebrengt, zorg dan voor de laatste versie van Kali Linux. Er worden ook pc’s voorzien door de EHACKB organisatie.<br />
+                        </p>
+                    </div>
+                    <div class="scrollindicator">
+                        Scroll me
+                    </div>
+                </section>
                 <div class="clear"></div>
             </div>
         </div>
@@ -304,7 +304,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/fifa.png" alt="fifa">
-                    <a href="{{url('/register')}}">Doe mee</a>
+                    <div class="locked">Volzet</div>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
@@ -365,7 +365,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/rocket_league.png" alt="rl">
-                    <a class="locked" disabled>Inschrijving ter plekke</a>
+                    <a class="locked" disabled>Ter plekke</a>
                     <h3 class="name">Rocket League</h3>
                     <p class="title">1 player</p>
                     <p class="hour">23.00 - ...</p>
