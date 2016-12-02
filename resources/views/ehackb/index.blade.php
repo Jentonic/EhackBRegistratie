@@ -304,7 +304,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/fifa.png" alt="fifa">
-                    <a href="{{url('/register')}}">Doe mee</a>
+                    <div class="locked">Volzet</div>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
@@ -365,7 +365,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/rocket_league.png" alt="rl">
-                    <a class="locked" disabled>Inschrijving ter plekke</a>
+                    <a class="locked" disabled>Ter plekke</a>
                     <h3 class="name">Rocket League</h3>
                     <p class="title">1 player</p>
                     <p class="hour">23.00 - ...</p>
