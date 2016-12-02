@@ -70,9 +70,9 @@ body {
 
 .game .locked {
     position: absolute;
-    left: 20%;
+    left: 30%;
     top: 225px;
-    width: 60%;
+    width: 40%;
     padding: 10px 0;
     text-decoration: none;
     color: #FFF;
@@ -241,9 +241,5 @@ body {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
-    }
-    .game .locked {
-        left: 10%;
-        width: 80%;
     }
 }
