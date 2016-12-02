@@ -144,7 +144,11 @@
             <div class="col-md-4 halfantifixfix">
                 <select name="gameid" id="inputGameID" class="form-control">
                     @foreach(App\Game::all() as $game)
-                        <option value={{$game->id}}>{{$game->name}}</option>
+                        @if($game->isFull())
+                            <option value={{$game->id}} disabled>{{$game->name}} - volzet
+                        @else
+                            <option value={{$game->id}}>{{$game->name}}
+                        @endif
                     @endforeach
                 </select>
             </div>
