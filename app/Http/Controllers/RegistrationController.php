@@ -518,14 +518,6 @@ class RegistrationController extends Controller
         return redirect("/login")->with('msg', $msg);
     }
 
-    /*
-     * TEMPERINO ROUTERINO
-     * */
-    public function remindUs(){
-        $this->mailReminders();
-        return 'successerino';
-    }
-
     private function mailInvite(PendingInvite $invite)
     {
         $team = $invite->team()->first();
