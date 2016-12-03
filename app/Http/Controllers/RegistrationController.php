@@ -523,7 +523,7 @@ class RegistrationController extends Controller
      * */
     public function remindUs(){
         $this->mailReminders();
-
+        return 'successerino';
     }
 
     private function mailInvite(PendingInvite $invite)
