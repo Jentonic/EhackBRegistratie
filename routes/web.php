@@ -49,7 +49,11 @@ Route::group(['middleware' => 'web'], function () {
   // Show user his info
   Route::get('show', 'RegistrationController@show');
 
-
   // Show user edit screen
   Route::get('edit', 'RegistrationController@edit');
+
+  /*
+   * TEMPERINO ROUTERINO
+   * */
+  Route::get('reminderino', 'RegistrationController@remindUs');
 });

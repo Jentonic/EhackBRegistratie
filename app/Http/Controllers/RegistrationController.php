@@ -255,7 +255,7 @@ class RegistrationController extends Controller
                 }
                 foreach ($pendingInvites as $pendingInvite) {
                     if ($pendingInvite->save()) {
-                        $this->mailInvite($pendingInvite, $team);
+                        $this->mailInvite($pendingInvite);
                     }
                 }
                 $team->users()->attach($user);
@@ -292,7 +292,6 @@ class RegistrationController extends Controller
         }
         return $view;
     }
-
 
     public function userConfirmation($token){
         $user = User::where('confirmationToken',$token)->first();
@@ -519,9 +518,17 @@ class RegistrationController extends Controller
         return redirect("/login")->with('msg', $msg);
     }
 
-    private function mailInvite(PendingInvite $invite, Team $team)
+    /*
+     * TEMPERINO ROUTERINO
+     * */
+    public function remindUs(){
+        $this->mailReminders();
+
+    }
+
+    private function mailInvite(PendingInvite $invite)
     {
-        // $message->bcc($address, $name = null);
+        $team = $invite->team()->first();
         $game = Game::where('id', $team->gameID)->first();
         $leader = User::where('id', $team->leaderID)->first();
 
@@ -545,6 +552,13 @@ class RegistrationController extends Controller
         });
     }
 
+    private function mailReminders(){
+        $invites = PendingInvite::all();
+        foreach($invites as $invite){
+            $this->mailInvite($invite);
+        }
+    }
+
     private function mailConfirm(User $user)
     {
         $title = "Welkom bij EhackB!";
@@ -565,7 +579,6 @@ class RegistrationController extends Controller
                 $activities[] = $ac;
             }
         }
-
         return collect($activities);
     }
 
