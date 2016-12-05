@@ -18,4 +18,8 @@ class Team extends Model
   public function game(){
     return $this->belongsTo('App\Game','gameID');
   }
+
+  public function leader(){
+    return $this->hasOne('App\User','id','leaderID');
+  }
 }

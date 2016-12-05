@@ -694,6 +694,7 @@
             <li>
                 <h3>Sponsors <br>
                     Master Tier</h3></li>
+            <li><a href="http://www.agoria.be/">Agoria</a></li>
             <li><a href="http://www.innoviris.be/">innoviris brussels</a></li>
             <li><a href="http://www.signpost.be">Signpost</a></li>
             <li><a href="http://www.web-switchpoint.com">Switchpoint</a></li>
@@ -705,6 +706,7 @@
     <p class="disc"><img src="ehackb/img/spon/LOGO.png" alt="logo"><br></p>
     <div class="footer-logo">
         <p>Met dank aan onze sponsors</p>
+        <img src="ehackb/img/spon/logo-agoria.png" alt="agoria">
         <img src="ehackb/img/spon/cisco_meraki.jpg" alt="cisco">
         <img src="ehackb/img/spon/dell_blue_rgb.jpg" alt="dell">
         <img src="ehackb/img/spon/EN_Logo_New_Font_WTE-2.png" alt="exnet">
