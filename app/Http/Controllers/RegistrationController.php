@@ -544,10 +544,23 @@ class RegistrationController extends Controller
         });
     }
 
-    private function mailReminders(){
+    /*
+     * Resend the pending mail invites
+     */
+    private function resendPendingInvites(){
         $invites = PendingInvite::all();
         foreach($invites as $invite){
             $this->mailInvite($invite);
+        }
+    }
+
+    /*
+     * Resend the mails to confirm the user
+     */
+    private function resendMailConfirms(){
+        $confirms = User::all()->where('confirmed', 0)->get();
+        foreach($confirms as $confirm){
+            $this->mailConfirm($confirm);
         }
     }
 
