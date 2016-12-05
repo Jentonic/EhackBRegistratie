@@ -186,7 +186,7 @@
                     <p class="hour">20:00-... Zaal (Keynote + Workshop)</p>
                     <div class="scrolloverflow">
                         <p class="info">
-                            Malik Mesellem is een IT security professional met meer dan 15 jaar ervaring. Hij heeft een passie voor ethisch hacken, penetration tests, en windows –en web application beveiligingslekken. Hij heeft al enkele jaren zijn eigen bedrijf, MME BBVA, dat gespecialiseerd is in ondermeer security audits en security training. Hij geeft ook les en is de ontwikkelaar van bWAPP. BWAPP, of buggy web application is een open source web applicatie die niet veilig is. Hij gebruikt het ondermeer als ondersteuning voor zijn lessen. Er zitten enorm veel beveiligingslekken in, ondermeer alles uit de OWASP top 10.<br />
+                            Malik Mesellem is een IT security professional met meer dan 15 jaar ervaring. Hij heeft een passie voor ethisch hacken, penetration tests, en windows –en web application beveiligingslekken. Hij heeft al enkele jaren zijn eigen bedrijf, MME BVBA, dat gespecialiseerd is in ondermeer security audits en security training. Hij geeft ook les en is de ontwikkelaar van bWAPP. bWAPP, of buggy web application is een open source web applicatie dat bewust "onveilig" werd gemaakt. Hij gebruikt het ondermeer als ondersteuning voor zijn lessen. Er zitten enorm veel beveiligingslekken in, ondermeer alles uit de OWASP top 10.<br />
                             <br />
                             In de workshop zal hij studenten laten kennis maken met de OWASP top 10. Hieraan gaat een kleine keynote vooraf die ook in de grote zaal doorgaat. Ben je klaar om aan de slag te gaan?<br />
                             <br />
