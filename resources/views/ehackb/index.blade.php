@@ -304,7 +304,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/fifa.png" alt="fifa">
-                    <div class="locked">Volzet</div>
+                    <a href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
