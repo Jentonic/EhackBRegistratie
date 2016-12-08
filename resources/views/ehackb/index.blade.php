@@ -711,6 +711,7 @@
         <img src="ehackb/img/spon/dell_blue_rgb.jpg" alt="dell">
         <img src="ehackb/img/spon/EN_Logo_New_Font_WTE-2.png" alt="exnet">
         <img src="ehackb/img/spon/innoviris-brussels-empowering-research.png" alt="innov">
+        <img src="ehackb/img/spon/kazi.jpg" alt="kazi">
         <img src="ehackb/img/spon/logo-av-apps.png" alt="av"><br>
         <img src="ehackb/img/spon/MME_logo-groot.png" alt="mme">
         <img src="ehackb/img/spon/Redcorp_logo.png" alt="redc">
