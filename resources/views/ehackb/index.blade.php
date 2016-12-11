@@ -60,7 +60,7 @@
             <div class="lijstsprekers">
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/inti_de_ceukelaire.jpg" alt="Inti" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Inti De Ceukelaire</h3>
                     <p class="title">Creative Hacking v2</p>
                     <p class="hour">16:45-17:45 - AUDI 4</p>
@@ -83,7 +83,7 @@
                 </section>
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/valery_vermeulen.png" alt="Valery" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Valery Vermeulen</h3>
                     <p class="title">How to make music from (deep) space, wall street or biofeedback</p>
                     <p class="hour">17:45-18:45 - AUDI 1</p>
@@ -121,7 +121,7 @@
                 </section>
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/Luk_Schoonaert.png" alt="Luk" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Luk Schoonaert</h3>
                     <p class="title">IT security: de trends van de laatste jaren</p>
                     <p class="hour">17:45-18:45 - AUDI 4</p>
@@ -135,7 +135,7 @@
                 </section>
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/wannes_gennar.png" alt="Wannes" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Wannes Gennar</h3>
                     <p class="title">Realtime communication in web technologieën</p>
                     <p class="hour">18:45-19:45 - AUDI 1</p>
@@ -148,7 +148,7 @@
                 </section>
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/hans_ameel.png" alt="Hans" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Hans Ameel</h3>
                     <p class="title">Contactless hacking</p>
                     <p class="hour">18:45-19:45 - AUDI 4</p>
@@ -165,7 +165,7 @@
                 </section>
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/jonathan.jpg" alt="Jonathan" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Jonathan Van Beneden</h3>
                     <p class="title">Virtual reality development</p>
                     <p class="hour">18:45-19:45 - AUDI 5</p>
@@ -180,7 +180,7 @@
 
                 <section class="spreker">
                     <img src="ehackb/img/sprekers/malik_mesellem.jpg" alt="Malik" class="thumbnail thumbnail-lineup">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Malik Mesellem</h3>
                     <p class="title">bWAPP, a buggy web application</p>
                     <p class="hour">20:00-... Zaal (Keynote + Workshop)</p>
@@ -207,19 +207,15 @@
             <div class="lijstgames">
                 <section class="game">
                     <img src="ehackb/img/games/lol.jpg" alt="LoL">
-                    <a href="{{url('/register')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">League of Legends</h3>
                     <p class="title">Team of 5</p>
                     <p class="hour">20.00 - ...</p>
                     <div class="scrolloverflow">
-                        <p class="info">Voor het League of Legends tornooi gaan we werken met een poulesysteem waarbij er 2 poules
-                            van 6 teams zijn. Elk team zal eenmaal tegen elk team spelen en de 4 teams die het meeste hebben gewonnen
-                            gaan door naar de volgende
-                            ronde. In deze ronde zal er met een bracket systeem gewerkt worden voor de 8 overblijvende teams. Als je
-                            wint ga je door naar de volgende ronde in de bracket als je verliest is het gedaan. We gebruiken de custom
-                            draft game
-                            mode voorzien door het spel zelf. Er zullen ook vaak mods en streamers aanwezig zijn in deze games om zo
-                            het tornooi vlot te laten verlopen. Who will be the last one standing on the Rift?</p>
+                        <p class="info">Voor het League of Legends tornooi werken we met een poulesysteem waarbij er 2 poules van 6 teams zijn. Elk team zal eenmaal tegen alle teams binnen zijn poule spelen. De top 4 van elke poule zullen doorstoten naar de volgende ronde.
+                            Na de poules zullen de teams in een single elimination (bracket-systeem) tegen elkaar in een best-of-1 match spelen tot en met de finale.
+                            Voor het toernooi zullen wij gebruik maken van de <a href="http://cdn.leagueoflegends.com/prized-events/Tournament+Rules+Beta.pdf">Riot Rules</a> en vragen elke deelnemer zich te houden aan de <a href="http://gameinfo.euw.leagueoflegends.com/en/game-info/get-started/summoners-code/">Summoners code</a>.
+                            Elke speler zal zich moeten registreren op het <a href="http://events.euw.leagueoflegends.com/events/231212">Riot event</a> website om kans te maken op de prijzen.</p>
                     </div>
                     <div class="scrollindicator">
                         Scroll me
@@ -227,8 +223,8 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/csgo.png" alt="cs">
-                    <a href="{{url('/register')}}">Doe mee</a>
-                    <h3 class="name">Counter strike Global Offensive</h3>
+                    <a class="doemee" href="{{url('/register')}}">Doe mee</a>
+                    <h3 class="name">Counter-strike Global Offensive</h3>
                     <p class="title">Team of 5</p>
                     <p class="hour">20.00 - ...</p>
                     <div class="scrolloverflow">
@@ -246,7 +242,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/overwatch.png" alt="overwatch">
-                    <a href="{{url('/register')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Overwatch</h3>
                     <p class="title">Team of 6</p>
                     <p class="hour">20.00 - ...</p>
@@ -272,7 +268,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/Super_Smash_Bros.png" alt="smb">
-                    <a href="{{url('/register')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Super Smash Bros</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
@@ -304,7 +300,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/fifa.png" alt="fifa">
-                    <a href="{{url('/register')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
@@ -337,7 +333,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/hearthstone.png" alt="heartstone">
-                    <a href="{{url('/register')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Hearthstone</h3>
                     <p class="title">1 player</p>
                     <p class="hour">23.00 - ...</p>
@@ -378,7 +374,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/casual.png" alt="casual">
-                    <a href="{{url('/registercasual')}}">Doe mee</a>
+                    <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Casual gaming</h3>
                     <p class="title">Iedereen welkom</p>
                     <p class="hour">20.00 - ...</p>

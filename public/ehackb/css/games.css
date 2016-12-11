@@ -42,7 +42,12 @@ body {
     margin: 0 5%;
 }
 
-.game a {
+.game p a {
+    color: #92C0BB;
+    font-weight: bold;
+}
+
+.game .doemee {
     position: absolute;
     left: 30%;
     top: 225px;
