@@ -304,7 +304,7 @@
                 </section>
                 <section class="game">
                     <img src="ehackb/img/games/fifa.png" alt="fifa">
-                    <div class="locked">Volzet</div>
+                    <a href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
                     <p class="hour">20.00 - ...</p>
@@ -711,6 +711,7 @@
         <img src="ehackb/img/spon/dell_blue_rgb.jpg" alt="dell">
         <img src="ehackb/img/spon/EN_Logo_New_Font_WTE-2.png" alt="exnet">
         <img src="ehackb/img/spon/innoviris-brussels-empowering-research.png" alt="innov">
+        <img src="ehackb/img/spon/kazi.jpg" alt="kazi">
         <img src="ehackb/img/spon/logo-av-apps.png" alt="av"><br>
         <img src="ehackb/img/spon/MME_logo-groot.png" alt="mme">
         <img src="ehackb/img/spon/Redcorp_logo.png" alt="redc">
