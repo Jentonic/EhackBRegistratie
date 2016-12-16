@@ -206,11 +206,11 @@
             <h2 class="animated fadeInDown">Games</h2>
             <div class="lijstgames">
                 <section class="game">
-                    <img src="ehackb/img/games/lol.jpg" alt="LoL">
+                    <img class="preview" src="ehackb/img/games/lol.jpg" alt="LoL">
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">League of Legends</h3>
                     <p class="title">Team of 5</p>
-                    <p class="hour">20.00 - ...</p>
+                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/leagueoflegendsehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Voor het League of Legends tornooi werken we met een poulesysteem waarbij er 2 poules van 6 teams zijn. Elk team zal eenmaal tegen alle teams binnen zijn poule spelen. De top 4 van elke poule zullen doorstoten naar de volgende ronde.
                             Na de poules zullen de teams in een single elimination (bracket-systeem) tegen elkaar in een best-of-1 match spelen tot en met de finale.
@@ -222,11 +222,11 @@
                     </div>
                 </section>
                 <section class="game">
-                    <img src="ehackb/img/games/csgo.png" alt="cs">
+                    <img class="preview" src="ehackb/img/games/csgo.png" alt="cs">
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
-                    <h3 class="name">Counter-strike Global Offensive</h3>
+                    <h3 class="name">Counter-Strike: Global Offensive</h3>
                     <p class="title">Team of 5</p>
-                    <p class="hour">20.00 - ...</p>
+                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/counterstrikegoehb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Voor het Counter Strike: Global Offensive starten we met een poulesysteem waarbij er 2
                             poules van 6 teams zijn. Elk team zal eenmaal tegen elk team spelen en de 4 teams die het meeste hebben
@@ -241,11 +241,11 @@
                     </div>
                 </section>
                 <section class="game">
-                    <img src="ehackb/img/games/overwatch.png" alt="overwatch">
+                    <img class="preview" src="ehackb/img/games/overwatch.png" alt="overwatch">
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Overwatch</h3>
                     <p class="title">Team of 6</p>
-                    <p class="hour">20.00 - ...</p>
+                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/overwatchehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Toon je vermogen in overwatch en neem het op tegen 5 andere teams om te bewijzen dat jullie
                             dit jaar de kampioen zijn.<br><br> Regels:
@@ -267,11 +267,11 @@
                     </div>
                 </section>
                 <section class="game">
-                    <img src="ehackb/img/games/Super_Smash_Bros.png" alt="smb">
+                    <img class="preview" src="ehackb/img/games/Super_Smash_Bros.png" alt="smb">
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Super Smash Bros</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">20.00 - ...</p>
+                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <ul class="info">
 
@@ -297,13 +297,16 @@
                                 amiibo hij/zij wilt. De tweede plaats wint de overige amiibo.</p>
                         </ul>
                     </div>
+                    <div class="scrollindicator">
+                        Scroll me
+                    </div>
                 </section>
                 <section class="game">
-                    <img src="ehackb/img/games/fifa.png" alt="fifa">
+                    <img class="preview" src="ehackb/img/games/fifa.png" alt="fifa">
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">20.00 - ...</p>
+                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Durf je je talent en skills te komen tonen op het voetbalveld, en als deze goed genoeg zijn
                             kans te maken op een prijs? Dan is ons FIFA17 Toernooi de perfecte opportuniteit voor jou! Registreer je
@@ -332,11 +335,11 @@
                     </div>
                 </section>
                 <section class="game">
-                    <img src="ehackb/img/games/hearthstone.png" alt="heartstone">
+                    <img class="preview" src="ehackb/img/games/hearthstone.png" alt="heartstone">
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Hearthstone</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">23.00 - ...</p>
+                    <p class="hour">23.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">
                             Zoals elk jaar wordt er een hearthstone toernooi georganiseerd op EHackB. Toon je “skills” aan je
@@ -346,7 +349,7 @@
                             <br><br> Elke speler bereidt 3 decks van 3 verschillende classes voor, deze worden niet meer veranderd
                             voor de rest van het toernooi. De decks worden in het standaard formaat gespeeld, dat wil zeggen dat je
                             geen kaarten
-                            mag gebruiken uit de "Goblins VS Gnomes" en "Blackrock Mountain". Er worden geen accounts gedeeld, één
+                            mag gebruiken uit de "Goblins VS Gnomes" en "Naxxramas". Er worden geen accounts gedeeld, één
                             account kan maar één keer ingeschreven worden. Elke match bestaat uit een best of 5, spelers moeten met
                             alle 3 hun decks
                             een game winnen, de eerste die wint met al zijn decks gaat door naar de volgende ronde. Afhankelijk van de
@@ -360,11 +363,11 @@
                     </div>
                 </section>
                 <section class="game">
-                    <img src="ehackb/img/games/rocket_league.png" alt="rl">
+                    <img class="preview" src="ehackb/img/games/rocket_league.png" alt="rl">
                     <a class="locked" disabled>Ter plekke</a>
                     <h3 class="name">Rocket League</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">23.00 - ...</p>
+                    <p class="hour">23.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Denk jij tegen de pro's op te kunnen? Laat dan jouw skills zien op ons 1v1 rocket league
                             toernooi. Het toernooi wordt gespeeld op voorziene computers die plaatsvinden op het evenement zelf. De
@@ -373,7 +376,7 @@
                     </div>
                 </section>
                 <section class="game">
-                    <img src="ehackb/img/games/casual.png" alt="casual">
+                    <img class="preview" src="ehackb/img/games/casual.png" alt="casual">
                     <a class="doemee" href="{{url('/registercasual')}}">Doe mee</a>
                     <h3 class="name">Casual gaming</h3>
                     <p class="title">Iedereen welkom</p>
