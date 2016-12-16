@@ -346,7 +346,7 @@
                             <br><br> Elke speler bereidt 3 decks van 3 verschillende classes voor, deze worden niet meer veranderd
                             voor de rest van het toernooi. De decks worden in het standaard formaat gespeeld, dat wil zeggen dat je
                             geen kaarten
-                            mag gebruiken uit de "Goblins VS Gnomes" en "Blackrock Mountain". Er worden geen accounts gedeeld, één
+                            mag gebruiken uit de "Goblins VS Gnomes" en "Naxxramas". Er worden geen accounts gedeeld, één
                             account kan maar één keer ingeschreven worden. Elke match bestaat uit een best of 5, spelers moeten met
                             alle 3 hun decks
                             een game winnen, de eerste die wint met al zijn decks gaat door naar de volgende ronde. Afhankelijk van de
