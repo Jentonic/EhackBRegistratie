@@ -210,7 +210,7 @@
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">League of Legends</h3>
                     <p class="title">Team of 5</p>
-                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/leagueoflegendsehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
+                    <p class="hour">20.00 - ... <a target="_blank" href="https://www.twitch.tv/leagueoflegendsehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Voor het League of Legends tornooi werken we met een poulesysteem waarbij er 2 poules van 6 teams zijn. Elk team zal eenmaal tegen alle teams binnen zijn poule spelen. De top 4 van elke poule zullen doorstoten naar de volgende ronde.
                             Na de poules zullen de teams in een single elimination (bracket-systeem) tegen elkaar in een best-of-1 match spelen tot en met de finale.
@@ -226,7 +226,7 @@
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Counter-Strike: Global Offensive</h3>
                     <p class="title">Team of 5</p>
-                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/counterstrikegoehb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
+                    <p class="hour">20.00 - ... <a target="_blank" href="https://www.twitch.tv/counterstrikegoehb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Voor het Counter Strike: Global Offensive starten we met een poulesysteem waarbij er 2
                             poules van 6 teams zijn. Elk team zal eenmaal tegen elk team spelen en de 4 teams die het meeste hebben
@@ -245,7 +245,7 @@
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Overwatch</h3>
                     <p class="title">Team of 6</p>
-                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/overwatchehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
+                    <p class="hour">20.00 - ... <a target="_blank" href="https://www.twitch.tv/overwatchehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Toon je vermogen in overwatch en neem het op tegen 5 andere teams om te bewijzen dat jullie
                             dit jaar de kampioen zijn.<br><br> Regels:
@@ -271,7 +271,7 @@
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Super Smash Bros</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
+                    <p class="hour">20.00 - ... <a target="_blank" href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <ul class="info">
 
@@ -306,7 +306,7 @@
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">FIFA</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">20.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
+                    <p class="hour">20.00 - ... <a target="_blank" href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Durf je je talent en skills te komen tonen op het voetbalveld, en als deze goed genoeg zijn
                             kans te maken op een prijs? Dan is ons FIFA17 Toernooi de perfecte opportuniteit voor jou! Registreer je
@@ -339,7 +339,7 @@
                     <a class="doemee" href="{{url('/register')}}">Doe mee</a>
                     <h3 class="name">Hearthstone</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">23.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
+                    <p class="hour">23.00 - ... <a target="_blank" href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">
                             Zoals elk jaar wordt er een hearthstone toernooi georganiseerd op EHackB. Toon je “skills” aan je
@@ -367,7 +367,7 @@
                     <a class="locked" disabled>Ter plekke</a>
                     <h3 class="name">Rocket League</h3>
                     <p class="title">1 player</p>
-                    <p class="hour">23.00 - ... <a href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
+                    <p class="hour">23.00 - ... <a target="_blank" href="https://www.twitch.tv/minitourneyehackb"><img class="twitch" src="ehackb/img/twitch.png" alt="twitch"></a></p>
                     <div class="scrolloverflow">
                         <p class="info">Denk jij tegen de pro's op te kunnen? Laat dan jouw skills zien op ons 1v1 rocket league
                             toernooi. Het toernooi wordt gespeeld op voorziene computers die plaatsvinden op het evenement zelf. De
