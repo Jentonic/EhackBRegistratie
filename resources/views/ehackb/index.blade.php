@@ -717,6 +717,7 @@
         <img src="ehackb/img/spon/signpost.jpg" alt="sign">
         <img src="ehackb/img/spon/sopra-banking-software.png" alt="sop">
         <img src="ehackb/img/spon/switchpoint-logo-color-no_border-final.jpg" alt="switch">
+        <img src="ehackb/img/spon/pwclogo.gif" alt="pwc">
     </div>
 </footer>
 <!-- Piwik -->
